@@ -1,0 +1,126 @@
+const HOUSES = [{
+    "id_dark": "house1_dark",
+    "id_light": "house1_light",
+    "x": 219,
+    "y": 276
+}, {
+    "id_dark": "house2_dark",
+    "id_light": "house2_light",
+    "x": 874,
+    "y": 151
+}, {
+    "id_dark": "house3_dark",
+    "id_light": "house3_light",
+    "x": 362,
+    "y": 90
+}, {
+    "id_dark": "house4_dark",
+    "id_light": "house4_light",
+    "x": 514,
+    "y": 78
+}, {
+    "id_dark": "house5_dark",
+    "id_light": "house5_light",
+    "x": 616,
+    "y": 97
+}, {
+    "id_dark": "house6_dark",
+    "id_light": "house6_light",
+    "x": 865.125244140625,
+    "y": 305.9429016113281
+}, {
+    "id_dark": "house7_dark",
+    "id_light": "house7_light",
+    "x": 713.1560668945312,
+    "y": 182.12899780273438
+}, {
+    "id_dark": "house8_dark",
+    "id_light": "house8_light",
+    "x": 789.2395629882812,
+    "y": 211.31390380859375
+}, {
+    "id_dark": "carpenter_dark",
+    "id_light": "carpenter_light",
+    "x": 455.21392822265625,
+    "y": 385.3209228515625
+}, {
+    "id_dark": "church_dark",
+    "id_light": "church_light",
+    "x": 144.9042205810547,
+    "y": 121.12347412109375
+}, {
+    "id_dark": "fashion_dark",
+    "id_light": "fashion_light",
+    "x": 321.1556396484375,
+    "y": 271.1109619140625
+}, {
+    "id_dark": "barber_dark",
+    "id_light": "barber_light",
+    "x": 582.2051391601562,
+    "y": 341.8513488769531
+}, {
+    "id_dark": "bakery_dark",
+    "id_light": "bakery_light",
+    "x": 615.7564697265625,
+    "y": 215.59075927734375
+}, {
+    "id_dark": "baumschule_dark",
+    "id_light": "baumschule_light",
+    "x": 114.32545471191406,
+    "y": 455.823974609375
+}, {
+    "id_dark": "big_dark",
+    "id_light": "big_light",
+    "x": 724.811279296875,
+    "y": 335.6516418457031
+}, {
+    "id_dark": "small_dark",
+    "id_light": "small_light",
+    "x": 891.24658203125,
+    "y": 387.82867431640625
+}, {
+    "id_dark": "highhouse_dark",
+    "id_light": "highhouse_light",
+    "x": 260.530517578125,
+    "y": 106.83909606933594
+}, {
+    "id_dark": "pharmacy_dark",
+    "id_light": "pharmacy_light",
+    "x": 257.35223388671875,
+    "y": 401.07330322265625
+}, {
+    "id_dark": "billionaire_dark",
+    "id_light": "billionaire_light",
+    "x": 99.17915344238281,
+    "y": 296.0019226074219
+}, {
+    "id_dark": "bank_dark",
+    "id_light": "bank_light",
+    "x": 466.78240966796875,
+    "y": 219.87896728515625
+}, {
+    "id_dark": "tierheim_dark",
+    "id_light": "tierheim_light",
+    "x": 763.06494140625,
+    "y": 89.05632019042969
+}, {
+    "id_dark": "kebap_dark",
+    "id_light": "kebap_light",
+    "x": 358.3266906738281,
+    "y": 458.34661865234375
+}, {
+    "id_dark": "pizza_dark",
+    "id_light": "pizza_light",
+    "x": 583.6824340820312,
+    "y": 450.10223388671875
+}, {"id_dark": "gym_dark", "id_light": "gym_light", "x": 799.8697509765625, "y": 452.2911376953125}];
+
+function Village(config) {
+
+    var self = this;
+    self.config = config;
+    self.dom = config.dom;
+
+    // Props
+    self.houses = config.houses;
+}
