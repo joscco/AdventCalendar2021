@@ -1,6 +1,6 @@
 # Adventskalender 2021
 
-A little advent calender made with pixi.js and Tween.
+A little advent calender made with pixi.js and Tween. Currently deployed via Github Pages on https://joscco.github.io/Adventskalender2021/.
 
 ## Todos
 
