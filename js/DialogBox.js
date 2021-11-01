@@ -12,14 +12,31 @@ function DialogBox() {
     self.box.zIndex = 540;
     self.rect = new PIXI.Graphics();
     self.rect.beginFill(0xFFFFFF);
-    self.rect.drawRoundedRect(0, 0, self.width, self.height, 20);
+    self.rect.drawRoundedRect(0, 0, self.width, self.height, 10);
     self.rect.endFill();
 
-    self.text = new PIXI.Text("Bliblablup");
-    self.text.position.x = 50;
-    self.text.position.y = 50;
-    self.box.addChild(self.rect);
-    self.box.addChild(self.text);
+
+    let baseTextures = Loader.resources["base_people_sheet"].textures;
+    let sadTextures = Loader.resources["sad_people_sheet"].textures;
+    let happyTextures = Loader.resources["happy_people_sheet"].textures;
+    let neutralTextures = Loader.resources["neutral_people_sheet"].textures;
+    let person = new PIXI.Sprite(baseTextures["beppo"]);
+    let sad_face = new PIXI.Sprite(sadTextures["beppo"]);
+    sad_face.anchor.set(0, 1);
+    person.scale.set(0.7);
+    person.addChild(sad_face);
+    person.position.x = 20;
+    person.position.y = self.height;
+    person.anchor.set(0, 1);
+    self.box.addChild(self.rect)
+    self.box.addChild(person);
+    
+    document.fonts.load("1rem 'OliverRegular'").then(() => {
+        let text = new PIXI.Text("Ich habe ein Problem!", {fontFamily: 'OliverRegular', fontSize: 35});
+        text.position.x = 250;
+        text.position.y = 30;
+        self.box.addChild(text);
+    });
 
     self.toggleShow = function () {
         if (self.hidden) {

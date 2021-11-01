@@ -1,0 +1,495 @@
+{
+	"frames": {
+		"ali_happy.png": {
+			"frame": {
+				"x": 1,
+				"y": 1,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"armin_happy.png": {
+			"frame": {
+				"x": 431,
+				"y": 1,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"arndt_happy.png": {
+			"frame": {
+				"x": 861,
+				"y": 1,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"ben_happy.png": {
+			"frame": {
+				"x": 1291,
+				"y": 1,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"beppo_happy.png": {
+			"frame": {
+				"x": 1721,
+				"y": 1,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"bernadette_happy.png": {
+			"frame": {
+				"x": 1,
+				"y": 482,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"bernd_happy.png": {
+			"frame": {
+				"x": 431,
+				"y": 482,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"bjorn_happy.png": {
+			"frame": {
+				"x": 861,
+				"y": 482,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"fred_happy.png": {
+			"frame": {
+				"x": 1291,
+				"y": 482,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"gundula_happy.png": {
+			"frame": {
+				"x": 1721,
+				"y": 482,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"jo_happy.png": {
+			"frame": {
+				"x": 1,
+				"y": 963,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"joseph_happy.png": {
+			"frame": {
+				"x": 431,
+				"y": 963,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"karla_happy.png": {
+			"frame": {
+				"x": 861,
+				"y": 963,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"maike_happy.png": {
+			"frame": {
+				"x": 1291,
+				"y": 963,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"marc_happy.png": {
+			"frame": {
+				"x": 1721,
+				"y": 963,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"maria_happy.png": {
+			"frame": {
+				"x": 1,
+				"y": 1444,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"mario_happy.png": {
+			"frame": {
+				"x": 431,
+				"y": 1444,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"martin_happy.png": {
+			"frame": {
+				"x": 861,
+				"y": 1444,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"meier_happy.png": {
+			"frame": {
+				"x": 1291,
+				"y": 1444,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"olaf_happy.png": {
+			"frame": {
+				"x": 1721,
+				"y": 1444,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"sam_happy.png": {
+			"frame": {
+				"x": 2151,
+				"y": 1,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"sven_happy.png": {
+			"frame": {
+				"x": 2151,
+				"y": 482,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"tom_happy.png": {
+			"frame": {
+				"x": 2151,
+				"y": 963,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		},
+		"will_happy.png": {
+			"frame": {
+				"x": 2151,
+				"y": 1444,
+				"w": 428,
+				"h": 479
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 428,
+				"h": 479
+			},
+			"sourceSize": {
+				"w": 428,
+				"h": 479
+			}
+		}
+	},
+	"meta": {
+		"app": "http://www.codeandweb.com/texturepacker",
+		"version": "1.0",
+		"image": "spritesheet.png",
+		"format": "RGBA8888",
+		"size": {
+			"w": 2580,
+			"h": 1924
+		},
+		"scale": "1"
+	}
+}

@@ -1,9 +1,22 @@
+@font-face{
+    font-family: 'OliverRegular';
+    font-size: 30rem;
+    src: url('Oliver-Regular.ttf');
+}
+
 * {
     padding: 0;
     margin: 0;
 }
 
-#canvas {
-    width: 960px;
-    height: 540px;
+body {
+    background-color: #1D1D34;
+}
+
+canvas {
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
