@@ -6,8 +6,8 @@ A little advent calender made with pixi.js and Tween. Currently deployed via Git
 
 #### Graphics
 - [x] Prepare House Illustrations (24 x (dark + light))
-- [ ] Prepare Moon Illustrations (dark + light)
-- [ ] Prepare People Illustrations (24 x (sad + neutral + happy))
+- [x] Prepare Moon Illustrations (dark + light)
+- [x] Prepare People Illustrations (24 x (sad + neutral + happy))
 - [ ] Prepare Background and Splash Screen
 - [ ] Prepare UI Stuff (help icon, notification icon, Buttons (Big Button, Choice Button, Day Button))
 
@@ -17,7 +17,7 @@ A little advent calender made with pixi.js and Tween. Currently deployed via Git
 #### Programming
 - [x] Implement general stuff (Pixi Loader, Pixi Application)
 - [x] House Positioning
-- [ ] Positioning Editor
+- [x] Positioning Editor
 - [ ] Day Choosing Buttons
 - [ ] Day-To-House Logic
 - [ ] Bouncy Help Sign
