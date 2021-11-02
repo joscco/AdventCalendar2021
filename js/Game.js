@@ -35,7 +35,31 @@ function Game() {
         app.stage.sortableChildren = true;
 
         let dialogBox = new DialogBox();
-        dialogBox.toggleShow();
+        //dialogBox.toggleShow();
+
+        let moonTextures = Loader.resources["moon_sheet"].textures;
+        let moonSprite = new PIXI.Sprite(moonTextures["moon_light"]);
+        moonSprite.scale.set(0.3);
+        moonSprite.y = 10;
+        moonSprite.x = GAME_WIDTH - moonSprite.width - 40;
+        moonSprite.interactive = true;
+        moonSprite.buttonMode = true;
+        let blinking = false;
+
+        let moonEyes = new PIXI.Sprite(moonTextures["eyes"]);
+
+        moonSprite.click = function() {
+            console.log("Click");
+            if (blinking) {
+                moonEyes.texture = moonTextures["eyes"];
+            } else {
+                moonEyes.texture = moonTextures["blink"];
+            }
+            blinking = !blinking;
+        }
+        app.stage.addChild(moonSprite);
+        moonSprite.addChild(moonEyes);
+
 
         let houses = HOUSES;
         let houseTextures = Loader.resources["houses_sheet"].textures;
