@@ -11,7 +11,9 @@ class AssetUtils {
             .add("neutral_people_sheet", "./assets/images/people_neutral.json")
             .add("sad_people_sheet", "./assets/images/people_sad.json")
             .add("annotations_sheet", "./assets/images/annotation_sprites.json")
+            .add("buttons_sheet", "./assets/images/buttons.json")
             .add("moon_sheet", "./assets/images/moon.json")
-            .load(onLoadingFinished);
+            .add("Gaegu", "./css/Gaegu-Regular.ttf")
+            .load(onLoadingFinished)
     }
 }

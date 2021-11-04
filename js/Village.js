@@ -1,8 +1,8 @@
 const HOUSES = [{
     "id_dark": "house1_dark",
     "id_light": "house1_light",
-    "x": 228.0518798828125,
-    "y": 308.255859375
+    "x": 228,
+    "y": 308,
 }, {
     "id_dark": "house2_dark",
     "id_light": "house2_light",
@@ -107,20 +107,106 @@ const HOUSES = [{
     "id_dark": "kebap_dark",
     "id_light": "kebap_light",
     "x": 348.7286071777344,
-    "y": 381.4534912109375
+    "y": 381.4534912109375,
+    "owner": "ali"
 }, {
     "id_dark": "pizza_dark",
     "id_light": "pizza_light",
     "x": 422.8826904296875,
     "y": 401.56915283203125
-}, {"id_dark": "gym_dark", "id_light": "gym_light", "x": 695.4526977539062, "y": 389.95098876953125}];
+}, {
+    "id_dark": "gym_dark",
+    "id_light": "gym_light",
+    "x": 695.4526977539062,
+    "y": 389.95098876953125
+}];
 
 function Village(config) {
 
     var self = this;
     self.config = config;
-    self.dom = config.dom;
+    self.editable = config.editable;
 
     // Props
     self.houses = config.houses;
+    self.textures = Loader.resources["houses_sheet"].textures;
+    self.hitShapes = Loader.resources["houses_shapes"].data;
+
+
+    // Viel in House auslagern!
+    self.setup = function () {
+        for (let house of HOUSES) {
+            let houseTexture = self.textures[house.id_dark];
+            let houseSprite = new PIXI.Sprite(houseTexture);
+            let houseHitArea = new HitArea(self.hitShapes[house.id_dark]);
+            houseSprite.scale.set(HOUSE_SCALE);
+            houseSprite.hitArea = houseHitArea;
+            // hier wegen der hitArea noch Gedanken machen!
+            houseSprite.position.x = house.x;
+            houseSprite.position.y = house.y;
+            houseSprite.zIndex = houseSprite.position.y + houseSprite.height;
+            houseSprite.dark_key = house.id_dark;
+            houseSprite.light_key = house.id_light;
+
+            houseSprites.push(houseSprite);
+
+            if (self.editable) {
+                // Generate Anchor indicator
+                let pointA = new PIXI.Graphics();
+                pointA.beginFill(0xFF0000);
+                pointA.drawCircle(houseSprite.position.x, houseSprite.position.y + houseSprite.height, 5);
+                pointA.endFill();
+                stage.addChild(pointA);
+
+                houseSprite.interactive = true;
+                houseSprite.buttonMode = true;
+
+                houseSprite.click = function () {
+                    this.texture = self.textures[house.id_light];
+                }
+                let xGrabOffset = 0;
+                let yGrabOffset = 0;
+                houseSprite
+                    .on('mousedown', (e) => {
+                        xGrabOffset = e.data.global.x - houseSprite.position.x;
+                        yGrabOffset = e.data.global.y - houseSprite.position.y;
+                        houseSprite.data = e;
+                        houseSprite.alpha = 0.5;
+                        houseSprite.dragging = true;
+                    })
+                    .on('mouseup', (e) => {
+                        houseSprite.dragging = false;
+                        houseSprite.alpha = 1;
+                        houseSprite.data = null;
+                    })
+                    .on('mousemove', (e) => {
+                        if (houseSprite.dragging) {
+                            let newPosition = e.data.global;
+                            houseSprite.position.x = newPosition.x - xGrabOffset;
+                            houseSprite.position.y = newPosition.y - yGrabOffset;
+                            pointA.beginFill(0xFF0000);
+                            pointA.drawCircle(houseSprite.position.x, houseSprite.position.y + houseSprite.height, 5);
+                            pointA.endFill();
+                            houseSprite.zIndex = houseSprite.position.y + houseSprite.height;
+                            houseSprite.dragging = newPosition;
+                        }
+                    });
+            }
+            stage.addChild(houseSprite);
+        }
+    }
+
+    self.generateSnow = function () {
+        for (let i = 0; i < 10000; i++) {
+            let circ = new PIXI.Graphics();
+            circ.beginFill(0xFFFFFF);
+            let yValue = randomBetween(230 , 530 );
+            let xValue = randomBetween(90 - 0.15*yValue, 870 + 0.15*yValue);
+            circ.drawCircle(xValue, yValue, 5 + Math.random() * 5);
+            circ.endFill();
+            stage.addChild(circ);
+            circ.zIndex = yValue + 5;
+            circ.alpha = 0.6;
+        }
+    }
 }

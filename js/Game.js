@@ -2,9 +2,20 @@ const GAME_WIDTH = 960;
 const GAME_HEIGHT = 540;
 const GAME_BACKGROUND_COLOR = 0x1d1d34;
 const HOUSE_SCALE = 0.4;
+const DAYS = [];
+
+let CURRENT_DAY_NUMBER;
+
 let houseSprites = [];
 let lighted = false;
-let app;
+
+let canvas;
+let renderer;
+let stage;
+
+let moon;
+let helpSign;
+let ticker;
 
 
 downHandler = function (event) {
@@ -25,114 +36,104 @@ downHandler = function (event) {
 
 function Game() {
 
-    app = new PIXI.Application({
-        width: GAME_WIDTH, height: GAME_HEIGHT, backgroundColor: GAME_BACKGROUND_COLOR, antialias: true
-    });
+    const self = this;
+    self.currentDay = null;
 
-    this.startGame = function () {
-        document.body.appendChild(app.view);
-        document.body.addEventListener("keypress", downHandler);
-        app.stage.sortableChildren = true;
+    self.setup = function () {
 
-        let dialogBox = new DialogBox();
-        //dialogBox.toggleShow();
+        let font = new FontFaceObserver("Gaegu", {});
+        font.load().then(() => {
 
-        let moonTextures = Loader.resources["moon_sheet"].textures;
-        let moonSprite = new PIXI.Sprite(moonTextures["moon_light"]);
-        moonSprite.scale.set(0.3);
-        moonSprite.y = 10;
-        moonSprite.x = GAME_WIDTH - moonSprite.width - 40;
-        moonSprite.interactive = true;
-        moonSprite.buttonMode = true;
-        let blinking = false;
+            let daybar = new DaySelectBar({
+                dom: $("#day-select-bar"),
+                days: [
+                    {number: 1},
+                    {number: 2},
+                    {number: 3},
+                    {number: 4},
+                    {number: 5},
+                    {number: 6},
+                    {number: 7},
+                    {number: 8},
+                    {number: 9},
+                    {number: 10},
+                    {number: 11},
+                    {number: 12},
+                    {number: 13},
+                    {number: 14},
+                    {number: 15},
+                    {number: 16},
+                    {number: 17},
+                    {number: 18},
+                    {number: 19},
+                    {number: 20},
+                    {number: 21},
+                    {number: 22},
+                    {number: 23},
+                    {number: 24}
+                ]
+            });
+            canvas = document.getElementById('calender-canvas');
+            renderer = new PIXI.Renderer({
+                view: canvas,
+                width: GAME_WIDTH,
+                height: GAME_HEIGHT,
+                backgroundColor: GAME_BACKGROUND_COLOR,
+                resolution: window.devicePixelRatio,
+                autoDensity: true
+            });
 
-        let moonEyes = new PIXI.Sprite(moonTextures["eyes"]);
+            stage = new PIXI.Container();
+            stage.sortableChildren = true;
 
-        moonSprite.click = function() {
-            console.log("Click");
-            if (blinking) {
-                moonEyes.texture = moonTextures["eyes"];
-            } else {
-                moonEyes.texture = moonTextures["blink"];
-            }
-            blinking = !blinking;
-        }
-        app.stage.addChild(moonSprite);
-        moonSprite.addChild(moonEyes);
+            moon = new Moon({x: 10, y: GAME_WIDTH - 40, scale: 0.3});
+            moon.init();
 
-
-        let houses = HOUSES;
-        let houseTextures = Loader.resources["houses_sheet"].textures;
-        let houseShapes = Loader.resources["houses_shapes"].data;
-        for (let house of houses) {
-            let houseTexture = houseTextures[house.id_dark];
-            let houseSprite = new PIXI.Sprite(houseTexture);
-            let houseHitArea = new HitArea(houseShapes[house.id_dark]);
-            houseSprite.scale.set(HOUSE_SCALE);
-            houseSprite.hitArea = houseHitArea;
-            // hier wegen der hitArea noch Gedanken machen!
-            houseSprite.position.x = house.x;
-            houseSprite.position.y = house.y;
-
-            let pointA = new PIXI.Graphics();
-            pointA.beginFill(0xFF0000);
-            pointA.drawCircle(houseSprite.position.x, houseSprite.position.y + houseSprite.height, 5);
-            pointA.endFill();
-            app.stage.addChild(pointA);
-            // Ultra nervig aber notwendig, damit der Boden entscheidet!
-            houseSprite.zIndex = houseSprite.position.y + houseSprite.height;
-            houseSprite.dark_key = house.id_dark;
-            houseSprite.light_key = house.id_light;
-
-            houseSprites.push(houseSprite);
-            houseSprite.interactive = true;
-            houseSprite.buttonMode = true;
-
-            houseSprite.click = function () {
-                this.texture = houseTextures[house.id_light];
-                //dialogBox.toggleShow();
-            }
-            // let xGrabOffset = 0;
-            // let yGrabOffset = 0;
-            // houseSprite
-            //     .on('mousedown', (e) => {
-            //         xGrabOffset = e.data.global.x - houseSprite.position.x;
-            //         yGrabOffset = e.data.global.y - houseSprite.position.y;
-            //         houseSprite.data = e;
-            //         houseSprite.alpha = 0.5;
-            //         houseSprite.dragging = true;
-            //     })
-            //     .on('mouseup', (e) => {
-            //         houseSprite.dragging = false;
-            //         houseSprite.alpha = 1;
-            //         houseSprite.data = null;
-            //     })
-            //     .on('mousemove', (e) => {
-            //         if (houseSprite.dragging) {
-            //             let newPosition = e.data.global;
-            //             houseSprite.position.x = newPosition.x - xGrabOffset;
-            //             houseSprite.position.y = newPosition.y - yGrabOffset;
-            //             pointA.beginFill(0xFF0000);
-            //             pointA.drawCircle(houseSprite.position.x, houseSprite.position.y + houseSprite.height, 5);
-            //             pointA.endFill();
-            //             houseSprite.zIndex = houseSprite.position.y + houseSprite.height;
-            //             houseSprite.dragging = newPosition;
-            //         }
-            //     });
+            let village = new Village({});
+            village.setup();
+            village.generateSnow();
 
 
-            app.stage.addChild(houseSprite);
-        }
-        for (let i = 0; i <10000; i++) {
-            let circ = new PIXI.Graphics();
-            circ.beginFill(0xFFFFFF);
-            let yValue = 230 + Math.random() * 400;
-            circ.drawCircle(Math.random() * 960, yValue, 5 + Math.random() * 5);
-            circ.endFill();
-            app.stage.addChild(circ);
-            circ.zIndex = yValue + 5;
-            circ.alpha = 0.6;
-        }
+
+            // Find Day, Init lighting
+            CURRENT_DAY_NUMBER = new Date().getDate();
+            self.prepareDay();
+
+            // Start Updating function
+            self.update();
+        }, () => {
+            alert("Unable to load Font!");
+        });
+    }
+
+    self.prepareDay = function() {
+        let id = "day" + 1;
+        self.currentDay = DAYS.find(function(day){
+            return day.id === id;
+        });
+        console.log(DAYS);
+        console.log(id);
+        console.log(self.currentDay);
+        self.currentHouse = HOUSES.find(function(house){
+            return house.owner === self.currentDay.quest.person;
+        });
+
+        // init Dialog Box
+        let dialogBox = new DialogBox({text: self.currentDay.quest.text, answer: self.currentDay.quest.answers[0]});
+
+        helpSign = new HelpSign({
+            x: self.currentHouse.x, y: self.currentHouse.y - 50, isQuest: true, action: dialogBox.toggleShow
+        });
+        helpSign.setup();
+    }
+
+
+    self.update = function () {
+        requestAnimationFrame(self.update);
+        TWEEN.update();
+        moon.update();
+        helpSign.update();
+        renderer.render(stage);
     }
 }
 

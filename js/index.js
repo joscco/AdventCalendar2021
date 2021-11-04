@@ -1,7 +1,7 @@
 window.onload = function () {
 
     const game = new Game();
-    AssetUtils.loadAssets(game.startGame);
+    AssetUtils.loadAssets(game.setup);
 }
 
 

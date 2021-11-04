@@ -1,6 +1,6 @@
 function House(config) {
 
-    var self = this;
+    const self = this;
 
     // Props
     self.x = config.x;
@@ -29,7 +29,7 @@ function House(config) {
         if (!sprite) {
             sprite = new Sprite();
         }
-        app.stage.addChild(self.sprite);
+        stage.addChild(self.sprite);
     }
 
     // Draw Function

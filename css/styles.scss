@@ -1,0 +1,57 @@
+@font-face{
+    font-family: "Gaegu";
+    src: url('Gaegu-Regular.ttf');
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #1D1D34;
+    font-family: 'Gaegu', sans-serif;
+    font-size: 20px;
+}
+
+canvas {
+    position: absolute;
+    border-radius: 5px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.day-select-bar {
+    position: absolute;
+    height: 540px;
+    left: 50px;
+    top: 50%;
+    transform: translate(0, -50%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+}
+
+.day-select-button {
+    height: 25px;
+    width: 25px;
+    font-size: 15px;
+    border-radius: 100%;
+    border: 2px solid #FFF;
+    cursor: pointer;
+
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-family: 'Gaegu';
+    transition: all 0.3s ease-in-out;
+}
+
+.day-select-button:hover {
+    background-color: #FFF;
+    color: #000;
+}
