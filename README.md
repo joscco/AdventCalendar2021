@@ -8,8 +8,8 @@ A little advent calender made with pixi.js and Tween. Currently deployed via Git
 - [x] Prepare House Illustrations (24 x (dark + light))
 - [x] Prepare Moon Illustrations (dark + light)
 - [x] Prepare People Illustrations (24 x (sad + neutral + happy))
-- [ ] Prepare Background and Splash Screen
-- [ ] Prepare UI Stuff (help icon, notification icon, Buttons (Big Button, Choice Button, Day Button))
+- [ ] <s>Prepare Background and Splash Screen</s> (will probably not do)
+- [x] Prepare UI Stuff (help icon, notification icon, Buttons (Big Button, Choice Button, Day Button))
 
 #### Texts
 - [ ] Prepare Texts
@@ -18,10 +18,10 @@ A little advent calender made with pixi.js and Tween. Currently deployed via Git
 - [x] Implement general stuff (Pixi Loader, Pixi Application)
 - [x] House Positioning
 - [x] Positioning Editor
-- [ ] Day Choosing Buttons
+- [x] Day Choosing Buttons
 - [ ] Day-To-House Logic
-- [ ] Bouncy Help Sign
-- [ ] Dialogue Window
+- [x] Bouncy Help Sign
+- [x] Dialogue Window
 - [ ] Person Logic
 - [ ] House-to-Person-to-Dialogue Logic
 - [ ] Moon Logic (No Moon/Half Moon/Full Moon)
