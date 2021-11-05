@@ -202,7 +202,7 @@ function Village(config) {
                 houseSprite.interactive = true;
                 houseSprite.buttonMode = true;
 
-                houseSprite.click = function () {
+                houseSprite.pointertap = function () {
                     this.texture = self.textures[house.id_light];
                 }
                 let xGrabOffset = 0;

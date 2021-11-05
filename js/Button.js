@@ -15,7 +15,7 @@ function Button(config) {
     self.texture.endFill();
     self.rectangle.interactive = true;
     self.rectangle.buttonMode = true;
-    self.rectangle.click = function () {
+    self.rectangle.pointertap = function () {
         self.action();
     }
 

@@ -73,7 +73,7 @@ function Game() {
             // Nur für Anpassung!
             moon.sprite.interactive = true;
             moon.sprite.buttonMode = true;
-            moon.sprite.click = function () {
+            moon.sprite.pointertap = function () {
                 self.village.printPositions();
             }
 

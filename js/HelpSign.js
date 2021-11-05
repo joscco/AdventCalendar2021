@@ -46,7 +46,7 @@ function HelpSign(config) {
         if (self.action) {
             self.sprite.interactive = true;
             self.sprite.buttonMode = true;
-            self.sprite.click = self.action;
+            self.sprite.pointertap = self.action;
         }
     }
 
