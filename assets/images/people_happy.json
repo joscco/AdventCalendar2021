@@ -1,6 +1,6 @@
 {
 	"frames": {
-		"ali_happy.png": {
+		"ali": {
 			"frame": {
 				"x": 1,
 				"y": 1,
@@ -20,7 +20,7 @@
 				"h": 479
 			}
 		},
-		"armin_happy.png": {
+		"armin": {
 			"frame": {
 				"x": 431,
 				"y": 1,
@@ -40,7 +40,7 @@
 				"h": 479
 			}
 		},
-		"arndt_happy.png": {
+		"arndt": {
 			"frame": {
 				"x": 861,
 				"y": 1,
@@ -60,7 +60,7 @@
 				"h": 479
 			}
 		},
-		"ben_happy.png": {
+		"ben": {
 			"frame": {
 				"x": 1291,
 				"y": 1,
@@ -80,7 +80,7 @@
 				"h": 479
 			}
 		},
-		"beppo_happy.png": {
+		"beppo": {
 			"frame": {
 				"x": 1721,
 				"y": 1,
@@ -100,7 +100,7 @@
 				"h": 479
 			}
 		},
-		"bernadette_happy.png": {
+		"bernadette": {
 			"frame": {
 				"x": 1,
 				"y": 482,
@@ -120,7 +120,7 @@
 				"h": 479
 			}
 		},
-		"bernd_happy.png": {
+		"bernd": {
 			"frame": {
 				"x": 431,
 				"y": 482,
@@ -140,7 +140,7 @@
 				"h": 479
 			}
 		},
-		"bjorn_happy.png": {
+		"bjorn": {
 			"frame": {
 				"x": 861,
 				"y": 482,
@@ -160,7 +160,7 @@
 				"h": 479
 			}
 		},
-		"fred_happy.png": {
+		"fred": {
 			"frame": {
 				"x": 1291,
 				"y": 482,
@@ -180,7 +180,7 @@
 				"h": 479
 			}
 		},
-		"gundula_happy.png": {
+		"gundula": {
 			"frame": {
 				"x": 1721,
 				"y": 482,
@@ -200,7 +200,7 @@
 				"h": 479
 			}
 		},
-		"jo_happy.png": {
+		"jo": {
 			"frame": {
 				"x": 1,
 				"y": 963,
@@ -220,7 +220,7 @@
 				"h": 479
 			}
 		},
-		"joseph_happy.png": {
+		"joseph": {
 			"frame": {
 				"x": 431,
 				"y": 963,
@@ -240,7 +240,7 @@
 				"h": 479
 			}
 		},
-		"karla_happy.png": {
+		"karla": {
 			"frame": {
 				"x": 861,
 				"y": 963,
@@ -260,7 +260,7 @@
 				"h": 479
 			}
 		},
-		"maike_happy.png": {
+		"maike": {
 			"frame": {
 				"x": 1291,
 				"y": 963,
@@ -280,7 +280,7 @@
 				"h": 479
 			}
 		},
-		"marc_happy.png": {
+		"marc": {
 			"frame": {
 				"x": 1721,
 				"y": 963,
@@ -300,7 +300,7 @@
 				"h": 479
 			}
 		},
-		"maria_happy.png": {
+		"maria": {
 			"frame": {
 				"x": 1,
 				"y": 1444,
@@ -320,7 +320,7 @@
 				"h": 479
 			}
 		},
-		"mario_happy.png": {
+		"mario": {
 			"frame": {
 				"x": 431,
 				"y": 1444,
@@ -340,7 +340,7 @@
 				"h": 479
 			}
 		},
-		"martin_happy.png": {
+		"martin": {
 			"frame": {
 				"x": 861,
 				"y": 1444,
@@ -360,7 +360,7 @@
 				"h": 479
 			}
 		},
-		"meier_happy.png": {
+		"meier": {
 			"frame": {
 				"x": 1291,
 				"y": 1444,
@@ -380,7 +380,7 @@
 				"h": 479
 			}
 		},
-		"olaf_happy.png": {
+		"olaf": {
 			"frame": {
 				"x": 1721,
 				"y": 1444,
@@ -400,7 +400,7 @@
 				"h": 479
 			}
 		},
-		"sam_happy.png": {
+		"sam": {
 			"frame": {
 				"x": 2151,
 				"y": 1,
@@ -420,7 +420,7 @@
 				"h": 479
 			}
 		},
-		"sven_happy.png": {
+		"sven": {
 			"frame": {
 				"x": 2151,
 				"y": 482,
@@ -440,7 +440,7 @@
 				"h": 479
 			}
 		},
-		"tom_happy.png": {
+		"tom": {
 			"frame": {
 				"x": 2151,
 				"y": 963,
@@ -460,7 +460,7 @@
 				"h": 479
 			}
 		},
-		"will_happy.png": {
+		"will": {
 			"frame": {
 				"x": 2151,
 				"y": 1444,

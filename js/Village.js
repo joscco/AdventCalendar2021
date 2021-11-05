@@ -1,129 +1,152 @@
 const HOUSES = [{
     "id_dark": "house1_dark",
     "id_light": "house1_light",
-    "x": 228,
-    "y": 308,
+    "x": 371,
+    "y": 364,
+    "owner": "martin"
 }, {
     "id_dark": "house2_dark",
     "id_light": "house2_light",
-    "x": 764.6598510742188,
-    "y": 255.63461303710938
+    "x": 847,
+    "y": 256,
+    "owner": "maike"
 }, {
     "id_dark": "house3_dark",
     "id_light": "house3_light",
-    "x": 119.27970886230469,
-    "y": 126.24057006835938
+    "x": 238,
+    "y": 124,
+    "owner": "maria"
 }, {
     "id_dark": "house4_dark",
     "id_light": "house4_light",
-    "x": 277.72802734375,
-    "y": 273.0654602050781
+    "x": 485,
+    "y": 258,
+    "owner": "tom"
 }, {
     "id_dark": "house5_dark",
     "id_light": "house5_light",
-    "x": 463.26605224609375,
-    "y": 205.3294677734375
+    "x": 484,
+    "y": 153,
+    "owner": "sam"
 }, {
     "id_dark": "house6_dark",
     "id_light": "house6_light",
-    "x": 808.63818359375,
-    "y": 350.852783203125
+    "x": 866,
+    "y": 352,
+    "owner": "bernd"
 }, {
     "id_dark": "house7_dark",
     "id_light": "house7_light",
-    "x": 527.1800537109375,
-    "y": 210.298583984375
+    "x": 93,
+    "y": 273,
+    "owner": "will"
 }, {
     "id_dark": "house8_dark",
     "id_light": "house8_light",
-    "x": 605.409423828125,
-    "y": 184.62860107421875
+    "x": 666,
+    "y": 143,
+    "owner": "björn"
 }, {
     "id_dark": "carpenter_dark",
     "id_light": "carpenter_light",
-    "x": 448.0913391113281,
-    "y": 314.052734375
+    "x": 586,
+    "y": 316,
+    "owner": "sven"
 }, {
     "id_dark": "church_dark",
     "id_light": "church_light",
-    "x": 38.616241455078125,
-    "y": 288.2934265136719
+    "x": 128,
+    "y": 307,
+    "owner": "marc"
 }, {
     "id_dark": "fashion_dark",
     "id_light": "fashion_light",
-    "x": 208.5213623046875,
-    "y": 199.00729370117188
+    "x": 120,
+    "y": 119,
+    "owner": "bernadette"
 }, {
     "id_dark": "barber_dark",
     "id_light": "barber_light",
-    "x": 532.44091796875,
-    "y": 371.0350341796875
+    "x": 627,
+    "y": 416,
+    "owner": "jo"
 }, {
     "id_dark": "bakery_dark",
     "id_light": "bakery_light",
-    "x": 512.5377807617188,
-    "y": 267.8243713378906
+    "x": 614,
+    "y": 250,
+    "owner": "mario"
 }, {
     "id_dark": "baumschule_dark",
     "id_light": "baumschule_light",
-    "x": 136.5701141357422,
-    "y": 413.022216796875
+    "x": 288,
+    "y": 406,
+    "owner": "arndt"
 }, {
     "id_dark": "big_dark",
     "id_light": "big_light",
-    "x": 636.5101928710938,
-    "y": 272.578369140625
+    "x": 729,
+    "y": 280,
+    "owner": "meier"
 }, {
     "id_dark": "small_dark",
     "id_light": "small_light",
-    "x": 620.9356079101562,
-    "y": 448.3558349609375
+    "x": 732,
+    "y": 442,
+    "owner": "gundula"
 }, {
     "id_dark": "highhouse_dark",
     "id_light": "highhouse_light",
-    "x": 32.85084533691406,
-    "y": 165.13388061523438
+    "x": 567,
+    "y": 129,
+    "owner": "ben"
 }, {
     "id_dark": "pharmacy_dark",
     "id_light": "pharmacy_light",
-    "x": 228.80508422851562,
-    "y": 367.533935546875
+    "x": 359,
+    "y": 274,
+    "owner": "karla"
 }, {
     "id_dark": "billionaire_dark",
     "id_light": "billionaire_light",
-    "x": 55.61279296875,
-    "y": 227.02816772460938
+    "x": 212,
+    "y": 238,
+    "owner": "armin"
 }, {
     "id_dark": "bank_dark",
     "id_light": "bank_light",
-    "x": 313.82037353515625,
-    "y": 206.61618041992188
+    "x": 368,
+    "y": 93,
+    "owner": "fred"
 }, {
     "id_dark": "tierheim_dark",
     "id_light": "tierheim_light",
-    "x": 704.172607421875,
-    "y": 197.93896484375
+    "x": 802,
+    "y": 193,
+    "owner": "joseph"
 }, {
     "id_dark": "kebap_dark",
     "id_light": "kebap_light",
-    "x": 348.7286071777344,
-    "y": 381.4534912109375,
+    "x": 467,
+    "y": 317,
     "owner": "ali"
 }, {
     "id_dark": "pizza_dark",
     "id_light": "pizza_light",
-    "x": 422.8826904296875,
-    "y": 401.56915283203125
+    "x": 470,
+    "y": 397,
+    "owner": "beppo"
 }, {
     "id_dark": "gym_dark",
     "id_light": "gym_light",
-    "x": 695.4526977539062,
-    "y": 389.95098876953125
-}];
+    "x": 848,
+    "y": 395,
+    "owner": "olaf"
+}]
 
 function Village(config) {
 
-    var self = this;
+    const self = this;
     self.config = config;
     self.editable = config.editable;
 
@@ -132,21 +155,39 @@ function Village(config) {
     self.textures = Loader.resources["houses_sheet"].textures;
     self.hitShapes = Loader.resources["houses_shapes"].data;
 
+    self.printPositions = function () {
+        let result = [];
+        houseSprites.forEach(spr => {
+                result.push({
+                    "id_dark": spr.dark_key,
+                    "id_light": spr.light_key,
+                    "x": Math.round(spr.position.x),
+                    "y": Math.round(spr.position.y),
+                    "owner": spr.owner,
+                })
+            }
+        );
+        console.log(JSON.stringify(result));
+    }
 
     // Viel in House auslagern!
     self.setup = function () {
         for (let house of HOUSES) {
             let houseTexture = self.textures[house.id_dark];
             let houseSprite = new PIXI.Sprite(houseTexture);
-            let houseHitArea = new HitArea(self.hitShapes[house.id_dark]);
+            let houseHitArea = new HitArea({
+                shapeObject: self.hitShapes[house.id_dark],
+                translateX: -houseSprite.width / 2
+            });
             houseSprite.scale.set(HOUSE_SCALE);
+            houseSprite.anchor.set(0.5, 0);
             houseSprite.hitArea = houseHitArea;
-            // hier wegen der hitArea noch Gedanken machen!
             houseSprite.position.x = house.x;
             houseSprite.position.y = house.y;
             houseSprite.zIndex = houseSprite.position.y + houseSprite.height;
             houseSprite.dark_key = house.id_dark;
             houseSprite.light_key = house.id_light;
+            houseSprite.owner = house.owner;
 
             houseSprites.push(houseSprite);
 
@@ -200,8 +241,8 @@ function Village(config) {
         for (let i = 0; i < 10000; i++) {
             let circ = new PIXI.Graphics();
             circ.beginFill(0xFFFFFF);
-            let yValue = randomBetween(230 , 530 );
-            let xValue = randomBetween(90 - 0.15*yValue, 870 + 0.15*yValue);
+            let yValue = randomBetween(230, 530);
+            let xValue = randomBetween(90 - 0.15 * yValue, 870 + 0.15 * yValue);
             circ.drawCircle(xValue, yValue, 5 + Math.random() * 5);
             circ.endFill();
             stage.addChild(circ);

@@ -200,7 +200,7 @@
 				"h": 160
 			}
 		},
-		"exclamation_mark": {
+		"exclamation": {
 			"frame": {
 				"x": 487,
 				"y": 163,
@@ -239,6 +239,66 @@
 				"w": 160,
 				"h": 160
 			}
+		},
+		"check": {
+			"frame": {
+				"x": 649,
+				"y": 1,
+				"w": 160,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 160,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 160,
+				"h": 160
+			}
+		},
+		"question": {
+			"frame": {
+				"x": 649,
+				"y": 163,
+				"w": 160,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 160,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 160,
+				"h": 160
+			}
+		},
+		"big_heart": {
+			"frame": {
+				"x": 649,
+				"y": 325,
+				"w": 160,
+				"h": 160
+			},
+			"rotated": false,
+			"trimmed": false,
+			"spriteSourceSize": {
+				"x": 0,
+				"y": 0,
+				"w": 160,
+				"h": 160
+			},
+			"sourceSize": {
+				"w": 160,
+				"h": 160
+			}
 		}
 	},
 	"meta": {
@@ -247,7 +307,7 @@
 		"image": "annotation_sprites.png",
 		"format": "RGBA8888",
 		"size": {
-			"w": 648,
+			"w": 810,
 			"h": 486
 		},
 		"scale": "1"

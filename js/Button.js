@@ -3,18 +3,21 @@ function Button(config) {
     self.text = config.text;
     self.x = config.x;
     self.y = config.y;
+    self.hintNumber = config.hintNumber;
     self.action = config.action;
-    self.long = config.long || false;
+    self.sprite = null;
+
+    self.long = self.text.length > 16;
 
     let buttonTextures = Loader.resources["buttons_sheet"].textures;
     self.texture = self.long ? buttonTextures["but_long"] : buttonTextures["but"];
-    let button = new PIXI.Sprite(self.texture);
-    button.interactive = true;
-    button.buttonMode = true;
-    button.scale.set(0.8);
-    button.position.x = self.x;
-    button.position.y = self.y;
-    button.click = function () {
+    self.sprite = new PIXI.Sprite(self.texture);
+    self.sprite.interactive = true;
+    self.sprite.buttonMode = true;
+    self.sprite.scale.set(0.8);
+    self.sprite.position.x = self.x || 0;
+    self.sprite.position.y = self.y || 0;
+    self.sprite.click = function () {
         self.action();
     }
 
@@ -25,9 +28,7 @@ function Button(config) {
         padding: 10
     }));
     text.anchor.set(0.5, 0.5);
-    text.position.x = button.texture.width / 2;
-    text.position.y = button.texture.height / 2;
-    button.addChild(text);
-
-    return button;
+    text.position.x = self.sprite.texture.width / 2;
+    text.position.y = self.sprite.texture.height / 2;
+    self.sprite.addChild(text);
 }
