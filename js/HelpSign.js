@@ -42,7 +42,6 @@ function HelpSign(config) {
     }
 
     self.setAction = function(action) {
-        console.log("Action will now be: ", action);
         self.action = action;
         if (self.action) {
             self.sprite.interactive = true;

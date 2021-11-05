@@ -27,5 +27,6 @@ function DaySelectButton(day) {
 
     self.dom.onclick = function() {
         CURRENT_DAY_NUMBER = day.number;
+        GAME.prepareDay();
     }
 }

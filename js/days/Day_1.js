@@ -1,63 +1,131 @@
 DAYS.push({
     id: "day1",
     quest: {
-        person: "karla",
+        person: "meier",
         emotion: "sad",
-        text: "Hey du. Map mu?",
+        text: "Oh Hallo! Wer bist du denn? \nNeu in der Stadt?",
         answers: [
             {
-                text: "Okidoki, ich schaue mal!",
-                type: "accept"
+                text: "Ja bin ich! Vor kurzem hergezogen.",
+                type: "continue",
+                reaction: {
+                    text: "Oh wunderbar! \n" +
+                        "Nun, mein Name ist Meier. \n" +
+                        "Ich freue mich, dich kennen zu lernen! \n" +
+                        "Traurig bin ich aber trotzdem...",
+                    answers: [{
+                        text: "Oh, das tut mir leid. Kann ich etwas tun?",
+                        type: "continue",
+                        reaction: {
+                            text: "Mhh... \n" +
+                                "Ich suche schon länger etwas, das mir als Bürgermeister den nötigen Respekt einbringt. \n" +
+                                "Du musst wissen, mit meiner Körpergröße habe ich es etwas schwer...",
+                            answers: [{
+                                text: "Gott, nerv nicht.",
+                                type: "close"
+                            }, {
+                                text: "Ich schaue mal!",
+                                type: "accept"
+                            }
+                            ]
+                        }
+                    }]
+                }
             }]
     },
     hints: [{
         hintNumber: 0,
-        person: "gundula",
+        person: "bernadette",
         emotion: "neutral",
-        text: "no choosu",
+        text: "Willkommen in meinem Modeparadies!\n" +
+            "Mein Name ist Bernadette, wie kann ich helfen?",
         answers: [{
-            text: "rection lolo",
-            type: "closeHint"
+            text: "Ich suche ein imposantes Accessoire!",
+            type: "continue",
+            reaction: {
+                text: "Oh wirklich?\n" +
+                    "Nun, tatsächlich hätte ich hier noch einen schönen großen Zylinder.\n" +
+                    "Wie wäre es damit?",
+                answers: [{
+                    text: "Nehme ich!",
+                    type: "closeHint"
+                }]
+            }
         }]
     }, {
         hintNumber: 1,
-        person: "fred",
+        person: "sven",
         emotion: "neutral",
-        text: "no choosuu",
+        text: "Jo, Sven bin ich. Was geht?",
         answers: [{
-            text: "rection lolo2",
-            type: "closeHint"
+            text: "Ich suche etwas, dass einem Freund Respekt einbringt.",
+            type: "continue",
+            reaction: {
+                text: "Respekt? Naja...\n" +
+                    "Hier fliegt noch ne alte Kettensäge 'rum.\n" +
+                    "Respekt würde ihm das sicherlich einbringen.",
+                answers: [{
+                    text: "(schluck)",
+                    type: "continue",
+                    reaction: {
+                        text: "Mein Gott, guck nicht so. Das war ein Scherz.",
+                        emotion: "sad",
+                        answers: [{
+                            text: "haha...",
+                            type: "closeHint"
+                        }]
+                    }
+                }, {
+                    text: "Haha, schlag ich vor!",
+                    type: "closeHint"
+                }
+                ]
+            }
         }]
     }],
     solutionDialog: {
-        text: "Na hast du was rausbekommen?",
+        text: "Und, hast du etwas gefunden?",
         answers: [{
-            text: "Nope",
-            type: "close"
+            text: "Eine Kettensäge!",
+            type: "continue",
+            reaction: {
+                text: "...\n" +
+                    "...\n" +
+                    "...\n" +
+                    "Du bist mir ja ein Witzbold.",
+                answers: [{
+                    text: "Lol.",
+                    type: "close"
+                }]
+            }
         }, {
-            text: "Yes!",
+            text: "Einen Zylinder!",
             type: "rightAnswer",
             reaction: {
-                text: "Wirklich! Oh wie toll!",
+                text: "UHHHHHH! Der ist ja fesch!\n" +
+                    "Wie sieht er aus?\n" +
+                    "Wirke ich majestätisch? Königlich?\n" +
+                    "Ich liebe ihn! Danke!\n",
                 answers: [{
-                    text: "In der Tat!",
+                    text: "Gern geschehen!",
                     type: "close"
                 }]
             }
         }]
     },
     onFinishedDialogues: {
-        text: "oh gott, ich danke dir vielmals!",
+        text: "Ich danke dir vielmals!",
         answers: [{
-            text: "immer gern doch!",
+            text: "Immer gern doch!",
             type: "close"
         }],
         others: [{
             person: "gundula",
             emotion: "neutral",
-            text: "no choosu",
+            text: "Hey du! Hast du den tollen neuen Zylinder von Herrn Meier schon gesehn?\n" +
+                "Steht ihm ausgezeichnet, nicht wahr?",
             answers: [{
-                text: "rection lolo",
+                text: "Das tut er wirklich!",
                 type: "close"
             }]
         }]

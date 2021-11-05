@@ -5,16 +5,15 @@ const HOUSE_SCALE = 0.4;
 const DAYS = [];
 
 let CURRENT_DAY_NUMBER;
+let GAME;
 
 let houseSprites = [];
-let lighted = false;
 
 let canvas;
 let renderer;
 let stage;
 
 let moon;
-
 
 
 downHandler = function (event) {
@@ -35,42 +34,20 @@ downHandler = function (event) {
 function Game() {
 
     const self = this;
+    GAME = self;
     self.currentDay = null;
     self.hintSigns = [];
     self.dialogueSigns = [];
 
     self.setup = function () {
 
-        let font = new FontFaceObserver("Gaegu", {});
+        let font = new FontFaceObserver("Dudu", {});
         font.load().then(() => {
 
-            let daybar = new DaySelectBar({
+            new DaySelectBar({
                 dom: $("#day-select-bar"),
                 days: [
-                    {number: 1},
-                    {number: 2},
-                    {number: 3},
-                    {number: 4},
-                    {number: 5},
-                    {number: 6},
-                    {number: 7},
-                    {number: 8},
-                    {number: 9},
-                    {number: 10},
-                    {number: 11},
-                    {number: 12},
-                    {number: 13},
-                    {number: 14},
-                    {number: 15},
-                    {number: 16},
-                    {number: 17},
-                    {number: 18},
-                    {number: 19},
-                    {number: 20},
-                    {number: 21},
-                    {number: 22},
-                    {number: 23},
-                    {number: 24}
+                    {number: 1}
                 ]
             });
             canvas = document.getElementById('calender-canvas');
@@ -102,7 +79,10 @@ function Game() {
 
 
             // Find Day, Init lighting
-            CURRENT_DAY_NUMBER = new Date().getDate();
+            //CURRENT_DAY_NUMBER = new Date().getDate();
+
+            // For now;
+            CURRENT_DAY_NUMBER = 1;
             self.prepareDay();
 
             // Start Updating function
@@ -145,17 +125,20 @@ function Game() {
                     text: answer.text,
                     action: function () {
                         self.questSolved = true;
-                        self.dialogBox.setText(answer.reaction.text);
+                        self.dialogBox.typeText(answer.reaction.text);
                         self.dialogBox.setEmotion("happy");
                         self.dialogBox.setButtons(self.createButtons(answer.reaction.answers));
                     }
                 });
-            } else if (answer.type === "wrongAnswer") {
+            } else if (answer.type === "continue") {
                 newButton = new Button({
                     text: answer.text,
                     action: function () {
-                        self.dialogBox.setText(answer.reaction.text);
-                        self.dialogBox.setButtons(self.createButtons(answer.reaction.answers));
+                        if (answer.reaction.emotion) {
+                            self.dialogBox.setEmotion(answer.reaction.emotion);
+                        }
+                        self.dialogBox.typeText(answer.reaction.text);
+                        self.dialogBox.setButtons(self.createButtons(answer.reaction.answers, hintNumber));
                     }
                 });
             }
@@ -165,10 +148,16 @@ function Game() {
     }
 
     self.prepareDay = function () {
-        let id = "day" + 1;
+        let id = "day" + CURRENT_DAY_NUMBER;
         self.currentDay = DAYS.find(function (day) {
             return day.id === id;
         });
+
+        // We cannot work without a current day
+        if (!self.currentDay) {
+            return;
+        }
+
         self.currentHouse = HOUSES.find(function (house) {
             return house.owner === self.currentDay.quest.person;
         });
@@ -224,16 +213,16 @@ function Game() {
             self.finalQuestShown = true;
         }
 
-        if(self.questSolved && !self.hintsRemoved) {
+        if (self.questSolved && !self.hintsRemoved) {
             self.removeHints();
             self.hintsRemoved = true;
             self.setOnFinishedMode();
         }
     }
 
-    self.setOnFinishedMode= function() {
+    self.setOnFinishedMode = function () {
         self.helpSign.setIconSlowly("big_heart");
-        self.helpSign.setAction(function() {
+        self.helpSign.setAction(function () {
             self.dialogBox.setPerson(self.currentDay.quest.person);
             self.dialogBox.setText(self.currentDay.onFinishedDialogues.text);
             self.dialogBox.setButtons(self.createButtons(self.currentDay.onFinishedDialogues.answers));
@@ -245,7 +234,7 @@ function Game() {
 
     self.updateHintStatus = function () {
         let allHeard = true;
-        for(let hintBoolean of self.hintHeard) {
+        for (let hintBoolean of self.hintHeard) {
             allHeard &= hintBoolean;
         }
         self.allHintsHeard = allHeard;
@@ -254,8 +243,9 @@ function Game() {
     self.showFinalQuestDialog = function () {
         self.helpSign.setIcon("question");
         self.helpSign._add();
-        self.helpSign.setAction(function() {
+        self.helpSign.setAction(function () {
             self.dialogBox.setPerson(self.currentDay.quest.person);
+            self.dialogBox.setEmotion("sad");
             self.dialogBox.setText(self.currentDay.solutionDialog.text);
             self.dialogBox.setButtons(self.createButtons(self.currentDay.solutionDialog.answers));
             self.dialogBox.toggleShow();
@@ -298,7 +288,6 @@ function Game() {
 
     self.showFinalModeDialogues = function () {
         for (let i = 0; i < self.currentDay.onFinishedDialogues.others.length; i++) {
-            console.log("Will add one dialogue");
             let dialogue = self.currentDay.onFinishedDialogues.others[i];
             let dialogueHouse = HOUSES.find(function (house) {
                 return house.owner === dialogue.person;
@@ -331,13 +320,14 @@ function Game() {
         TWEEN.update();
 
         // Update Quest
-        self.updateDay();
-
         // Animating moon and helpSign
         moon.update();
-        self.helpSign.update();
-        self.hintSigns.forEach(s => s.update());
-        self.dialogueSigns.forEach(s => s.update());
+        if (self.currentDay) {
+            self.updateDay();
+            self.helpSign.update();
+            self.hintSigns.forEach(s => s.update());
+            self.dialogueSigns.forEach(s => s.update());
+        }
         renderer.render(stage);
     }
 }

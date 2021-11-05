@@ -1,6 +1,6 @@
 @font-face {
-  font-family: "Gaegu";
-  src: url("Gaegu-Regular.ttf");
+  font-family: "Dudu";
+  src: url("Dudu_Calligraphy.ttf");
 }
 * {
   padding: 0;
@@ -9,7 +9,7 @@
 
 body {
   background-color: #1D1D34;
-  font-family: "Gaegu", sans-serif;
+  font-family: "Dudu", sans-serif;
   font-size: 20px;
 }
 
@@ -45,7 +45,7 @@ canvas {
   align-items: center;
   justify-content: center;
   color: #FFF;
-  font-family: "Gaegu";
+  font-family: "Dudu", sans-serif;
   transition: all 0.3s ease-in-out;
 }
 

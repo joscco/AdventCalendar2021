@@ -5,30 +5,47 @@ function Button(config) {
     self.y = config.y;
     self.hintNumber = config.hintNumber;
     self.action = config.action;
-    self.sprite = null;
 
-    self.long = self.text.length > 16;
+    self.width = Math.min(20 + self.text.length * 14, 550);
+    self.height = 60;
 
-    let buttonTextures = Loader.resources["buttons_sheet"].textures;
-    self.texture = self.long ? buttonTextures["but_long"] : buttonTextures["but"];
-    self.sprite = new PIXI.Sprite(self.texture);
-    self.sprite.interactive = true;
-    self.sprite.buttonMode = true;
-    self.sprite.scale.set(0.8);
-    self.sprite.position.x = self.x || 0;
-    self.sprite.position.y = self.y || 0;
-    self.sprite.click = function () {
+    self.texture = new PIXI.Graphics();
+    self.texture.beginFill(0x000000)
+    self.rectangle = self.texture.drawRoundedRect(self.x, self.y, self.width, self.height, 20);
+    self.texture.endFill();
+    self.rectangle.interactive = true;
+    self.rectangle.buttonMode = true;
+    self.rectangle.click = function () {
         self.action();
     }
 
-    let text = new PIXI.Text(self.text, new PIXI.TextStyle({
-        fontFamily: 'Gaegu',
-        fontSize: 40,
-        fill: "#000",
-        padding: 10
-    }));
-    text.anchor.set(0.5, 0.5);
-    text.position.x = self.sprite.texture.width / 2;
-    text.position.y = self.sprite.texture.height / 2;
-    self.sprite.addChild(text);
+    self.rectangle.mouseover = function() {
+        self.rectangle.fill = 0x111111;
+    }
+
+    self.rectangle.mouseout = function() {
+        self.rectangle.fill = 0x000000;
+    }
+
+
+    self.textStyle = new PIXI.TextStyle({
+        fontFamily: 'Dudu',
+        fontSize: 30,
+        fill: "#FFF",
+        padding: 10,
+        wordWrap: true,
+        wordWrapWidth: self.width - 20
+    });
+    self.textObject = new PIXI.Text(self.text, self.textStyle);
+
+    // Adapt rectangle height
+    self.textMetrics = new PIXI.TextMetrics.measureText(self.text, self.textStyle);
+    self.numberOfLines = self.textMetrics.lines.length;
+    self.rectangle.height += (self.numberOfLines - 1)*30;
+
+    self.textObject.anchor.set(0.5);
+    self.textObject.scale.set(1, self.height/self.rectangle.height);
+    self.textObject.position.x = self.rectangle.width/2;
+    self.textObject.position.y = self.height/2;
+    self.rectangle.addChild(self.textObject);
 }

@@ -30,8 +30,8 @@ function DialogBox(config) {
         self.drawButtons();
     }
 
-    self.setButtons = function(buttons) {
-        self.buttons.forEach(btn => self.box.removeChild(btn.sprite));
+    self.setButtons = function (buttons) {
+        self.buttons.forEach(btn => self.box.removeChild(btn.rectangle));
         self.buttons = buttons;
         self.drawButtons();
     }
@@ -47,20 +47,20 @@ function DialogBox(config) {
         updatePersonFaceSprite();
     }
 
-    self.setEmotion = function(emotion) {
+    self.setEmotion = function (emotion) {
         self.emotion = emotion;
         updatePersonFaceSprite();
     }
 
-    const updatePersonSprite = function() {
+    const updatePersonSprite = function () {
         self.personSprite.texture = baseTextures[self.person];
     }
 
-    const updatePersonFaceSprite = function() {
+    const updatePersonFaceSprite = function () {
         self.personFaceSprite.texture = getEmotionTextures(self.emotion)[self.person];
     }
 
-    const getEmotionTextures = function(emotion) {
+    const getEmotionTextures = function (emotion) {
         if (emotion === "happy") {
             return happyTextures;
         } else if (emotion === "neutral") {
@@ -94,18 +94,31 @@ function DialogBox(config) {
     self.drawText = function () {
         self.textObject = new PIXI.Text(
             self.text,
-            new PIXI.TextStyle({fontFamily: 'Gaegu', fontSize: 40, fill: "#000", padding: 10}));
-        self.textObject.position.x = 240;
-        self.textObject.position.y = 30;
+            new PIXI.TextStyle({
+                fontFamily: 'Dudu',
+                fontSize: 30,
+                fill: "#000",
+                padding: 10,
+                wordWrap: true,
+                wordWrapWidth: self.width - self.personSprite.width - 20
+            }));
+        self.textObject.visible = false;
+        self.textObject.position.x = 0.9 * self.personSprite.width;
+        self.textObject.position.y = 50;
         self.box.addChild(self.textObject);
     }
 
     self.drawButtons = function () {
         if (self.buttons) {
+            let widthSoFar = 0;
             for (let i = 0; i < self.buttons.length; i++) {
-                self.buttons[i].sprite.position.x = self.box.width - 50 - (self.buttons.length - i) * self.buttons[i].sprite.width;
-                self.buttons[i].sprite.position.y = 230;
-                self.box.addChild(self.buttons[i].sprite);
+                self.buttons[i].x = self.personSprite.width + widthSoFar;
+                self.buttons[i].rectangle.position.x = self.buttons[i].x;
+                self.buttons[i].y = 250;
+                self.buttons[i].rectangle.position.y = self.buttons[i].y;
+                self.buttons[i].rectangle.visible = false;
+                self.box.addChild(self.buttons[i].rectangle);
+                widthSoFar += self.buttons[i].rectangle.width + 10;
             }
         }
     }
@@ -118,17 +131,68 @@ function DialogBox(config) {
         }
     };
 
-    // self.changeText = function (test, answers) {
-    //
-    // }
+    self.typeText = function (text) {
+        if (text) {
+            self.text = text;
+        }
+        if (!self.text) {
+            return;
+        }
+        let textArray = self.text.split("");
+        let currentText = "";
+        self.setText(currentText);
+        self.textObject.visible = true;
+
+        let numberOfSpaces = 0;
+        for (let i = 0; i < textArray.length; i++) {
+            if(textArray[i] === " ") {
+                numberOfSpaces++;
+                continue;
+            }
+            currentText = textArray.slice(0, i+1).reduce((a,b) => a+b);
+            let tmpText = currentText;
+            setTimeout(() => {
+                self.setText(tmpText);
+            }, 40 * (i - numberOfSpaces));
+        }
+
+        setTimeout(() => {
+            self.fadeInButtons();
+        }, 40 * (textArray.length - numberOfSpaces));
+    }
+
+    self.fadeInButtons = function () {
+        self.buttons.forEach((btn) => {
+            btn.rectangle.alpha = 0;
+            btn.rectangle.position.y = 300;
+            btn.rectangle.visible = true;
+            new TWEEN.Tween(btn.rectangle)
+                .to({
+                    alpha: 1,
+                    position: {
+                        y: btn.y
+                    }
+                }, 300)
+                .easing(TWEEN.Easing.Quadratic.Out)
+                .start();
+        })
+    }
 
     self.fadeIn = function () {
+        self.textObject.visible = false;
+        self.buttons.forEach(btn => {
+            btn.rectangle.visible = false;
+        })
         self.box.position.y = -400;
         stage.addChild(self.box);
         self.hidden = false;
-        new TWEEN.Tween(self.box.position)
+
+        self.fadeInTween = new TWEEN.Tween(self.box.position)
             .to({y: 20}, 1000)
             .easing(TWEEN.Easing.Quadratic.InOut)
+            .onComplete(() => {
+                self.typeText(self.text);
+            })
             .start();
     }
 
