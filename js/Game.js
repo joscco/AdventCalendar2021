@@ -4,6 +4,8 @@ const GAME_BACKGROUND_COLOR = 0x1d1d34;
 const HOUSE_SCALE = 0.4;
 const DAYS = [];
 
+const DOG_HAND_OFFSET = 200;
+
 let CURRENT_DAY_NUMBER;
 let GAME;
 
@@ -13,9 +15,12 @@ let canvas;
 let renderer;
 let stage;
 
-let moon;
+const GAME_STATES = {
+    WelcomeScreen: "WelcomeScreen",
+    Main: "Main"
+}
 
-
+// Editor stuff
 downHandler = function (event) {
     if (event.key === "Enter") {
         let result = [];
@@ -39,57 +44,140 @@ function Game() {
     self.hintSigns = [];
     self.dialogueSigns = [];
 
-    self.setup = function () {
+    self.numberOfAssets = 1;
+    self.numberOfLoadedAssets = 0;
+    self.loadingPercentage = 0;
 
-        let font = new FontFaceObserver("Dudu", {});
+    self.setupLoadingScreen = function (numberOfAssets) {
+        self.numberOfAssets = numberOfAssets;
+        self.loadingDiv = document.createElement("div");
+        self.loadingDiv.className = "loading-screen";
+        self.updateLoadingScreen(self.numberOfLoadedAssets);
+        document.body.appendChild(self.loadingDiv);
+    }
+
+    self.updateLoadingScreen = function (numberOfLoadedAssets) {
+        self.numberOfLoadedAssets = numberOfLoadedAssets;
+        self.loadingPercentage = Math.round((self.numberOfLoadedAssets / self.numberOfAssets) * 100);
+        self.loadingDiv.innerHTML = "Loading: " + self.loadingPercentage + "%";
+    }
+
+    self.handleLoadingComplete = function () {
+        let font = new FontFaceObserver("Futura", {});
         font.load().then(() => {
-
-            new DaySelectBar({
-                dom: $("#day-select-bar"),
-                days: [
-                    {number: 1}
-                ]
-            });
-            canvas = document.getElementById('calender-canvas');
-            renderer = new PIXI.Renderer({
-                view: canvas,
-                width: GAME_WIDTH,
-                height: GAME_HEIGHT,
-                backgroundColor: GAME_BACKGROUND_COLOR,
-                resolution: window.devicePixelRatio,
-                autoDensity: true
-            });
-
-            stage = new PIXI.Container();
-            stage.sortableChildren = true;
-
-            moon = new Moon({x: 10, y: GAME_WIDTH - 40, scale: 0.3});
-            moon.init();
-
-            self.village = new Village({});
-            self.village.setup();
-            self.village.generateSnow();
-
-            // Nur für Anpassung!
-            moon.sprite.interactive = true;
-            moon.sprite.buttonMode = true;
-            moon.sprite.pointertap = function () {
-                self.village.printPositions();
-            }
-
-
-            // Find Day, Init lighting
-            //CURRENT_DAY_NUMBER = new Date().getDate();
-
-            // For now;
-            CURRENT_DAY_NUMBER = 1;
-            self.prepareDay();
-
-            // Start Updating function
+            self.setupStage();
+            self.gameState = GAME_STATES.WelcomeScreen;
+            self.setupWelcomeScreen();
+            document.body.removeChild(self.loadingDiv);
             self.update();
         }, () => {
             alert("Unable to load Font!");
         });
+    }
+
+    self.setupStage = function () {
+        canvas = document.getElementById('calender-canvas');
+        renderer = new PIXI.Renderer({
+            view: canvas,
+            width: GAME_WIDTH,
+            height: GAME_HEIGHT,
+            backgroundColor: GAME_BACKGROUND_COLOR,
+            resolution: window.devicePixelRatio,
+            autoDensity: true
+        });
+
+        stage = new PIXI.Container();
+        // We want to work with different z-indices!
+        stage.sortableChildren = true;
+    }
+
+
+    self.setupWelcomeScreen = function () {
+        self.startButton = new TextButton({
+            x: GAME_WIDTH / 2,
+            y: GAME_HEIGHT / 2,
+            anchorX: 0.5,
+            anchorY: 0.5,
+            text: "Start Game",
+            action: function () {
+                self.initMainGame();
+            }
+        });
+
+        self.startButton.setup();
+        self.startButton._addTo(stage);
+    }
+
+    self.initMainGame = function () {
+        let arm = new PIXI.Sprite(Loader.resources["hand"].texture);
+        arm.scale.set(0.7);
+        let graphics = new PIXI.Graphics();
+        graphics.position.y = GAME_HEIGHT;
+        graphics.zIndex = 1200;
+        graphics.beginFill(0xffffff);
+        graphics.drawRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+        graphics.endFill();
+        stage.addChild(graphics);
+
+        arm.anchor.set(0.5, 1);
+        arm.position.y = graphics.height + arm.scale.y * DOG_HAND_OFFSET;
+        arm.position.x = GAME_WIDTH / 2;
+        graphics.addChild(arm);
+        self.startInTween(graphics);
+    }
+
+    self.startInTween = function (graphics) {
+        new TWEEN.Tween(graphics.position)
+            .to({y: 0}, 1000)
+            .easing(TWEEN.Easing.Quadratic.Out)
+            .onComplete(() => {
+                self.startButton._removeFrom(stage);
+                self.gameState = GAME_STATES.Main;
+                self.setupMainGame();
+                self.startOutTween(graphics);
+            }).start();
+    }
+
+    self.startOutTween = function (graphics) {
+        new TWEEN.Tween(graphics.position)
+            .to({y: GAME_HEIGHT}, 1000)
+            .easing(TWEEN.Easing.Quadratic.In)
+            .onComplete(() => {
+                stage.removeChild(graphics);
+            }).start();
+    }
+
+
+    self.setupMainGame = function () {
+
+        // Add DaySelect Bar --> INNERHALB VON PIXI!
+        // new DaySelectBar({
+        //     dom: $("#day-select-bar"),
+        //     days: [
+        //         {number: 1}
+        //     ]
+        // });
+
+        self.moon = new Moon({x: GAME_WIDTH - 100, y: 100, scale: 0.3});
+        self.moon.setup();
+
+        self.village = new Village({});
+        self.village.setup();
+        //self.village.generateSnow();
+
+        // // Nur für Anpassung!
+        // moon.sprite.interactive = true;
+        // moon.sprite.buttonMode = true;
+        // moon.sprite.pointertap = function () {
+        //     self.village.printPositions();
+        // }
+
+        // Find Day, Init lighting
+        //CURRENT_DAY_NUMBER = new Date().getDate();
+
+        // For now;
+        CURRENT_DAY_NUMBER = 1;
+        self.prepareDay();
     }
 
     self.createButtons = function (answers, hintNumber) {
@@ -97,14 +185,14 @@ function Game() {
         for (let answer of answers) {
             let newButton;
             if (answer.type === "close") {
-                newButton = new Button({
+                newButton = new TextButton({
                     text: answer.text,
                     action: function () {
                         self.dialogBox.toggleShow();
                     }
                 });
             } else if (answer.type === "closeHint") {
-                newButton = new Button({
+                newButton = new TextButton({
                     text: answer.text,
                     action: function () {
                         self.hintHeard[hintNumber] = true;
@@ -113,7 +201,7 @@ function Game() {
                     }
                 });
             } else if (answer.type === "accept") {
-                newButton = new Button({
+                newButton = new TextButton({
                     text: answer.text,
                     action: function () {
                         self.questAccepted = true;
@@ -121,24 +209,29 @@ function Game() {
                     }
                 });
             } else if (answer.type === "rightAnswer") {
-                newButton = new Button({
+                newButton = new TextButton({
                     text: answer.text,
                     action: function () {
                         self.questSolved = true;
-                        self.dialogBox.typeText(answer.reaction.text);
+                        self.dialogBox.setText(answer.reaction.text);
                         self.dialogBox.setEmotion("happy");
                         self.dialogBox.setButtons(self.createButtons(answer.reaction.answers));
                     }
                 });
             } else if (answer.type === "continue") {
-                newButton = new Button({
+                newButton = new TextButton({
                     text: answer.text,
                     action: function () {
                         if (answer.reaction.emotion) {
                             self.dialogBox.setEmotion(answer.reaction.emotion);
                         }
-                        self.dialogBox.typeText(answer.reaction.text);
+                        self.dialogBox.setText(answer.reaction.text);
                         self.dialogBox.setButtons(self.createButtons(answer.reaction.answers, hintNumber));
+
+                        self.dialogBox.textObject.visible = false;
+                        self.dialogBox.setButtonsInvisible();
+                        let timeDelay = self.dialogBox.typeText();
+                        self.dialogBox.fadeInButtons(timeDelay);
                     }
                 });
             }
@@ -319,14 +412,15 @@ function Game() {
         // For animating things
         TWEEN.update();
 
-        // Update Quest
-        // Animating moon and helpSign
-        moon.update();
-        if (self.currentDay) {
-            self.updateDay();
-            self.helpSign.update();
-            self.hintSigns.forEach(s => s.update());
-            self.dialogueSigns.forEach(s => s.update());
+        if (self.gameState === GAME_STATES.Main) {
+            // Animating moon and helpSign
+            self.moon.update();
+            if (self.currentDay) {
+                self.updateDay();
+                self.helpSign.update();
+                self.hintSigns.forEach(s => s.update());
+                self.dialogueSigns.forEach(s => s.update());
+            }
         }
         renderer.render(stage);
     }

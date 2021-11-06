@@ -4,7 +4,6 @@ function Moon(config) {
     // Props
     self.x = config.x;
     self.y = config.y;
-    self.scale = 0.3;
     self.scale = config.scale;
 
     // Update
@@ -13,13 +12,13 @@ function Moon(config) {
     self.sprite = null;
     self.eyes = null
 
-    self.init = function () {
+    self.setup = function () {
         // Init Moon
-        self.sprite = new PIXI.Sprite(self.textures["moon_light"]);
-        self.sprite.anchor.set( 0.5);
-        self.sprite.scale.set(0.3);
-        self.sprite.y = 100;
-        self.sprite.x = GAME_WIDTH - self.sprite.width/2 - 40;
+        self.sprite = new PIXI.Sprite(self.textures["moon_dark"]);
+        self.sprite.anchor.set(0.5);
+        self.sprite.scale.set(self.scale);
+        self.sprite.position.y = self.y;
+        self.sprite.position.x = self.x;
         stage.addChild(self.sprite);
 
         self.eyes = new PIXI.Sprite(self.textures["eyes"]);
@@ -44,7 +43,6 @@ function Moon(config) {
         }
     }
 
-    // TODO: Add some initial animation here (first big eyes, then blink)
     self.updateEyes = function () {
         self.eyes.texture = self.isBlinking
             ? self.textures["blink"]

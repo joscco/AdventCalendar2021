@@ -1,18 +1,46 @@
 const Loader = new PIXI.Loader();
+let totalAssets = 0;
+let loadedAssets = 0;
+let loadingComplete = false;
+
+const resources = [{name: "houses_sheet", path: "./assets/images/houses_spritesheet.json", type: "spritesheet"},
+    {name: "houses_shapes", path: "./assets/images/houses_shapes.json", type: "json"},
+    {name: "base_people_sheet", path: "./assets/images/people_basis.json", type: "spritesheet"},
+    {name: "happy_people_sheet", path: "./assets/images/people_happy.json", type: "spritesheet"},
+    {name: "neutral_people_sheet", path: "./assets/images/people_neutral.json", type: "spritesheet"},
+    {name: "sad_people_sheet", path: "./assets/images/people_sad.json", type: "spritesheet"},
+    {name: "annotations_sheet", path: "./assets/images/annotation_sprites.json", type: "spritesheet"},
+    {name: "moon_sheet", path: "./assets/images/moon.json", type: "spritesheet"},
+    {name: "hand", path: "./assets/images/hand.png", type: "png"}]
 
 class AssetUtils {
 
-    static loadAssets(onLoadingFinished) {
-        Loader
-            .add("houses_sheet", "./assets/images/houses_spritesheet.json")
-            .add("houses_shapes", "./assets/images/houses_shapes.json")
-            .add("base_people_sheet", "./assets/images/people_basis.json")
-            .add("happy_people_sheet", "./assets/images/people_happy.json")
-            .add("neutral_people_sheet", "./assets/images/people_neutral.json")
-            .add("sad_people_sheet", "./assets/images/people_sad.json")
-            .add("annotations_sheet", "./assets/images/annotation_sprites.json")
-            .add("moon_sheet", "./assets/images/moon.json")
-            .add("Dudu", "./css/Dudu_Calligraphy.ttf")
-            .load(onLoadingFinished)
+    static loadAssets(game) {
+
+        for (let resource of resources) {
+            Loader.add(resource.name, resource.path);
+            totalAssets += this.getAssetNumberByType(resource.type);
+        }
+
+        game.setupLoadingScreen(totalAssets);
+
+        Loader.onLoad.add(() => {
+            loadedAssets++;
+            game.updateLoadingScreen(loadedAssets);
+        });
+        Loader.onComplete.add(() => {
+            loadingComplete = true;
+        });
+        Loader.load(game.handleLoadingComplete);
+
+    }
+
+    static getAssetNumberByType(type) {
+        if (type === "spritesheet") {
+            // Spritesheets consist of a json file AND a png file
+            return 2;
+        } else {
+            return 1;
+        }
     }
 }

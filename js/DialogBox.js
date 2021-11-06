@@ -1,10 +1,10 @@
 function DialogBox(config) {
     const self = this;
     self.hidden = true;
-    self.x = 50;
-    self.y = -400;
     self.width = 860;
     self.height = 360;
+    self.x = GAME_WIDTH/2 - self.width/2;
+    self.y = GAME_HEIGHT/2 - self.height/2;
     self.person = config.person;
     self.emotion = config.emotion;
     self.text = config.text;
@@ -27,13 +27,13 @@ function DialogBox(config) {
         self.drawRoundedRectangle();
         self.drawPerson();
         self.drawText();
-        self.drawButtons();
+        self.setupButtons();
     }
 
     self.setButtons = function (buttons) {
-        self.buttons.forEach(btn => self.box.removeChild(btn.rectangle));
+        self.buttons.forEach(btn => btn._removeFrom(self.box));
         self.buttons = buttons;
-        self.drawButtons();
+        self.setupButtons();
     }
 
     self.setText = function (text) {
@@ -95,30 +95,28 @@ function DialogBox(config) {
         self.textObject = new PIXI.Text(
             self.text,
             new PIXI.TextStyle({
-                fontFamily: 'Dudu',
-                fontSize: 30,
+                fontFamily: 'Futura',
+                fontSize: 22,
                 fill: "#000",
                 padding: 10,
                 wordWrap: true,
                 wordWrapWidth: self.width - self.personSprite.width - 20
             }));
-        self.textObject.visible = false;
         self.textObject.position.x = 0.9 * self.personSprite.width;
         self.textObject.position.y = 50;
         self.box.addChild(self.textObject);
     }
 
-    self.drawButtons = function () {
+    self.setupButtons = function () {
         if (self.buttons) {
             let widthSoFar = 0;
             for (let i = 0; i < self.buttons.length; i++) {
                 self.buttons[i].x = self.personSprite.width + widthSoFar;
-                self.buttons[i].rectangle.position.x = self.buttons[i].x;
                 self.buttons[i].y = 250;
-                self.buttons[i].rectangle.position.y = self.buttons[i].y;
-                self.buttons[i].rectangle.visible = false;
-                self.box.addChild(self.buttons[i].rectangle);
-                widthSoFar += self.buttons[i].rectangle.width + 10;
+                self.buttons[i].setup();
+                self.buttons[i].setInvisible();
+                self.buttons[i]._addTo(self.box);
+                widthSoFar += self.buttons[i].width + 15;
             }
         }
     }
@@ -131,74 +129,82 @@ function DialogBox(config) {
         }
     };
 
-    self.typeText = function (text) {
-        if (text) {
-            self.text = text;
-        }
+    self.typeText = function () {
         if (!self.text) {
             return;
         }
-        let textArray = self.text.split("");
+
+        let wholeText = self.text;
+        self.setText("");
         let currentText = "";
-        self.setText(currentText);
+
+        // show Text if it hasn't been shown yet
         self.textObject.visible = true;
 
         let numberOfSpaces = 0;
-        for (let i = 0; i < textArray.length; i++) {
-            if(textArray[i] === " ") {
+        for (let i = 0; i < wholeText.length; i++) {
+            if (wholeText.charAt(i) === " ") {
                 numberOfSpaces++;
-                continue;
+            } else {
+                currentText = wholeText.substring(0, i + 1);
+                let tmpText = currentText;
+                setTimeout(() => {
+                    self.setText(tmpText);
+                }, 40 * (i - numberOfSpaces));
             }
-            currentText = textArray.slice(0, i+1).reduce((a,b) => a+b);
-            let tmpText = currentText;
-            setTimeout(() => {
-                self.setText(tmpText);
-            }, 40 * (i - numberOfSpaces));
         }
 
-        setTimeout(() => {
-            self.fadeInButtons();
-        }, 40 * (textArray.length - numberOfSpaces));
+        return 40 * (wholeText.length - numberOfSpaces);
     }
 
-    self.fadeInButtons = function () {
-        self.buttons.forEach((btn) => {
+    self.fadeInButtons = function (timeDelay) {
+        for (let i = 0; i < self.buttons.length; i++) {
+            let btn = self.buttons[i];
             btn.rectangle.alpha = 0;
-            btn.rectangle.position.y = 300;
-            btn.rectangle.visible = true;
-            new TWEEN.Tween(btn.rectangle)
+            btn.rectangle.position.x = btn.x + 100;
+            btn.setVisible();
+            let buttonInTween = new TWEEN.Tween(btn.rectangle)
                 .to({
                     alpha: 1,
                     position: {
-                        y: btn.y
+                        x: btn.x
                     }
-                }, 300)
-                .easing(TWEEN.Easing.Quadratic.Out)
-                .start();
-        })
+                }, 500)
+                .easing(TWEEN.Easing.Quadratic.Out);
+            setTimeout(() => {
+                buttonInTween.start();
+            }, timeDelay + i * 200);
+        }
+    }
+
+    self.setButtonsInvisible = function () {
+        self.buttons.forEach(btn => btn.setInvisible());
+    }
+
+    self.setButtonsVisible = function () {
+        self.buttons.forEach(btn => btn.setVisible());
     }
 
     self.fadeIn = function () {
-        self.textObject.visible = false;
-        self.buttons.forEach(btn => {
-            btn.rectangle.visible = false;
-        })
-        self.box.position.y = -400;
+        self.box.position.y = -GAME_HEIGHT;
         stage.addChild(self.box);
         self.hidden = false;
+        self.textObject.visible = false;
+        self.setButtonsInvisible();
 
         self.fadeInTween = new TWEEN.Tween(self.box.position)
-            .to({y: 20}, 1000)
+            .to({y: self.y}, 1000)
             .easing(TWEEN.Easing.Quadratic.InOut)
             .onComplete(() => {
-                self.typeText(self.text);
+                let typingTime = self.typeText();
+                self.fadeInButtons(typingTime);
             })
             .start();
     }
 
     self.fadeOut = function () {
         new TWEEN.Tween(self.box.position)
-            .to({y: -400}, 1000)
+            .to({y: -GAME_HEIGHT}, 1000)
             .easing(TWEEN.Easing.Quadratic.InOut)
             .onComplete(() => {
                     stage.removeChild(self.box);

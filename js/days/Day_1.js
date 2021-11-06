@@ -12,9 +12,9 @@ DAYS.push({
                     text: "Oh wunderbar! \n" +
                         "Nun, mein Name ist Meier. \n" +
                         "Ich freue mich, dich kennen zu lernen! \n" +
-                        "Traurig bin ich aber trotzdem...",
+                        "Traurig bin ich aber trotzdem noch...",
                     answers: [{
-                        text: "Oh, das tut mir leid. Kann ich etwas tun?",
+                        text: "Das tut mir leid. Kann ich etwas tun?",
                         type: "continue",
                         reaction: {
                             text: "Mhh... \n" +
