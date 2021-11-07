@@ -19,13 +19,13 @@ A little advent calender made with pixi.js and Tween. Currently deployed via Git
 - [x] House Positioning
 - [x] Positioning Editor
 - [x] Day Choosing Buttons
-- [ ] Day-To-House Logic
+- [x] Day-To-House Logic
 - [x] Bouncy Help Sign
 - [x] Dialogue Window
-- [ ] Person Logic
-- [ ] House-to-Person-to-Dialogue Logic
+- [x] Person Logic
+- [x] House-to-Person-to-Dialogue Logic
 - [ ] Moon Logic (No Moon/Half Moon/Full Moon)
 - [ ] Add Sounds
-- [ ] Add Font Animation
-- [ ] Nothing-more-to-do marks
+- [x] Add Font Animation
+- [x] Nothing-more-to-do marks
 
