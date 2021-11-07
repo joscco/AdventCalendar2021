@@ -25,7 +25,7 @@ A little advent calender made with pixi.js and Tween. Currently deployed via Git
 - [x] Person Logic
 - [x] House-to-Person-to-Dialogue Logic
 - [ ] Moon Logic (No Moon/Half Moon/Full Moon)
-- [ ] Add Sounds
+- [x] Add Sounds
 - [x] Add Font Animation
 - [x] Nothing-more-to-do marks
 
