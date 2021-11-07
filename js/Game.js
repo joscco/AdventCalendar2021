@@ -99,13 +99,14 @@ function Game() {
 
 
     self.setupWelcomeScreen = function () {
-        // For Testing
-        CURRENT_DAY_NUMBER = 1;
-        // For product version
-        //CURRENT_DAY_NUMBER = new Date().getDate();
-        new DaySelectBar({
+        CURRENT_DAY_NUMBER = new Date().getDate();
+        self.daySelectBar = new DaySelectBar({
             dom: $("#day-select-bar"),
             daysSoFar: CURRENT_DAY_NUMBER
+        });
+        self.daySelectBar.reposition();
+        window.addEventListener('resize', function (event) {
+            self.daySelectBar.reposition();
         });
 
         self.startButton = new TextButton({
@@ -168,11 +169,15 @@ function Game() {
 
     self.setupMainGame = function () {
 
-        self.moon = new Moon({x: GAME_WIDTH - 100, y: 100, scale: 0.3});
-        self.moon.setup();
+        if (!self.moon) {
+            self.moon = new Moon({x: GAME_WIDTH - 100, y: 100, scale: 0.3});
+            self.moon.setup();
+        }
 
-        self.village = new Village({});
-        self.village.setup();
+        if (!self.village) {
+            self.village = new Village({});
+            self.village.setup();
+        }
         //self.village.generateSnow();
 
         // // Nur für Anpassung!
@@ -250,6 +255,8 @@ function Game() {
         for (let house of self.village.houses) {
             if (house.questDay < dayNumber) {
                 house.lighten();
+            } else {
+                house.unlighten();
             }
         }
     }
@@ -262,11 +269,26 @@ function Game() {
 
         self.lightenHousesSoFar(CURRENT_DAY_NUMBER);
 
+        // tearDown Stuff
+        if (self.helpSign) {
+            self.helpSign._remove();
+        }
+
+        if (self.hintSigns) {
+            self.hintSigns.forEach(sign => sign._remove());
+        }
+
+        if (self.dialogueSigns) {
+            self.dialogueSigns.forEach(sign => sign._remove());
+        }
+
         // We cannot work without a current day
         if (!self.currentDay) {
+            console.log("No day for today found :(");
             return;
-
         }
+
+        console.log("Found day for today!");
 
         self.currentHouse = self.village.houses.find(function (house) {
             return house.owner === self.currentDay.quest.person;

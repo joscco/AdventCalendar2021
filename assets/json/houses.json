@@ -5,168 +5,168 @@
       "x": 371,
       "y": 364,
       "owner": "martin",
-      "questDay": 1
+      "questDay": 12
     },
     {
       "id": "house2",
       "x": 847,
       "y": 256,
       "owner": "maike",
-      "questDay": 1
+      "questDay": 21
     },
     {
       "id": "house3",
       "x": 238,
       "y": 124,
       "owner": "maria",
-      "questDay": 1
+      "questDay": 24
     },
     {
       "id": "house4",
       "x": 485,
       "y": 258,
       "owner": "tom",
-      "questDay": 1
+      "questDay": 18
     },
     {
       "id": "house5",
       "x": 484,
       "y": 153,
       "owner": "sam",
-      "questDay": 1
+      "questDay": 23
     },
     {
       "id": "house6",
       "x": 866,
       "y": 352,
       "owner": "bernd",
-      "questDay": 1
+      "questDay": 6
     },
     {
       "id": "house7",
       "x": 93,
       "y": 273,
       "owner": "will",
-      "questDay": 1
+      "questDay": 17
     },
     {
       "id": "house8",
       "x": 666,
       "y": 143,
       "owner": "björn",
-      "questDay": 1
+      "questDay": 14
     },
     {
       "id": "carpenter",
       "x": 586,
       "y": 316,
       "owner": "sven",
-      "questDay": 1
+      "questDay": 15
     },
     {
       "id": "church",
       "x": 128,
       "y": 307,
       "owner": "marc",
-      "questDay": 1
+      "questDay": 8
     },
     {
       "id": "fashion",
       "x": 120,
       "y": 119,
       "owner": "bernadette",
-      "questDay": 1
+      "questDay": 9
     },
     {
       "id": "barber",
       "x": 627,
       "y": 416,
       "owner": "jo",
-      "questDay": 1
+      "questDay": 2
     },
     {
       "id": "bakery",
       "x": 614,
       "y": 250,
       "owner": "mario",
-      "questDay": 1
+      "questDay": 20
     },
     {
       "id": "baumschule",
       "x": 288,
       "y": 406,
       "owner": "arndt",
-      "questDay": 1
+      "questDay": 11
     },
     {
       "id": "big",
       "x": 729,
       "y": 280,
       "owner": "meier",
-      "day": 1
+      "questDay": 1
     },
     {
       "id": "small",
       "x": 732,
       "y": 442,
       "owner": "gundula",
-      "questDay": 1
+      "questDay": 10
     },
     {
       "id": "highhouse",
       "x": 567,
       "y": 129,
       "owner": "ben",
-      "questDay": 1
+      "questDay": 19
     },
     {
       "id": "pharmacy",
       "x": 359,
       "y": 274,
       "owner": "karla",
-      "questDay": 1
+      "questDay": 13
     },
     {
       "id": "billionaire",
       "x": 212,
       "y": 238,
       "owner": "armin",
-      "questDay": 1
+      "questDay": 16
     },
     {
       "id": "bank",
       "x": 368,
       "y": 93,
       "owner": "fred",
-      "questDay": 1
+      "questDay": 5
     },
     {
       "id": "tierheim",
       "x": 802,
       "y": 193,
       "owner": "joseph",
-      "questDay": 1
+      "questDay": 3
     },
     {
       "id": "kebap",
       "x": 467,
       "y": 317,
       "owner": "ali",
-      "questDay": 1
+      "questDay": 22
     },
     {
       "id": "pizza",
       "x": 470,
       "y": 397,
       "owner": "beppo",
-      "questDay": 1
+      "questDay": 4
     },
     {
       "id": "gym",
       "x": 848,
       "y": 395,
       "owner": "olaf",
-      "questDay": 1
+      "questDay": 7
     }
   ]
 }

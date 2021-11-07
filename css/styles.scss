@@ -26,18 +26,17 @@ canvas {
 
 .day-select-bar {
     position: absolute;
-    height: 540px;
-    left: 50px;
-    top: 50%;
-    transform: translate(0, -50%);
+    width: 960px;
+    left: 50%;
+    transform: translate(-50%, 0);
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 10px;
+    grid-template-columns: repeat(24, 1fr);
 }
 
 .day-select-button {
     height: 25px;
     width: 25px;
+    opacity: 1;
     font-size: 15px;
     border-radius: 100%;
     border: 2px solid #FFF;
@@ -51,6 +50,10 @@ canvas {
     color: #FFF;
     font-family: 'Futura', sans-serif;
     transition: all 0.3s ease-in-out;
+}
+
+.button-out{
+    opacity: 0;
 }
 
 .loading-screen {
