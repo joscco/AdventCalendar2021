@@ -536,6 +536,12 @@ function Game() {
 
     self.stopUpdate = function () {
         self.allowUpdate = false;
+        PIXI.Ticker.system.stop();
+    }
+
+    self.restartUpdate = function () {
+        self.allowUpdate = true;
+        PIXI.Ticker.system.start();
     }
 
 
@@ -566,7 +572,6 @@ function Game() {
             }
             renderer.render(stage);
         }
-
     }
 }
 
