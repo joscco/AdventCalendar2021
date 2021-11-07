@@ -2,6 +2,9 @@ const GAME_WIDTH = 960;
 const GAME_HEIGHT = 540;
 const GAME_BACKGROUND_COLOR = 0x1d1d34;
 const HOUSE_SCALE = 0.4;
+// January is 0 and so on
+const DECEMBER_NUMBER = 11;
+const TEST_MODE = false;
 const DAYS = [];
 
 const DOG_HAND_OFFSET = 200;
@@ -30,6 +33,29 @@ function Game() {
     self.numberOfLoadedAssets = 0;
     self.loadingPercentage = 0;
 
+    self.bigTextStyle = new PIXI.TextStyle({
+        fontFamily: 'Futura',
+        fontSize: 50,
+        fontWeight: "bold",
+        fill: "#000",
+        padding: 10
+    });
+
+    self.bigWhiteTextStyle = new PIXI.TextStyle({
+        fontFamily: 'Futura',
+        fontSize: 50,
+        fontWeight: "bold",
+        fill: "#FFF",
+        padding: 10
+    });
+
+    self.mediumWhiteTextStyle = new PIXI.TextStyle({
+        fontFamily: 'Futura',
+        fontSize: 35,
+        fill: "#FFF",
+        padding: 10
+    });
+
     self.setupLoadingScreen = function (numberOfAssets) {
         self.numberOfAssets = numberOfAssets;
         self.loadingDiv = document.createElement("div");
@@ -48,18 +74,33 @@ function Game() {
         let font = new FontFaceObserver("Futura", {});
         font.load().then(() => {
             self.setupStage();
-            self.gameState = GAME_STATES.WelcomeScreen;
-            self.loadingDiv.style.opacity = "1";
-            new TWEEN.Tween(self.loadingDiv.style)
-                .delay(200)
-                .to({opacity: "0"}, 400)
-                .easing(TWEEN.Easing.Quadratic.Out)
-                .onComplete(() => {
-                    document.body.removeChild(self.loadingDiv);
-                    self.setupWelcomeScreen();
-                })
-                .start()
-            self.update();
+            if (TEST_MODE || new Date().getMonth() === DECEMBER_NUMBER) {
+                self.gameState = GAME_STATES.WelcomeScreen;
+                self.loadingDiv.style.opacity = "1";
+                new TWEEN.Tween(self.loadingDiv.style)
+                    .delay(200)
+                    .to({opacity: "0"}, 400)
+                    .easing(TWEEN.Easing.Quadratic.Out)
+                    .onComplete(() => {
+                        document.body.removeChild(self.loadingDiv);
+                        self.setupWelcomeScreen();
+                    })
+                    .start()
+                self.update();
+            } else {
+                new TWEEN.Tween(self.loadingDiv.style)
+                    .delay(200)
+                    .to({opacity: "0"}, 400)
+                    .easing(TWEEN.Easing.Quadratic.Out)
+                    .onComplete(() => {
+                        document.body.removeChild(self.loadingDiv);
+                        self.setupNoDecemberScreen();
+                    })
+                    .start();
+                self.update();
+            }
+
+
         }, () => {
             alert("Unable to load Font!");
         });
@@ -110,6 +151,45 @@ function Game() {
         self.startButton.animateIn();
     }
 
+    self.setupNoDecemberScreen = function () {
+        let fadeInOffsetY = 50;
+
+        let bigText = new PIXI.Text("Wowowowow...\nDu bist zu früh!", self.bigWhiteTextStyle);
+        bigText.anchor.set(0.5);
+        bigText.position.x = GAME_WIDTH / 2 ;
+        bigText.position.y = GAME_HEIGHT / 2 + fadeInOffsetY;
+        bigText.alpha = 0;
+        stage.addChild(bigText);
+        let mediumText = new PIXI.Text("Warte bitte bis Dezember.", self.mediumWhiteTextStyle);
+        mediumText.anchor.set(0.5);
+        mediumText.position.x = GAME_WIDTH / 2;
+        mediumText.position.y = GAME_HEIGHT / 2 + 100 + fadeInOffsetY;
+        mediumText.alpha = 0;
+
+        stage.addChild(mediumText);
+
+        new TWEEN.Tween(bigText)
+            .to({
+                alpha: 1,
+                position: {
+                    y: bigText.position.y - fadeInOffsetY
+                }
+            }, 500)
+            .easing(TWEEN.Easing.Quadratic.Out)
+            .start();
+
+        new TWEEN.Tween(mediumText)
+            .to({
+                alpha: 1,
+                position: {
+                    y: mediumText.position.y - fadeInOffsetY
+                }
+            }, 500)
+            .delay(500)
+            .easing(TWEEN.Easing.Quadratic.Out)
+            .start();
+    }
+
     self.initMainGame = function (currentDayNumber) {
         CURRENT_DAY_NUMBER = currentDayNumber;
         self.daySelectBar.setCurrentDayButtonActive(CURRENT_DAY_NUMBER);
@@ -123,20 +203,13 @@ function Game() {
         graphics.endFill();
         stage.addChild(graphics);
 
-        let bigTextStyle = new PIXI.TextStyle({
-            fontFamily: 'Futura',
-            fontSize: 50,
-            fontWeight: "bold",
-            fill: "#000",
-            padding: 10
-        });
 
         arm.anchor.set(0.5, 1);
         arm.position.y = graphics.height + arm.scale.y * DOG_HAND_OFFSET;
         arm.position.x = GAME_WIDTH / 2;
         graphics.addChild(arm);
 
-        let textObj = new PIXI.Text("Tag " + CURRENT_DAY_NUMBER, bigTextStyle);
+        let textObj = new PIXI.Text("Tag " + CURRENT_DAY_NUMBER, self.bigTextStyle);
         textObj.anchor.set(0.5);
         textObj.position.x = GAME_WIDTH / 2;
         textObj.position.y = 120;
@@ -288,7 +361,7 @@ function Game() {
             self.dialogueSigns.forEach(sign => sign._remove());
         }
 
-        if(self.village && self.village.snowFlakes) {
+        if (self.village && self.village.snowFlakes) {
             self.village.snowFlakes.forEach(s => s._remove());
             self.village.snowFlakes = [];
         }
