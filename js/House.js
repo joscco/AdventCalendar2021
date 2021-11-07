@@ -1,6 +1,8 @@
 function House(config) {
 
     const self = this;
+    self.textures = Loader.resources["houses_sheet"].textures;
+    self.hitShapes = Loader.resources["houses_shapes"].data;
 
     // Props
     self.x = config.x;
@@ -9,8 +11,12 @@ function House(config) {
     self.owner = config.owner;
     self.questDay = config.questDay;
     self.lighted = config.lighted || false;
-    self.textures = Loader.resources["houses_sheet"].textures;
-    self.hitShapes = Loader.resources["houses_shapes"].data;
+
+    self.setup = function (parent = stage) {
+        self.parent = parent;
+        self.sprite = setupSprite();
+        self.parent.addChild(self.sprite);
+    }
 
     // Update Function
     self.update = function () {
@@ -21,39 +27,37 @@ function House(config) {
         }
     }
 
-    self._add = function () {
-        self.initSprite();
-        self.updateTexture();
-        stage.addChild(self.sprite);
+    self.updateTexture = function() {
+        self.sprite.texture = getTexture(self.lighted, self.id);
     }
 
-    // Draw Function
-    self.updateTexture = function () {
-        self.sprite.texture = self.lighted ? self.textures[self.id + "_light"] : self.textures[self.id + "_dark"];
-    }
-
-    self.initSprite = function() {
-        self.sprite = new PIXI.Sprite();
-        self.sprite.position.x = self.x;
-        self.sprite.position.y = self.y;
-        self.sprite.scale.set(HOUSE_SCALE);
-        self.sprite.anchor.set(0.5, 0);
-        self.updateTexture();
-        self.sprite.hitArea = new HitArea({
-            shapeObject: self.hitShapes[self.id + "_dark"],
-            translateX: -self.sprite.width
-        });
-        // Has to be called AFTER setting texture
-        self.sprite.zIndex = self.y + self.sprite.height;
-    }
-
-    self.lighten = function() {
+    self.lighten = function () {
         self.lighted = true;
         self.updateTexture();
     }
 
-    self.unlighten = function() {
+    self.unlighten = function () {
         self.lighted = false;
         self.updateTexture();
+    }
+
+    const getTexture = function (lighted, id) {
+        return lighted ? self.textures[id + "_light"] : self.textures[id + "_dark"];
+    }
+
+    const setupSprite = function () {
+        let sprite = new PIXI.Sprite();
+        sprite.texture = getTexture(self.lighted, self.id);
+        sprite.scale.set(HOUSE_SCALE);
+        sprite.anchor.set(0.5, 0);
+        sprite.position.x = self.x;
+        sprite.position.y = self.y;
+        // Has to be called AFTER setting texture
+        sprite.zIndex = self.y + sprite.height;
+        sprite.hitArea = new HitArea({
+            shapeObject: self.hitShapes[self.id + "_dark"],
+            translateX: -sprite.width
+        });
+        return sprite;
     }
 }

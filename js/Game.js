@@ -59,6 +59,15 @@ function Game() {
         padding: 10
     });
 
+    self.noTickering = function () {
+        const ticker = PIXI.Ticker.shared;
+        const systemTicker = PIXI.Ticker.system;
+        ticker.autoStart = false;
+        systemTicker.autoStart = false;
+        ticker.stop();
+        systemTicker.stop();
+    }
+
     self.setupLoadingScreen = function (numberOfAssets) {
         self.numberOfAssets = numberOfAssets;
         self.loadingDiv = document.createElement("div");
@@ -109,7 +118,7 @@ function Game() {
 
     self.setupStage = function () {
         canvas = document.getElementById('calender-canvas');
-        renderer = new PIXI.Renderer({
+        renderer = PIXI.autoDetectRenderer({
             view: canvas,
             width: GAME_WIDTH,
             height: GAME_HEIGHT,
@@ -207,7 +216,6 @@ function Game() {
         graphics.endFill();
         stage.addChild(graphics);
 
-
         arm.anchor.set(0.5, 1);
         arm.position.y = graphics.height + arm.scale.y * DOG_HAND_OFFSET;
         arm.position.x = GAME_WIDTH / 2;
@@ -253,22 +261,28 @@ function Game() {
             self.moon.setup();
         }
 
-        if (!self.village) {
-            self.village = new Village({});
-            self.village.setup();
-            self.village.generateGroundSnow();
-            self.village.letItSnow();
-        } else {
+        if (self.village) {
+            stage.removeChild(self.village.container);
             self.village.removeGroundSnow();
-            self.village.generateGroundSnow();
+            self.village.removeSnowFlakes();
+        }
+        self.village = new Village({});
+        self.village.setup(stage);
+        self.village.generateGroundSnow();
+        self.village.generateSnowFlakes();
+
+        // DEEEESTRUCTION!!!
+        if (self.helpSign) {
+            self.helpSign._remove();
         }
 
-        // // Nur für Anpassung!
-        // moon.sprite.interactive = true;
-        // moon.sprite.buttonMode = true;
-        // moon.sprite.pointertap = function () {
-        //     self.village.printPositions();
-        // }
+        if (self.hintSigns) {
+            self.hintSigns.forEach(sign => sign._remove());
+        }
+
+        if (self.dialogueSigns) {
+            self.dialogueSigns.forEach(sign => sign._remove());
+        }
 
         // Find Day, Init lighting
         self.prepareDay();
@@ -352,31 +366,10 @@ function Game() {
 
         self.lightenHousesSoFar(CURRENT_DAY_NUMBER);
 
-        // DEEEESTRUCTION!!!
-        if (self.helpSign) {
-            self.helpSign._remove();
-        }
-
-        if (self.hintSigns) {
-            self.hintSigns.forEach(sign => sign._remove());
-        }
-
-        if (self.dialogueSigns) {
-            self.dialogueSigns.forEach(sign => sign._remove());
-        }
-
-        if (self.village && self.village.snowFlakes) {
-            self.village.snowFlakes.forEach(s => s._remove());
-            self.village.snowFlakes = [];
-        }
-
         // We cannot work without a current day
         if (!self.currentDay) {
-            console.log("No day for today found :(");
             return;
         }
-
-        console.log("Found day for today!");
 
         self.currentHouse = self.village.houses.find(function (house) {
             return house.owner === self.currentDay.quest.person;
@@ -388,9 +381,9 @@ function Game() {
             person: self.currentDay.quest.person,
             emotion: self.currentDay.quest.emotion
         });
+        self.dialogBox.setup();
 
         let buttons = self.createButtons(self.currentDay.quest.answers);
-        self.dialogBox.setup();
         self.dialogBox.setButtons(buttons);
 
         self.helpSign = new HelpSign({
@@ -544,10 +537,9 @@ function Game() {
         PIXI.Ticker.system.start();
     }
 
-
     self.update = function () {
         if (self.allowUpdate) {
-            requestAnimationFrame(self.update);
+            renderer.render(stage);
 
             // For animating things
             TWEEN.update();
@@ -570,7 +562,7 @@ function Game() {
                     });
                 }
             }
-            renderer.render(stage);
+            requestAnimationFrame(self.update);
         }
     }
 }

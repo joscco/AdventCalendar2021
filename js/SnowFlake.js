@@ -21,21 +21,11 @@ function SnowFlake(config) {
         self.circle.beginFill(0xFFFFFF);
         self.circle.drawCircle(self.x, self.y, self.radius);
         self.circle.endFill();
-        self.circle.zIndex = randomBetween(0, 1200);
-        self.circle.alpha = 0;
+        self.circle.zIndex = 1000;
         stage.addChild(self.circle);
-        new TWEEN.Tween(self.circle)
-            .to({alpha: 1}, 1000)
-            .start();
-
     }
 
     self._remove = function () {
-        new TWEEN.Tween(self.circle)
-            .to({alpha: 0}, 200)
-            .onComplete(() => {
-                stage.removeChild(self.circle);
-            })
-            .start();
+        stage.removeChild(self.circle);
     }
 }
