@@ -30,8 +30,11 @@ function Game() {
     self.dialogueSigns = [];
 
     self.numberOfAssets = 1;
+
     self.numberOfLoadedAssets = 0;
     self.loadingPercentage = 0;
+
+    self.allowUpdate = true;
 
     self.bigTextStyle = new PIXI.TextStyle({
         fontFamily: 'Futura',
@@ -99,8 +102,6 @@ function Game() {
                     .start();
                 self.update();
             }
-
-
         }, () => {
             alert("Unable to load Font!");
         });
@@ -156,7 +157,7 @@ function Game() {
 
         let bigText = new PIXI.Text("Wowowowow...\nDu bist zu früh!", self.bigWhiteTextStyle);
         bigText.anchor.set(0.5);
-        bigText.position.x = GAME_WIDTH / 2 ;
+        bigText.position.x = GAME_WIDTH / 2;
         bigText.position.y = GAME_HEIGHT / 2 + fadeInOffsetY;
         bigText.alpha = 0;
         stage.addChild(bigText);
@@ -187,6 +188,9 @@ function Game() {
             }, 500)
             .delay(500)
             .easing(TWEEN.Easing.Quadratic.Out)
+            .onComplete(() => {
+                self.stopUpdate();
+            })
             .start();
     }
 
@@ -393,7 +397,7 @@ function Game() {
             x: self.currentHouse.x,
             y: self.currentHouse.y - 50,
             isQuest: true,
-            action: self.dialogBox.toggleShow
+            action: self.dialogBox.show
         });
         self.helpSign.setup();
         self.helpSign._add();
@@ -530,25 +534,39 @@ function Game() {
         }
     }
 
+    self.stopUpdate = function () {
+        self.allowUpdate = false;
+    }
+
 
     self.update = function () {
-        requestAnimationFrame(self.update);
+        if (self.allowUpdate) {
+            requestAnimationFrame(self.update);
 
-        // For animating things
-        TWEEN.update();
+            // For animating things
+            TWEEN.update();
 
-        if (self.gameState === GAME_STATES.Main) {
-            // Animating moon and helpSign
-            self.moon.update();
-            self.village.update();
-            if (self.currentDay) {
-                self.updateDay();
-                self.helpSign.update();
-                self.hintSigns.forEach(s => s.update());
-                self.dialogueSigns.forEach(s => s.update());
+            if (self.gameState === GAME_STATES.Main) {
+                // Animating moon and helpSign
+                self.moon.update();
+                self.village.update();
+                if (self.currentDay) {
+                    self.updateDay();
+                    self.helpSign.update();
+                    self.helpSign.setInteractive(self.dialogBox.hidden)
+                    self.hintSigns.forEach(s => {
+                        s.setInteractive(self.dialogBox.hidden);
+                        s.update();
+                    });
+                    self.dialogueSigns.forEach(s => {
+                        s.setInteractive(self.dialogBox.hidden);
+                        s.update();
+                    });
+                }
             }
+            renderer.render(stage);
         }
-        renderer.render(stage);
+
     }
 }
 

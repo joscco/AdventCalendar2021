@@ -1,23 +1,23 @@
 DAYS.push({
-    id: "day2",
+    id: "day21",
     quest: {
         person: "maike",
         emotion: "sad",
-        text: "Hey... Kenn ich dich? \nTut mir leid, ich bin heute leider nicht ganz bei mir\nViel zu viel zu tun",
+        text: "Hey... Kenn ich dich? \nTut mir leid, ich bin heute leider nicht ganz bei mir...\nSo viel zu viel zu tun...",
         answers: [
             {
                 text: "Oh okay.",
                 type: "continue",
                 reaction: {
-                    text: "Kinder. So viel zu tun...\n" +
+                    text: "Kinder...\nAufpassen, versorgen, kein Schlaf...\n" +
                         "So müde...\n" +
-                        "Kann mich kaum halten...",
+                        "Urgh...",
                     answers: [{
                         text: "Oh mann. Kann man dir helfen?",
                         type: "continue",
                         reaction: {
                             text: "Ich... ich...\n" +
-                                "Ich brauche etwas, das mir die Last abnimmt.",
+                                "Ich könnte eine Stütze brauchen...",
                             answers: [{
                                 text: "Ich werde sehen, was sich machen lässt!",
                                 type: "accept"
@@ -79,7 +79,7 @@ DAYS.push({
         }]
     }],
     solutionDialog: {
-        text: "Und, hast du etwas gefunden?",
+        text: "Hey...\n",
         answers: [{
             text: "Eine Kettensäge!",
             type: "continue",

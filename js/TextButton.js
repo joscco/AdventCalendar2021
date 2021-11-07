@@ -1,5 +1,3 @@
-
-
 function TextButton(config) {
 
     const self = this;
@@ -27,7 +25,7 @@ function TextButton(config) {
     }
 
     self.calculateButtonWidth = function (text) {
-        return Math.min( 20 + text.length * 12, 550);
+        return Math.min(20 + text.length * 12, 550);
     }
 
     self.calculateButtonHeight = function (numberOfLines) {
@@ -52,13 +50,12 @@ function TextButton(config) {
 
     self.initRectangle = function () {
         self.container = new PIXI.Graphics();
-        self.container.position.x = self.x - self.anchorX*self.width;
-        self.container.position.y = self.y - self.anchorY*self.height;
+        self.container.position.x = self.x - self.anchorX * self.width;
+        self.container.position.y = self.y - self.anchorY * self.height;
         self.container.beginFill(0x000000);
         self.rectangle = self.container.drawRoundedRect(0, 0, self.width, self.height, 20);
         self.container.endFill();
-        self.rectangle.interactive = true;
-        self.rectangle.buttonMode = true;
+        self.setInteractive(true);
         self.rectangle.pointertap = function () {
             self.sound.play();
             self.action();
@@ -71,6 +68,11 @@ function TextButton(config) {
         self.rectangle.mouseout = function (ev) {
         }
         self.container.addChild(self.rectangle);
+    }
+
+    self.setInteractive = function (interactive) {
+        self.rectangle.interactive = interactive;
+        self.rectangle.buttonMode = interactive;
     }
 
     self.initText = function () {
@@ -98,7 +100,7 @@ function TextButton(config) {
         self.container.visible = true;
     }
 
-    self.animateIn = function(timeDelay) {
+    self.animateIn = function (timeDelay) {
         self.rectangle.alpha = 0;
         let previousXPosition = self.rectangle.position.x;
         self.rectangle.position.x += 100;
@@ -110,7 +112,10 @@ function TextButton(config) {
                     x: previousXPosition
                 }
             }, 500)
-            .easing(TWEEN.Easing.Quadratic.Out);
+            .easing(TWEEN.Easing.Quadratic.Out)
+            .onComplete(() => {
+                self.setInteractive(true);
+            });
         setTimeout(() => {
             buttonInTween.start();
         }, timeDelay);

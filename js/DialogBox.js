@@ -133,6 +133,18 @@ function DialogBox(config) {
         }
     };
 
+    self.show = function () {
+        if (self.hidden) {
+            self.fadeIn();
+        }
+    };
+
+    self.unshow = function () {
+        if (!self.hidden) {
+            self.fadeOut();
+        }
+    };
+
     self.typeText = function () {
         if (!self.text) {
             return;
@@ -173,11 +185,17 @@ function DialogBox(config) {
     }
 
     self.setButtonsInvisible = function () {
-        self.buttons.forEach(btn => btn.setInvisible());
+        self.buttons.forEach(btn => {
+            btn.setInvisible();
+            btn.setInteractive(false);
+        });
     }
 
     self.setButtonsVisible = function () {
-        self.buttons.forEach(btn => btn.setVisible());
+        self.buttons.forEach(btn => {
+            btn.setVisible();
+            btn.setInteractive(true);
+        });
     }
 
     self.fadeIn = function () {
