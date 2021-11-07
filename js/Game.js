@@ -4,7 +4,7 @@ const GAME_BACKGROUND_COLOR = 0x1d1d34;
 const HOUSE_SCALE = 0.4;
 // January is 0 and so on
 const DECEMBER_NUMBER = 11;
-const TEST_MODE = false;
+const TEST_MODE = true;
 const DAYS = [];
 
 const DOG_HAND_OFFSET = 200;
@@ -430,6 +430,16 @@ function Game() {
             self.removeHints();
             self.hintsRemoved = true;
             self.currentHouse.lighten();
+            self.dayResolvedBox = new DayResolvedBox({text: "Du hast den heutigen Tag gemeistert!"});
+            let finishedButton = new TextButton({
+                text: "yay!",
+                action: function () {
+                    self.dayResolvedBox.toggleShow();
+                }
+            });
+            self.dayResolvedBox.setup();
+            self.dayResolvedBox.setButton(finishedButton);
+            self.dayResolvedBox.toggleShow();
             self.setOnFinishedMode();
         }
     }
