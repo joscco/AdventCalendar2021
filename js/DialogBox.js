@@ -3,13 +3,15 @@ function DialogBox(config) {
     self.hidden = true;
     self.width = 860;
     self.height = 360;
-    self.x = GAME_WIDTH/2 - self.width/2;
-    self.y = GAME_HEIGHT/2 - self.height/2;
+    self.x = GAME_WIDTH / 2 - self.width / 2;
+    self.y = GAME_HEIGHT / 2 - self.height / 2;
     self.person = config.person;
     self.emotion = config.emotion;
     self.text = config.text;
     self.textObject = null;
     self.typeSound = Loader.sounds["typeSound"].volume(0.01);
+    self.typeSpeed = 40;
+    self.breakLineTimeOut = 500;
     self.buttons = [];
     self.box = null;
 
@@ -144,20 +146,24 @@ function DialogBox(config) {
         self.textObject.visible = true;
 
         let numberOfSpaces = 0;
+        let numberOfLineBreaks = 0;
         for (let i = 0; i < wholeText.length; i++) {
             if (wholeText.charAt(i) === " ") {
                 numberOfSpaces++;
+            } else if (wholeText.charAt(i) === "\n") {
+                numberOfLineBreaks++;
+
             } else {
                 currentText = wholeText.substring(0, i + 1);
                 let tmpText = currentText;
                 setTimeout(() => {
                     self.setText(tmpText);
                     self.typeSound.play();
-                }, 40 * (i - numberOfSpaces));
+                }, self.typeSpeed * (i - numberOfSpaces) + numberOfLineBreaks * self.breakLineTimeOut);
             }
         }
 
-        return 40 * (wholeText.length - numberOfSpaces);
+        return self.typeSpeed * (wholeText.length - numberOfSpaces) + numberOfLineBreaks * self.breakLineTimeOut;
     }
 
     self.fadeInButtons = function (timeDelay) {

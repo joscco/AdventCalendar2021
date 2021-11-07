@@ -18,22 +18,6 @@ const GAME_STATES = {
     Main: "Main"
 }
 
-// Editor stuff
-downHandler = function (event) {
-    if (event.key === "Enter") {
-        let result = [];
-        for (let houseSprite of houseSprites) {
-            result.push({
-                "id_dark": houseSprite.dark_key,
-                "id_light": houseSprite.light_key,
-                "x": houseSprite.position.x,
-                "y": houseSprite.position.y
-            });
-        }
-        console.log(JSON.stringify(result));
-    }
-}
-
 function Game() {
 
     const self = this;
@@ -105,7 +89,7 @@ function Game() {
             daysSoFar: CURRENT_DAY_NUMBER
         });
         self.daySelectBar.reposition();
-        window.addEventListener('resize', function (event) {
+        window.addEventListener('resize', function () {
             self.daySelectBar.reposition();
         });
 
@@ -127,7 +111,8 @@ function Game() {
     }
 
     self.initMainGame = function (currentDayNumber) {
-        CURRENT_DAY_NUMBER = currentDayNumber
+        CURRENT_DAY_NUMBER = currentDayNumber;
+        self.daySelectBar.setCurrentDayButtonActive(CURRENT_DAY_NUMBER);
         let arm = new PIXI.Sprite(Loader.resources["hand"].texture);
         arm.scale.set(0.7);
         let graphics = new PIXI.Graphics();
@@ -138,10 +123,26 @@ function Game() {
         graphics.endFill();
         stage.addChild(graphics);
 
+        let bigTextStyle = new PIXI.TextStyle({
+            fontFamily: 'Futura',
+            fontSize: 50,
+            fontWeight: "bold",
+            fill: "#000",
+            padding: 10
+        });
+
         arm.anchor.set(0.5, 1);
         arm.position.y = graphics.height + arm.scale.y * DOG_HAND_OFFSET;
         arm.position.x = GAME_WIDTH / 2;
         graphics.addChild(arm);
+
+        let textObj = new PIXI.Text("Tag " + CURRENT_DAY_NUMBER, bigTextStyle);
+        textObj.anchor.set(0.5);
+        textObj.position.x = GAME_WIDTH / 2;
+        textObj.position.y = 120;
+        textObj.zIndex = 2000;
+
+        graphics.addChild(textObj);
         self.startInTween(graphics);
     }
 
@@ -159,6 +160,7 @@ function Game() {
 
     self.startOutTween = function (graphics) {
         new TWEEN.Tween(graphics.position)
+            .delay(200)
             .to({y: GAME_HEIGHT}, 1000)
             .easing(TWEEN.Easing.Quadratic.In)
             .onComplete(() => {

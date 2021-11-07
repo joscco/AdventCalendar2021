@@ -8,6 +8,8 @@ function Moon(config) {
 
     // Update
     self.isBlinking = false;
+    self.blinkTime = 30;
+    self.framesBlinked = 0;
     self.textures = Loader.resources["moon_sheet"].textures;
     self.sprite = null;
     self.eyes = null
@@ -33,11 +35,14 @@ function Moon(config) {
 
     self.checkBlink = function () {
         if (self.isBlinking) {
-            if (Math.random() < 0.1) {
+            if (self.framesBlinked >= self.blinkTime) {
                 self.isBlinking = false;
+                self.framesBlinked = 0;
+            } else {
+                self.framesBlinked++;
             }
         } else {
-            if (Math.random() < 0.003) {
+            if (Math.random() < 0.002) {
                 self.isBlinking = true;
             }
         }
