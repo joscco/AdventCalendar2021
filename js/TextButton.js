@@ -95,4 +95,22 @@ function TextButton(config) {
     self.setVisible = function () {
         self.container.visible = true;
     }
+
+    self.animateIn = function(timeDelay) {
+        self.rectangle.alpha = 0;
+        let previousXPosition = self.rectangle.position.x;
+        self.rectangle.position.x += 100;
+        self.setVisible();
+        let buttonInTween = new TWEEN.Tween(self.rectangle)
+            .to({
+                alpha: 1,
+                position: {
+                    x: previousXPosition
+                }
+            }, 500)
+            .easing(TWEEN.Easing.Quadratic.Out);
+        setTimeout(() => {
+            buttonInTween.start();
+        }, timeDelay);
+    }
 }

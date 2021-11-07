@@ -9,8 +9,6 @@ const DOG_HAND_OFFSET = 200;
 let CURRENT_DAY_NUMBER;
 let GAME;
 
-let houseSprites = [];
-
 let canvas;
 let renderer;
 let stage;
@@ -67,8 +65,16 @@ function Game() {
         font.load().then(() => {
             self.setupStage();
             self.gameState = GAME_STATES.WelcomeScreen;
-            self.setupWelcomeScreen();
-            document.body.removeChild(self.loadingDiv);
+            self.loadingDiv.style.opacity = "1";
+            new TWEEN.Tween(self.loadingDiv.style)
+                .delay(200)
+                .to({opacity: "0"}, 400)
+                .easing(TWEEN.Easing.Quadratic.Out)
+                .onComplete(() => {
+                    document.body.removeChild(self.loadingDiv);
+                    self.setupWelcomeScreen();
+                })
+                .start()
             self.update();
         }, () => {
             alert("Unable to load Font!");
@@ -105,7 +111,9 @@ function Game() {
         });
 
         self.startButton.setup();
+        self.startButton.setInvisible();
         self.startButton._addTo(stage);
+        self.startButton.animateIn();
     }
 
     self.initMainGame = function () {
@@ -176,7 +184,7 @@ function Game() {
         //CURRENT_DAY_NUMBER = new Date().getDate();
 
         // For now;
-        CURRENT_DAY_NUMBER = 1;
+        CURRENT_DAY_NUMBER = 2;
         self.prepareDay();
     }
 
@@ -240,18 +248,29 @@ function Game() {
         return buttons;
     }
 
+    self.lightenHousesSoFar = function (dayNumber) {
+        for (let house of self.village.houses) {
+            if (house.questDay < dayNumber) {
+                house.lighten();
+            }
+        }
+    }
+
     self.prepareDay = function () {
         let id = "day" + CURRENT_DAY_NUMBER;
         self.currentDay = DAYS.find(function (day) {
             return day.id === id;
         });
 
+        self.lightenHousesSoFar(CURRENT_DAY_NUMBER);
+
         // We cannot work without a current day
         if (!self.currentDay) {
             return;
+
         }
 
-        self.currentHouse = HOUSES.find(function (house) {
+        self.currentHouse = self.village.houses.find(function (house) {
             return house.owner === self.currentDay.quest.person;
         });
 
@@ -309,6 +328,7 @@ function Game() {
         if (self.questSolved && !self.hintsRemoved) {
             self.removeHints();
             self.hintsRemoved = true;
+            self.currentHouse.lighten();
             self.setOnFinishedMode();
         }
     }
@@ -322,6 +342,7 @@ function Game() {
             self.dialogBox.toggleShow();
         });
         self.hintSigns = [];
+
         self.showFinalModeDialogues();
     }
 
@@ -355,7 +376,7 @@ function Game() {
         for (let i = 0; i < self.currentDay.hints.length; i++) {
             let hint = self.currentDay.hints[i];
             let hintNumber = i;
-            let hintHouse = HOUSES.find(function (house) {
+            let hintHouse = self.village.houses.find(function (house) {
                 return house.owner === hint.person;
             });
 
@@ -382,7 +403,7 @@ function Game() {
     self.showFinalModeDialogues = function () {
         for (let i = 0; i < self.currentDay.onFinishedDialogues.others.length; i++) {
             let dialogue = self.currentDay.onFinishedDialogues.others[i];
-            let dialogueHouse = HOUSES.find(function (house) {
+            let dialogueHouse = self.village.houses.find(function (house) {
                 return house.owner === dialogue.person;
             });
 

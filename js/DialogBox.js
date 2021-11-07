@@ -100,6 +100,7 @@ function DialogBox(config) {
                 fill: "#000",
                 padding: 10,
                 wordWrap: true,
+                breakWords: true,
                 wordWrapWidth: self.width - self.personSprite.width - 20
             }));
         self.textObject.position.x = 0.9 * self.personSprite.width;
@@ -159,21 +160,7 @@ function DialogBox(config) {
 
     self.fadeInButtons = function (timeDelay) {
         for (let i = 0; i < self.buttons.length; i++) {
-            let btn = self.buttons[i];
-            btn.rectangle.alpha = 0;
-            btn.rectangle.position.x = btn.x + 100;
-            btn.setVisible();
-            let buttonInTween = new TWEEN.Tween(btn.rectangle)
-                .to({
-                    alpha: 1,
-                    position: {
-                        x: btn.x
-                    }
-                }, 500)
-                .easing(TWEEN.Easing.Quadratic.Out);
-            setTimeout(() => {
-                buttonInTween.start();
-            }, timeDelay + i * 200);
+            self.buttons[i].animateIn(timeDelay + i * 200);
         }
     }
 

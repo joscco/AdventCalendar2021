@@ -78,31 +78,28 @@ function HelpSign(config) {
 
         self.isAnimating = true;
 
-        let tweenUp = new TWEEN.Tween(self.sprite.position)
+        let spriteUp = new TWEEN.Tween(self.sprite.position)
             .to({y: self.y - 30}, 500)
             .easing(TWEEN.Easing.Quadratic.Out);
 
-        let tweenDown = new TWEEN.Tween(self.sprite.position)
+        let spriteDown = new TWEEN.Tween(self.sprite.position)
             .to({y: self.y}, 700)
             .easing(TWEEN.Easing.Quadratic.In)
             .onComplete(() => {
                 self.isAnimating = false;
             });
 
-        // let dotsUp = new TWEEN.Tween(self.subSprite.position)
-        //     .delay(100)
-        //     .to({y: -5}, 400)
-        //     .easing(TWEEN.Easing.Quadratic.Out);
-        //
-        // let dotsDown = new TWEEN.Tween(self.subSprite.position)
-        //     .delay(100)
-        //     .to({y: 5}, 600)
-        //     .easing(TWEEN.Easing.Quadratic.Out)
+        let subSpriteUp = new TWEEN.Tween(self.subSprite.position)
+            .delay(150)
+            .to({y: -5}, 350);
 
-
-        tweenUp.chain(tweenDown);
-        //dotsDown.chain(dotsUp);
-        tweenUp.start();
+        let subSpriteDown = new TWEEN.Tween(self.subSprite.position)
+            .to({y: 5}, 700);
+        
+        spriteUp.chain(spriteDown);
+        spriteUp.start();
+        subSpriteUp.chain(subSpriteDown);
+        subSpriteUp.start();
     }
 
 }

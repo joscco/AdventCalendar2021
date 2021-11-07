@@ -4,7 +4,8 @@ let loadedAssets = 0;
 let loadingComplete = false;
 
 const resources = [{name: "houses_sheet", path: "./assets/images/houses_spritesheet.json", type: "spritesheet"},
-    {name: "houses_shapes", path: "./assets/images/houses_shapes.json", type: "json"},
+    {name: "houses_shapes", path: "./assets/json/houses_shapes.json", type: "json"},
+    {name: "houses", path: "./assets/json/houses.json", type: "json"},
     {name: "base_people_sheet", path: "./assets/images/people_basis.json", type: "spritesheet"},
     {name: "happy_people_sheet", path: "./assets/images/people_happy.json", type: "spritesheet"},
     {name: "neutral_people_sheet", path: "./assets/images/people_neutral.json", type: "spritesheet"},

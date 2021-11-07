@@ -11,6 +11,8 @@ body {
   background-color: #1D1D34;
   font-family: "Futura", sans-serif;
   font-size: 20px;
+  min-width: 1000px;
+  min-height: 600px;
 }
 
 canvas {
@@ -50,7 +52,7 @@ canvas {
 }
 
 .loading-screen {
-  color: #FFF;
+  color: #FFFFFF;
   position: absolute;
   left: 50%;
   top: 50%;

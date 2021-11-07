@@ -18,7 +18,7 @@ DAYS.push({
                         type: "continue",
                         reaction: {
                             text: "Mhh... \n" +
-                                "Ich suche schon länger etwas, das mir als Bürgermeister den nötigen Respekt einbringt. \n" +
+                                "Ich suche schon länger etwas, das mir als Bürgermeister den nötigen Respekt einbringt.\n" +
                                 "Du musst wissen, mit meiner Körpergröße habe ich es etwas schwer...",
                             answers: [{
                                 text: "Gott, nerv nicht.",
