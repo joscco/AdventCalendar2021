@@ -9,6 +9,7 @@ function DialogBox(config) {
     self.emotion = config.emotion;
     self.text = config.text;
     self.textObject = null;
+    self.typeSound = Loader.sounds["typeSound"].volume(0.01);
     self.buttons = [];
     self.box = null;
 
@@ -151,6 +152,7 @@ function DialogBox(config) {
                 let tmpText = currentText;
                 setTimeout(() => {
                     self.setText(tmpText);
+                    self.typeSound.play();
                 }, 40 * (i - numberOfSpaces));
             }
         }

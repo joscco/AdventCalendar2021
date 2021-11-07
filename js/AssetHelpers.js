@@ -1,4 +1,5 @@
 const Loader = new PIXI.Loader();
+Loader.sounds = [];
 let totalAssets = 0;
 let loadedAssets = 0;
 let loadingComplete = false;
@@ -12,15 +13,22 @@ const resources = [{name: "houses_sheet", path: "./assets/images/houses_spritesh
     {name: "sad_people_sheet", path: "./assets/images/people_sad.json", type: "spritesheet"},
     {name: "annotations_sheet", path: "./assets/images/annotation_sprites.json", type: "spritesheet"},
     {name: "moon_sheet", path: "./assets/images/moon.json", type: "spritesheet"},
-    {name: "hand", path: "./assets/images/hand.png", type: "png"}]
+    {name: "hand", path: "./assets/images/hand.png", type: "png"},
+    {name: "button", path: "./assets/sounds/button1.mp3", type: "sound"},
+    {name: "typeSound", path: "./assets/sounds/typeSound.mp3", type: "sound"}]
 
 class AssetUtils {
 
     static loadAssets(game) {
 
         for (let resource of resources) {
-            Loader.add(resource.name, resource.path);
-            totalAssets += this.getAssetNumberByType(resource.type);
+            if (resource.path.slice(-4) === ".mp3") {
+                let sound = new Howl({src: resource.path});
+                Loader.sounds[resource.name] = sound;
+            } else {
+                Loader.add(resource.name, resource.path);
+                totalAssets += this.getAssetNumberByType(resource.type);
+            }
         }
 
         game.setupLoadingScreen(totalAssets);

@@ -40,6 +40,7 @@ function TextButton(config) {
     }
 
     self.setup = function () {
+        self.sound = Loader.sounds["button"].volume(0.1);
         self.width = self.calculateButtonWidth(self.text);
         self.textStyle = self.initTextStyle(self.width);
         self.numberOfLines = self.calculateNumberOfLines(self.text, self.textStyle);
@@ -59,6 +60,7 @@ function TextButton(config) {
         self.rectangle.interactive = true;
         self.rectangle.buttonMode = true;
         self.rectangle.pointertap = function () {
+            self.sound.play();
             self.action();
         }
 
