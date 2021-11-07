@@ -1,32 +1,30 @@
 function DaySelectBar(config) {
     const self = this;
-
-    // Days
-    self.days = config.days;
+    const CALENDAR_DAYS = 24;
 
     self.dom = config.dom;
-    self.dom.className = "day-select-bar"
+    self.dom.className = "day-select-bar";
+    self.daysSoFar = config.daysSoFar;
 
     self.addDayButton = function(day) {
         let dayButton = new DaySelectButton(day);
         self.dom.appendChild(dayButton.dom);
     }
 
-    for(let i = 0; i < self.days.length; i++) {
-        self.addDayButton(self.days[i]);
+    for(let i = 0; i < Math.min(CALENDAR_DAYS, self.daysSoFar); i++) {
+        self.addDayButton(i+1);
     }
 }
 
-function DaySelectButton(day) {
+function DaySelectButton(dayNumber) {
     const self = this;
-    self.day = day;
+    self.dayNumber = dayNumber;
 
     self.dom = document.createElement("div");
     self.dom.className = "day-select-button";
-    self.dom.innerHTML = day.number;
+    self.dom.innerHTML = dayNumber;
 
     self.dom.onclick = function() {
-        CURRENT_DAY_NUMBER = day.number;
-        GAME.prepareDay();
+        GAME.initMainGame(self.dayNumber);
     }
 }

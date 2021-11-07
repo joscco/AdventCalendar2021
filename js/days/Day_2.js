@@ -1,30 +1,25 @@
 DAYS.push({
-    id: "day1",
+    id: "day2",
     quest: {
-        person: "meier",
+        person: "maike",
         emotion: "sad",
-        text: "Oh Hallo! Wer bist du denn? \nNeu in der Stadt?",
+        text: "Hey... Kenn ich dich? \nTut mir leid, ich bin heute leider nicht ganz bei mir\nViel zu viel zu tun",
         answers: [
             {
-                text: "Ja bin ich! Vor kurzem hergezogen.",
+                text: "Oh okay.",
                 type: "continue",
                 reaction: {
-                    text: "Oh wunderbar! \n" +
-                        "Nun, mein Name ist Meier. \n" +
-                        "Ich freue mich, dich kennen zu lernen! \n" +
-                        "Traurig bin ich aber trotzdem noch...",
+                    text: "Kinder. So viel zu tun...\n" +
+                        "So müde...\n" +
+                        "Kann mich kaum halten...",
                     answers: [{
-                        text: "Das tut mir leid. Kann ich etwas tun?",
+                        text: "Oh mann. Kann man dir helfen?",
                         type: "continue",
                         reaction: {
-                            text: "Mhh... \n" +
-                                "Ich suche schon länger etwas, das mir als Bürgermeister den nötigen Respekt einbringt.\n" +
-                                "Du musst wissen, mit meiner Körpergröße habe ich es etwas schwer...",
+                            text: "Ich... ich...\n" +
+                                "Ich brauche etwas, das mir die Last abnimmt.",
                             answers: [{
-                                text: "Gott, nerv nicht.",
-                                type: "close"
-                            }, {
-                                text: "Ich schaue mal!",
+                                text: "Ich werde sehen, was sich machen lässt!",
                                 type: "accept"
                             }
                             ]
@@ -35,17 +30,17 @@ DAYS.push({
     },
     hints: [{
         hintNumber: 0,
-        person: "beppo",
+        person: "bernadette",
         emotion: "neutral",
-        text: "Willkommen in meiner Pizzeria, mein Guter!\n" +
-            "Mein Name ist Beppo, wie kann ich helfen?",
+        text: "Willkommen in meinem Modeparadies!\n" +
+            "Mein Name ist Bernadette, wie kann ich helfen?",
         answers: [{
             text: "Ich suche ein imposantes Accessoire!",
             type: "continue",
             reaction: {
                 text: "Oh wirklich?\n" +
-                    "Nun, tatsächlich hätte ich noch einen alten großen Zylinder.\n" +
-                    "Irgendwo fliegt er herum, wie wäre es damit?",
+                    "Nun, tatsächlich hätte ich hier noch einen schönen großen Zylinder.\n" +
+                    "Wie wäre es damit?",
                 answers: [{
                     text: "Nehme ich!",
                     type: "closeHint"

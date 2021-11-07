@@ -99,14 +99,23 @@ function Game() {
 
 
     self.setupWelcomeScreen = function () {
+        // For Testing
+        CURRENT_DAY_NUMBER = 1;
+        // For product version
+        //CURRENT_DAY_NUMBER = new Date().getDate();
+        new DaySelectBar({
+            dom: $("#day-select-bar"),
+            daysSoFar: CURRENT_DAY_NUMBER
+        });
+
         self.startButton = new TextButton({
             x: GAME_WIDTH / 2,
             y: GAME_HEIGHT / 2,
             anchorX: 0.5,
             anchorY: 0.5,
-            text: "Start Game",
+            text: "Start Day " + CURRENT_DAY_NUMBER,
             action: function () {
-                self.initMainGame();
+                self.initMainGame(CURRENT_DAY_NUMBER);
             }
         });
 
@@ -116,7 +125,8 @@ function Game() {
         self.startButton.animateIn();
     }
 
-    self.initMainGame = function () {
+    self.initMainGame = function (currentDayNumber) {
+        CURRENT_DAY_NUMBER = currentDayNumber
         let arm = new PIXI.Sprite(Loader.resources["hand"].texture);
         arm.scale.set(0.7);
         let graphics = new PIXI.Graphics();
@@ -158,14 +168,6 @@ function Game() {
 
     self.setupMainGame = function () {
 
-        // Add DaySelect Bar --> INNERHALB VON PIXI!
-        // new DaySelectBar({
-        //     dom: $("#day-select-bar"),
-        //     days: [
-        //         {number: 1}
-        //     ]
-        // });
-
         self.moon = new Moon({x: GAME_WIDTH - 100, y: 100, scale: 0.3});
         self.moon.setup();
 
@@ -181,10 +183,6 @@ function Game() {
         // }
 
         // Find Day, Init lighting
-        //CURRENT_DAY_NUMBER = new Date().getDate();
-
-        // For now;
-        CURRENT_DAY_NUMBER = 2;
         self.prepareDay();
     }
 
