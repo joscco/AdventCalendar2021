@@ -3,6 +3,9 @@ function Village(config) {
     const self = this;
     self.config = config;
     self.editable = config.editable;
+    self.snowing = false;
+    self.snowFlakes = [];
+    self.groundSnow = [];
 
     // Props
     self.houses = [];
@@ -81,17 +84,54 @@ function Village(config) {
         }
     }
 
-    self.generateSnow = function () {
-        for (let i = 0; i < 10000; i++) {
-            let circ = new PIXI.Graphics();
-            circ.beginFill(0xFFFFFF);
-            let yValue = randomBetween(230, 530);
-            let xValue = randomBetween(90 - 0.15 * yValue, 870 + 0.15 * yValue);
-            circ.drawCircle(xValue, yValue, 5 + Math.random() * 5);
-            circ.endFill();
+    self.letItSnow = function () {
+        self.snowing = true;
+    }
+
+    self.update = function () {
+        if (self.snowing) {
+            let snowFlakeDice = Math.random();
+            if (snowFlakeDice > 1 - CURRENT_DAY_NUMBER*0.02) {
+                let randomX = randomBetween(0, GAME_WIDTH);
+                let randomRadius = randomBetween(1, 4);
+                let newSnowFlake = new SnowFlake({x: randomX, y: 0, radius: randomRadius});
+                newSnowFlake._add();
+                self.snowFlakes.push(newSnowFlake);
+
+            }
+            self.snowFlakes = self.snowFlakes.filter(snowFlake => {
+                if (snowFlake.shouldIDie()) {
+                    snowFlake._remove();
+                    return false;
+                } else {
+                    snowFlake.update();
+                    return true;
+                }
+            });
+        }
+    }
+
+    self.removeGroundSnow = function() {
+        self.groundSnow.forEach(el => {
+            stage.removeChild(el);
+        })
+        self.groundSnow = [];
+    }
+
+    self.generateGroundSnow = function () {
+        for (let i = 0; i < 20 + CURRENT_DAY_NUMBER*250; i++) {
+            let circ = new PIXI.Sprite(Loader.resources["snow"].texture);
+            let yValue = randomBetween(230, 520);
+            let downOffset = 130;
+            circ.scale.set(randomBetween(-1, 1));
+            circ.anchor.set(0.5);
+            let  xValue = randomBetween(downOffset - 0.2 * yValue, GAME_WIDTH - downOffset + 0.2 * yValue);
+            circ.position.x = xValue;
+            circ.position.y = yValue;
+            circ.zIndex = yValue + 10;
+            circ.alpha = randomBetween(0.8, 1);
+            self.groundSnow.push(circ);
             stage.addChild(circ);
-            circ.zIndex = yValue + 5;
-            circ.alpha = 0.6;
         }
     }
 }

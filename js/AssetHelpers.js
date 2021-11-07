@@ -14,6 +14,7 @@ const resources = [{name: "houses_sheet", path: "./assets/images/houses_spritesh
     {name: "annotations_sheet", path: "./assets/images/annotation_sprites.json", type: "spritesheet"},
     {name: "moon_sheet", path: "./assets/images/moon.json", type: "spritesheet"},
     {name: "hand", path: "./assets/images/hand.png", type: "png"},
+    {name: "snow", path: "./assets/images/snow.png", type: "png"},
     {name: "button", path: "./assets/sounds/button1.mp3", type: "sound"},
     {name: "typeSound", path: "./assets/sounds/typeSound.mp3", type: "sound"}]
 
@@ -23,8 +24,7 @@ class AssetUtils {
 
         for (let resource of resources) {
             if (resource.path.slice(-4) === ".mp3") {
-                let sound = new Howl({src: resource.path});
-                Loader.sounds[resource.name] = sound;
+                Loader.sounds[resource.name] = new Howl({src: resource.path});
             } else {
                 Loader.add(resource.name, resource.path);
                 totalAssets += this.getAssetNumberByType(resource.type);

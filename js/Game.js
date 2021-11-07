@@ -83,7 +83,7 @@ function Game() {
 
 
     self.setupWelcomeScreen = function () {
-        CURRENT_DAY_NUMBER = new Date().getDate();
+        CURRENT_DAY_NUMBER = new Date().getDate()
         self.daySelectBar = new DaySelectBar({
             dom: $("#day-select-bar"),
             daysSoFar: CURRENT_DAY_NUMBER
@@ -179,8 +179,12 @@ function Game() {
         if (!self.village) {
             self.village = new Village({});
             self.village.setup();
+            self.village.generateGroundSnow();
+            self.village.letItSnow();
+        } else {
+            self.village.removeGroundSnow();
+            self.village.generateGroundSnow();
         }
-        //self.village.generateSnow();
 
         // // Nur für Anpassung!
         // moon.sprite.interactive = true;
@@ -271,7 +275,7 @@ function Game() {
 
         self.lightenHousesSoFar(CURRENT_DAY_NUMBER);
 
-        // tearDown Stuff
+        // DEEEESTRUCTION!!!
         if (self.helpSign) {
             self.helpSign._remove();
         }
@@ -282,6 +286,11 @@ function Game() {
 
         if (self.dialogueSigns) {
             self.dialogueSigns.forEach(sign => sign._remove());
+        }
+
+        if(self.village && self.village.snowFlakes) {
+            self.village.snowFlakes.forEach(s => s._remove());
+            self.village.snowFlakes = [];
         }
 
         // We cannot work without a current day
@@ -458,6 +467,7 @@ function Game() {
         if (self.gameState === GAME_STATES.Main) {
             // Animating moon and helpSign
             self.moon.update();
+            self.village.update();
             if (self.currentDay) {
                 self.updateDay();
                 self.helpSign.update();
