@@ -406,6 +406,7 @@ function Game() {
         self.questSolved = false;
         self.finalQuestShown = false;
         self.hintsRemoved = false;
+        self.dayResolvedBoxShown = false;
     }
 
     self.updateDay = function () {
@@ -430,9 +431,13 @@ function Game() {
             self.removeHints();
             self.hintsRemoved = true;
             self.currentHouse.lighten();
-            self.dayResolvedBox = new DayResolvedBox({text: "Du hast den heutigen Tag gemeistert!"});
+            self.setOnFinishedMode();
+        }
+
+        if(self.questSolved && self.dialogBox.hidden && !self.dayResolvedBoxShown) {
+            self.dayResolvedBox = new DayResolvedBox({text: "Du hast Tag " + CURRENT_DAY_NUMBER + " gemeistert!"});
             let finishedButton = new TextButton({
-                text: "yay!",
+                text: "Yeah!",
                 action: function () {
                     self.dayResolvedBox.toggleShow();
                 }
@@ -440,7 +445,7 @@ function Game() {
             self.dayResolvedBox.setup();
             self.dayResolvedBox.setButton(finishedButton);
             self.dayResolvedBox.toggleShow();
-            self.setOnFinishedMode();
+            self.dayResolvedBoxShown = true;
         }
     }
 

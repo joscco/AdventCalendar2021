@@ -9,7 +9,7 @@ function DialogBox(config) {
     self.emotion = config.emotion;
     self.text = config.text;
     self.textObject = null;
-    self.typeSound = Loader.sounds["typeSound"].volume(0.01);
+    self.typeSound = Loader.sounds["type"].volume(0.1);
     self.typeSpeed = 40;
     self.breakLineTimeOut = 500;
     self.buttons = [];
@@ -164,13 +164,12 @@ function DialogBox(config) {
                 numberOfSpaces++;
             } else if (wholeText.charAt(i) === "\n") {
                 numberOfLineBreaks++;
-
             } else {
                 currentText = wholeText.substring(0, i + 1);
                 let tmpText = currentText;
                 setTimeout(() => {
-                    self.setText(tmpText);
                     self.typeSound.play();
+                    self.setText(tmpText);
                 }, self.typeSpeed * (i - numberOfSpaces) + numberOfLineBreaks * self.breakLineTimeOut);
             }
         }

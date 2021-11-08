@@ -15,8 +15,9 @@ const resources = [{name: "houses_sheet", path: "./assets/images/houses_spritesh
     {name: "moon_sheet", path: "./assets/images/moon.json", type: "spritesheet"},
     {name: "hand", path: "./assets/images/hand.png", type: "png"},
     {name: "snow", path: "./assets/images/snow.png", type: "png"},
-    {name: "button", path: "./assets/sounds/button1.mp3", type: "sound"},
-    {name: "typeSound", path: "./assets/sounds/typeSound.mp3", type: "sound"}]
+    {name: "button", path: "./assets/sounds/button-click.mp3", type: "sound"},
+    {name: "type", path: "./assets/sounds/type.mp3", type: "sound"},
+    {name: "win", path: "./assets/sounds/win.mp3", type: "sound"}]
 
 class AssetUtils {
 

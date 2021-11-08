@@ -7,7 +7,8 @@ function DayResolvedBox(config) {
     self.y = GAME_HEIGHT / 22;
     self.text = config.text;
     self.textObject = null;
-    //self.wonSound = Loader.sounds["won"].volume(0.01);
+    self.winSound = Loader.sounds["win"].volume(0.1);
+    self.typeSound = Loader.sounds["type"].volume(0.1);
     self.typeSpeed = 40;
     self.breakLineTimeOut = 500;
     self.button = null
@@ -120,7 +121,7 @@ function DayResolvedBox(config) {
                 let tmpText = currentText;
                 setTimeout(() => {
                     self.setText(tmpText);
-                    //self.typeSound.play();
+                    self.typeSound.play();
                 }, self.typeSpeed * (i - numberOfSpaces) + numberOfLineBreaks * self.breakLineTimeOut);
             }
         }
@@ -148,6 +149,8 @@ function DayResolvedBox(config) {
         self.hidden = false;
         self.textObject.visible = false;
         self.setButtonsInvisible();
+
+        self.winSound.play();
 
         self.fadeInTween = new TWEEN.Tween(self.box.position)
             .to({y: self.y}, 1000)

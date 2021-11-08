@@ -38,7 +38,7 @@ function TextButton(config) {
     }
 
     self.setup = function () {
-        self.sound = Loader.sounds["button"].volume(0.1);
+        self.sound = Loader.sounds["button"].volume(0.2);
         self.width = self.calculateButtonWidth(self.text);
         self.textStyle = self.initTextStyle(self.width);
         self.numberOfLines = self.calculateNumberOfLines(self.text, self.textStyle);
