@@ -3,13 +3,16 @@ DAYS.push({
     quest: {
         person: "maike",
         emotion: "sad",
-        text: "Hey... Kenn ich dich? \nTut mir leid, ich bin heute leider nicht ganz bei mir...\nSo viel zu viel zu tun...",
+        text: "Hey... Kenn ich dich? \n" +
+            "Tut mir leid, ich bin heute leider nicht ganz bei mir...\n" +
+            "So viel zu viel zu tun...",
         answers: [
             {
                 text: "Oh okay.",
                 type: "continue",
                 reaction: {
-                    text: "Kinder...\nAufpassen, versorgen, kein Schlaf...\n" +
+                    text: "Kinder...\n" +
+                        "Aufpassen, versorgen, kein Schlaf...\n" +
                         "So müde...\n" +
                         "Urgh...",
                     answers: [{
@@ -28,6 +31,7 @@ DAYS.push({
                 }
             }]
     },
+    // Ab hier noch ändern
     hints: [{
         hintNumber: 0,
         person: "bernadette",
