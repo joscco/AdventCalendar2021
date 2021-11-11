@@ -25,7 +25,7 @@ function TextButton(config) {
     }
 
     self.calculateButtonWidth = function (text) {
-        return Math.min(20 + text.length * 12, 550);
+        return Math.min(20 + text.length * 12, 520);
     }
 
     self.calculateButtonHeight = function (numberOfLines) {

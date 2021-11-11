@@ -284,6 +284,10 @@ function Game() {
             self.dialogueSigns.forEach(sign => sign._remove());
         }
 
+        if(self.dialogBox) {
+            self.dialogBox._remove();
+        }
+
         // Find Day, Init lighting
         self.prepareDay();
     }
@@ -510,7 +514,7 @@ function Game() {
                     self.dialogBox.toggleShow();
                 }
             });
-            self.hintSigns.push(hintSign);
+            self.hintSigns[i] = hintSign;
             hintSign.setup();
             hintSign._add();
         }

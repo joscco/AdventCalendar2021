@@ -7,6 +7,7 @@ function DialogBox(config) {
     self.y = GAME_HEIGHT / 2 - self.height / 2;
     self.person = config.person;
     self.emotion = config.emotion;
+    self.emotionParticles = [];
     self.text = config.text;
     self.textObject = null;
     self.typeSound = Loader.sounds["type"].volume(0.1);
@@ -19,6 +20,7 @@ function DialogBox(config) {
     const sadTextures = Loader.resources["sad_people_sheet"].textures;
     const happyTextures = Loader.resources["happy_people_sheet"].textures;
     const neutralTextures = Loader.resources["neutral_people_sheet"].textures;
+    const annotationTextures = Loader.resources["annotations_sheet"].textures;
 
     self.setup = function () {
         self.box = new PIXI.Container();
@@ -29,7 +31,9 @@ function DialogBox(config) {
 
         self.drawRoundedRectangle();
         self.drawPerson();
+        self.drawPersonNameSign();
         self.drawText();
+        updateEmotionParticles();
         self.setupButtons();
     }
 
@@ -47,20 +51,55 @@ function DialogBox(config) {
     self.setPerson = function (person) {
         self.person = person;
         updatePersonSprite();
+        updatePersonNameSign();
         updatePersonFaceSprite();
+        updateEmotionParticles();
     }
 
     self.setEmotion = function (emotion) {
         self.emotion = emotion;
         updatePersonFaceSprite();
+        updateEmotionParticles();
     }
 
     const updatePersonSprite = function () {
         self.personSprite.texture = baseTextures[self.person];
     }
 
+    const updatePersonNameSign = function () {
+        self.personNameSign.textObject.text = capitalizeFirstLetter(self.person);
+    }
+
     const updatePersonFaceSprite = function () {
         self.personFaceSprite.texture = getEmotionTextures(self.emotion)[self.person];
+    }
+
+    const updateEmotionParticles = function () {
+        removeEmotionParticles();
+        if (self.emotion === "sad") {
+            let sadSprite = new PIXI.Sprite(annotationTextures["cloud2"]);
+            sadSprite.position.x = randomBetween(0, 300);
+            sadSprite.position.y = randomBetween(0, 200);
+            sadSprite.scale.set(0.5);
+            self.emotionParticles.push(sadSprite);
+        } else if (self.emotion === "happy") {
+
+        } else {
+
+        }
+        addEmotionParticles();
+    }
+
+    const removeEmotionParticles = function () {
+        self.emotionParticles.forEach(particle => {
+            self.personSprite.removeChild(particle);
+        })
+    }
+
+    const addEmotionParticles = function () {
+        self.emotionParticles.forEach(particle => {
+            self.box.addChild(particle);
+        })
     }
 
     const getEmotionTextures = function (emotion) {
@@ -84,14 +123,39 @@ function DialogBox(config) {
 
     self.drawPerson = function () {
         self.personSprite = new PIXI.Sprite(baseTextures[self.person]);
-        self.personSprite.scale.set(0.7);
-        self.personSprite.anchor.set(0, 1);
+        self.personSprite.scale.set(0.6);
+        self.personSprite.anchor.set(0, 0);
         self.personSprite.position.x = 0;
-        self.personSprite.position.y = self.height - 10;
+        self.personSprite.position.y = 20;
         self.personFaceSprite = new PIXI.Sprite(getEmotionTextures(self.emotion)[self.person]);
-        self.personFaceSprite.anchor.set(0, 1);
+        self.personFaceSprite.anchor.set(0, 0);
         self.personSprite.addChild(self.personFaceSprite);
         self.box.addChild(self.personSprite);
+    }
+
+    self.drawPersonNameSign = function () {
+        self.personNameSign = new PIXI.Graphics();
+        self.personNameSign.beginFill(0x1D1D34);
+        self.personNameSign.rect = self.personNameSign.drawRoundedRect(0, 0, 240, 60, 10);
+        self.personNameSign.endFill();
+        self.personNameSign.position.x = (self.personSprite.width - 240) / 2;
+        self.personNameSign.position.y = self.height - 70;
+
+        self.personNameSign.textObject = new PIXI.Text(
+            capitalizeFirstLetter(self.person),
+            new PIXI.TextStyle({
+                fontFamily: 'Futura',
+                fontSize: 30,
+                fill: "#FFFFFF",
+                padding: 10,
+                fontWeight: "bold"
+            }));
+        self.personNameSign.textObject.anchor.set(0.5);
+        self.personNameSign.textObject.position.x = self.personNameSign.rect.width / 2;
+        self.personNameSign.textObject.position.y = self.personNameSign.rect.height / 2;
+        self.personNameSign.rect.addChild(self.personNameSign.textObject);
+
+        self.box.addChild(self.personNameSign.rect);
     }
 
     self.drawText = function () {
@@ -104,19 +168,21 @@ function DialogBox(config) {
                 padding: 10,
                 wordWrap: true,
                 breakWords: true,
-                wordWrapWidth: self.width - self.personSprite.width - 20
+                wordWrapWidth: self.width - self.personSprite.width - 50
             }));
-        self.textObject.position.x = 0.9 * self.personSprite.width;
+        self.textObject.position.x = 1.05 * self.personSprite.width;
         self.textObject.position.y = 50;
         self.box.addChild(self.textObject);
     }
 
     self.setupButtons = function () {
         if (self.buttons) {
-            let widthSoFar = 0;
+            let widthSoFar = 20;
             for (let i = 0; i < self.buttons.length; i++) {
-                self.buttons[i].x = self.personSprite.width + widthSoFar;
-                self.buttons[i].y = 250;
+                self.buttons[i].x = self.width - widthSoFar;
+                self.buttons[i].y = self.height - 20;
+                self.buttons[i].anchorX = 1;
+                self.buttons[i].anchorY = 1;
                 self.buttons[i].setup();
                 self.buttons[i].setInvisible();
                 self.buttons[i]._addTo(self.box);
@@ -224,6 +290,10 @@ function DialogBox(config) {
                 }
             )
             .start();
+    }
+
+    self._remove = function () {
+        stage.removeChild(self.box);
     }
 
 }

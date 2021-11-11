@@ -45,13 +45,13 @@ function HelpSign(config) {
         self.action = action;
         if (self.action) {
             self.setInteractive(true);
-            self.sprite.pointertap = self.action;
         }
     }
 
     self.setInteractive = function(interactive) {
         self.sprite.interactive = interactive;
         self.sprite.buttonMode = interactive;
+        self.sprite.pointertap = interactive ? self.action : null;
     }
 
     self.setIconSlowly = function(iconString) {
