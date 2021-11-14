@@ -23,7 +23,6 @@ DAYS.push({
             }]
     },
     hints: [{
-        hintNumber: 0,
         person: "bernd",
         emotion: "neutral",
         text: "Mmmh...\n" +
@@ -48,7 +47,6 @@ DAYS.push({
             }
         }]
     }, {
-        hintNumber: 1,
         person: "mario",
         emotion: "neutral",
         text: "Hallöle! Mario bin ich. Was darf es sein?",

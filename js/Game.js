@@ -132,7 +132,6 @@ function Game() {
         stage.sortableChildren = true;
     }
 
-
     self.setupWelcomeScreen = function () {
         CURRENT_DAY_NUMBER = new Date().getDate()
         self.daySelectBar = new DaySelectBar({
@@ -328,6 +327,11 @@ function Game() {
                         self.dialogBox.setText(answer.reaction.text);
                         self.dialogBox.setEmotion("happy");
                         self.dialogBox.setButtons(self.createButtons(answer.reaction.answers));
+
+                        self.dialogBox.textObject.visible = false;
+                        self.dialogBox.setButtonsInvisible();
+                        let timeDelay = self.dialogBox.typeText();
+                        self.dialogBox.fadeInButtons(timeDelay);
                     }
                 });
             } else if (answer.type === "continue") {

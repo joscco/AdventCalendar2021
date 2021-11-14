@@ -33,7 +33,6 @@ DAYS.push({
             }]
     },
     hints: [{
-        hintNumber: 0,
         person: "beppo",
         emotion: "neutral",
         text: "Willkommen in meiner Pizzeria, mein Guter!\n" +
@@ -52,7 +51,6 @@ DAYS.push({
             }
         }]
     }, {
-        hintNumber: 1,
         person: "sven",
         emotion: "neutral",
         text: "Jo, Sven bin ich. Was geht?",
