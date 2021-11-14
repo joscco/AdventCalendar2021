@@ -462,6 +462,7 @@ function Game() {
         self.helpSign.setAction(function () {
             self.dialogBox.setPerson(self.currentDay.quest.person);
             self.dialogBox.setText(self.currentDay.onFinishedDialogues.text);
+            self.dialogBox.setEmotion("happy");
             self.dialogBox.setButtons(self.createButtons(self.currentDay.onFinishedDialogues.answers));
             self.dialogBox.toggleShow();
         });

@@ -16,7 +16,7 @@ function TextButton(config) {
     self.initTextStyle = function (width) {
         return new PIXI.TextStyle({
             fontFamily: 'Futura',
-            fontSize: 22,
+            fontSize: 18,
             fill: "#FFF",
             padding: 10,
             wordWrap: true,
@@ -25,7 +25,7 @@ function TextButton(config) {
     }
 
     self.calculateButtonWidth = function (text) {
-        return Math.min(20 + text.length * 12, 520);
+        return Math.min(20 + text.length * 10, 520);
     }
 
     self.calculateButtonHeight = function (numberOfLines) {
