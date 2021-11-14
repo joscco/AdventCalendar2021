@@ -31,102 +31,95 @@ DAYS.push({
                 }
             }]
     },
-    // Ab hier noch ändern
     hints: [{
-        hintNumber: 0,
-        person: "bernadette",
+        person: "armin",
         emotion: "neutral",
-        text: "Willkommen in meinem Modeparadies!\n" +
-            "Mein Name ist Bernadette, wie kann ich helfen?",
+        text: "Na hallo!\n" +
+            "Du bist ein bisschen zu früh dran, das Essen ist erst in drei Tagen.\n" +
+            "Oder bist du wegen etwas anderem hier?",
         answers: [{
-            text: "Ich suche ein imposantes Accessoire!",
+            text: "Eine Freundin hat gerade sehr viel Stress mit Haushalt und Kindern.",
             type: "continue",
             reaction: {
-                text: "Oh wirklich?\n" +
-                    "Nun, tatsächlich hätte ich hier noch einen schönen großen Zylinder.\n" +
-                    "Wie wäre es damit?",
+                text: "Oh, das tut mir leid.\n" +
+                    "Ich kann mir vorstellen, dass so etwas viel Arbeit ist.\n" +
+                    "Vielleicht braucht sie einfach eine Pause?\n" +
+                    "Ich habe noch ein Nackenkissen für lange Flüge.\n" +
+                    "Hier, gib es ihr. Auch für kurze Sitzpausen ist das sehr nützlich.",
                 answers: [{
-                    text: "Nehme ich!",
+                    text: "Danke dir!",
                     type: "closeHint"
                 }]
             }
         }]
     }, {
-        hintNumber: 1,
-        person: "sven",
+        person: "gundula",
         emotion: "neutral",
-        text: "Jo, Sven bin ich. Was geht?",
+        text: "Oh hallo!\n" +
+            "Was kann ich für dich tun?",
         answers: [{
-            text: "Ich suche etwas, dass einem Freund Respekt einbringt.",
+            text: "Eine Freundin hat viel Stress mit ihren Kindern.",
             type: "continue",
             reaction: {
-                text: "Respekt? Naja...\n" +
-                    "Hier fliegt noch ne alte Kettensäge 'rum.\n" +
-                    "Respekt würde ihm das sicherlich einbringen.",
+                text: "Tjaja...\n" +
+                    "Eine Familie ist Arbeit!\n" +
+                    "Eine Familie ist ein großes Projekt!\n" +
+                    "Ich kenne ein paar Mittelchen gegen Erschöpfungserscheinungen.",
+                // ab hier
                 answers: [{
-                    text: "(schluck)",
+                    text: "Und welche?",
                     type: "continue",
                     reaction: {
-                        text: "Mein Gott, guck nicht so. Das war ein Scherz.",
-                        emotion: "sad",
+                        text: "Hier ist ein Rezept für einen speziellen Beruhigungstee.\n" +
+                            "Gib es ihr, danach wird sie sich wie neu fühlen!",
                         answers: [{
-                            text: "haha...",
+                            text: "Mache ich!",
                             type: "closeHint"
                         }]
                     }
                 }, {
-                    text: "Haha, schlag ich vor!",
-                    type: "closeHint"
-                }
-                ]
+                    text: "Kein Interesse.",
+                    type: "close"
+                }]
             }
         }]
     }],
     solutionDialog: {
-        text: "Hey...\n",
+        text: "Hey... Irgendwas gefunden?\n",
         answers: [{
-            text: "Eine Kettensäge!",
-            type: "continue",
+            text: "Eine Nackenkissen!",
+            type: "rightAnswer",
             reaction: {
-                text: "...\n" +
+                text: "Oh ja...\n" +
                     "...\n" +
-                    "...\n" +
-                    "Du bist mir ja ein Witzbold.",
+                    "...das tut gut.\n" +
+                    "Danke dir...",
                 answers: [{
-                    text: "Lol.",
+                    text: "So ist vielleicht etwas einfacher.",
                     type: "close"
                 }]
             }
         }, {
-            text: "Einen Zylinder!",
-            type: "rightAnswer",
+            text: "Ein Teerezept!",
+            type: "continue",
             reaction: {
-                text: "UHHHHHH! Der ist ja fesch!\n" +
-                    "Wie sieht er aus?\n" +
-                    "Wirke ich majestätisch? Königlich?\n" +
-                    "Ich liebe ihn! Danke!\n",
+                text: "Mh...\n" +
+                    "Danke...\n" +
+                    "Aber ich habe keine Zeit für Tee.\n" +
+                    "Weder fürs Brauen noch fürs Trinken.\n",
                 answers: [{
-                    text: "Gern geschehen!",
+                    text: "Verstehe ich.",
                     type: "close"
                 }]
             }
         }]
     },
     onFinishedDialogues: {
-        text: "Ich danke dir vielmals!",
+        text: "So angenehm...",
         answers: [{
-            text: "Immer gern doch!",
+            text: "Sehr gut!",
             type: "close"
         }],
-        others: [{
-            person: "gundula",
-            emotion: "neutral",
-            text: "Hey du! Hast du den tollen neuen Zylinder von Herrn Meier schon gesehn?\n" +
-                "Steht ihm ausgezeichnet, nicht wahr?",
-            answers: [{
-                text: "Das tut er wirklich!",
-                type: "close"
-            }]
-        }]
+        others: []
     }
 })

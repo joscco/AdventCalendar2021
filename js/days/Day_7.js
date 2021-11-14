@@ -6,7 +6,7 @@ DAYS.push({
         text: "Hi.\nIch bin Olaf, willkommen im Gym-Club.\nWie kann ich dir helfen?",
         answers: [
             {
-                text: "Wieso so ein genervtes Gesicht?.",
+                text: "Wieso so ein genervtes Gesicht?",
                 type: "continue",
                 reaction: {
                     text: "Oh, ich...\n" +

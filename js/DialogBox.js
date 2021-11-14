@@ -11,8 +11,8 @@ function DialogBox(config) {
     self.text = config.text;
     self.textObject = null;
     self.typeSound = Loader.sounds["type"].volume(0.1);
-    self.typeSpeed = TEST_MODE ? 1 : 40;
-    self.breakLineTimeOut = TEST_MODE ? 1 :500;
+    self.typeSpeed = FAST_MODE ? 1 : 40;
+    self.breakLineTimeOut = FAST_MODE ? 1 :500;
     self.buttons = [];
     self.box = null;
 
