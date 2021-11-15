@@ -6,12 +6,13 @@ function DaySelectBar(config) {
     self.dom.classList.add("day-select-bar");
     self.daysSoFar = config.daysSoFar;
     self.dayButtons = [];
+    self.daySpeed = 50;
 
     self.addDayButton = function (day) {
         let dayButton = new DaySelectButton(day, self);
         self.dom.appendChild(dayButton.dom);
         self.dayButtons.push(dayButton);
-        dayButton.fadeIn(day * 100);
+        dayButton.fadeIn(day * self.daySpeed);
     }
 
 
