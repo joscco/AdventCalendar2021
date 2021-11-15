@@ -82,7 +82,7 @@ DAYS.push({
         }
         ]
     }, {
-        person: "björn",
+        person: "bjorn",
         emotion: "neutral",
         text: "Guten Tag, Björn Süßnack ist mein Name. Wie kann ich behilflich sein?",
         answers: [{
@@ -178,7 +178,7 @@ DAYS.push({
             type: "close"
         }],
         others: [{
-            person: "björn",
+            person: "bjorn",
             emotion: "neutral",
             text: "Ob mein Schreiben echt war? Nein, ganz sicher nicht.\n"+
                 "Aber Jo's Barbiercodex war auch an den Haaren herbei gezogen.",

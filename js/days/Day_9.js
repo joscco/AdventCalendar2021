@@ -3,7 +3,9 @@ DAYS.push({
     quest: {
         person: "bernadette",
         emotion: "sad",
-        text: "Hallo!\nWillkommen in meinem Modeparadies.\nWas darf es heute sein?",
+        text: "Hallo!\n" +
+            "Willkommen in meinem Modeparadies.\n" +
+            "Was darf es heute sein?",
         answers: [
             {
                 text: "Alles gut? Du wirkst traurig.",
@@ -40,7 +42,7 @@ DAYS.push({
             }
         }]
     }, {
-        person: "björn",
+        person: "bjorn",
         emotion: "neutral",
         text: "Hallo du!\nNa, wie ist die Lage?",
         answers: [{
@@ -62,7 +64,7 @@ DAYS.push({
         text: "Und?\n" +
             "konntest du neue Ideen aufschnappen?",
         answers: [{
-            text: "Ein Spaziergang würde helfen!",
+            text: "Ein Spaziergang hilft!",
             type: "continue",
             reaction: {
                 text: "Mh ...\n" +
@@ -85,7 +87,7 @@ DAYS.push({
                     text: "Also eigentlich geht es eher um den Inhalt...",
                     type: "continue",
                     reaction: {
-                        text: "Ich lebe es!\n" +
+                        text: "Ich liebe es!\n" +
                             "So viele Ideen!\n" +
                             "Eine Frühlingskollektion!\n" +
                             "Damit werde ich viel neues schaffen können!\n" +

@@ -12,7 +12,12 @@ function DialogBox(config) {
     self.textObject = null;
     self.typeSound = Loader.sounds["type"].volume(0.1);
     self.typeSpeed = FAST_MODE ? 1 : 40;
-    self.breakLineTimeOut = FAST_MODE ? 1 :500;
+    self.breakLineTimeOut = FAST_MODE ? 1 : 500;
+
+    self.nameSignWidth = 260;
+    self.nameSignHeight = 65;
+    self.offSetLeft = 10;
+    self.offSetBottom = 10;
     self.buttons = [];
     self.box = null;
 
@@ -124,11 +129,11 @@ function DialogBox(config) {
     self.drawPerson = function () {
         self.personSprite = new PIXI.Sprite(baseTextures[self.person]);
         self.personSprite.scale.set(0.6);
-        self.personSprite.anchor.set(0, 0);
-        self.personSprite.position.x = 0;
-        self.personSprite.position.y = 20;
+        self.personSprite.anchor.set(0, 1);
+        self.personSprite.position.x = self.offSetLeft;
+        self.personSprite.position.y = self.height - 2 * self.offSetBottom;
         self.personFaceSprite = new PIXI.Sprite(getEmotionTextures(self.emotion)[self.person]);
-        self.personFaceSprite.anchor.set(0, 0);
+        self.personFaceSprite.anchor.set(0, 1);
         self.personSprite.addChild(self.personFaceSprite);
         self.box.addChild(self.personSprite);
     }
@@ -136,10 +141,10 @@ function DialogBox(config) {
     self.drawPersonNameSign = function () {
         self.personNameSign = new PIXI.Graphics();
         self.personNameSign.beginFill(0x1D1D34);
-        self.personNameSign.rect = self.personNameSign.drawRoundedRect(0, 0, 240, 60, 10);
+        self.personNameSign.rect = self.personNameSign.drawRoundedRect(0, 0, self.nameSignWidth, self.nameSignHeight, 10);
         self.personNameSign.endFill();
-        self.personNameSign.position.x = (self.personSprite.width - 240) / 2;
-        self.personNameSign.position.y = self.height - 70;
+        self.personNameSign.position.x = self.offSetLeft;
+        self.personNameSign.position.y = self.height - self.nameSignHeight - self.offSetBottom;
 
         self.personNameSign.textObject = new PIXI.Text(
             capitalizeFirstLetter(self.person),
