@@ -24,7 +24,7 @@ function Moon(config) {
     }
 
     const setupSprite = function() {
-        let sprite = new PIXI.Sprite(self.textures["moon_dark"]);
+        let sprite = new PIXI.Sprite(self.textures["moon_light"]);
         sprite.anchor.set(0.5);
         sprite.scale.set(self.scale);
         sprite.position.y = self.y;
