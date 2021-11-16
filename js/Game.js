@@ -1,14 +1,14 @@
 const GAME_WIDTH = 960;
 const GAME_HEIGHT = 540;
 const GAME_BACKGROUND_COLOR = 0x1d1d34;
-const HOUSE_SCALE = 0.4;
+
 // January is 0 and so on
 const DECEMBER_NUMBER = 11;
 const TEST_MODE = false;
 const FAST_MODE = false;
 const DAYS = [];
 
-const DOG_HAND_OFFSET = 200;
+const HAND_OFFSET = 200;
 
 let CURRENT_DAY_NUMBER;
 let GAME;
@@ -134,7 +134,8 @@ function Game() {
     }
 
     self.setupWelcomeScreen = function () {
-        CURRENT_DAY_NUMBER = new Date().getDate()
+        //CURRENT_DAY_NUMBER = new Date().getDate();
+        CURRENT_DAY_NUMBER = 24;
         self.daySelectBar = new DaySelectBar({
             dom: $("#day-select-bar"),
             daysSoFar: CURRENT_DAY_NUMBER
@@ -217,7 +218,7 @@ function Game() {
         stage.addChild(graphics);
 
         arm.anchor.set(0.5, 1);
-        arm.position.y = graphics.height + arm.scale.y * DOG_HAND_OFFSET;
+        arm.position.y = graphics.height + arm.scale.y * HAND_OFFSET;
         arm.position.x = GAME_WIDTH / 2;
         graphics.addChild(arm);
 
@@ -255,7 +256,6 @@ function Game() {
 
 
     self.setupMainGame = function () {
-
         if (!self.moon) {
             self.moon = new Moon({x: GAME_WIDTH - 100, y: 100, scale: 0.3});
             self.moon.setup();

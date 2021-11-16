@@ -1,3 +1,5 @@
+const HOUSE_SCALE = 0.4;
+
 function House(config) {
 
     const self = this;

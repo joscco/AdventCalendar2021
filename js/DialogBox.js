@@ -18,6 +18,7 @@ function DialogBox(config) {
     self.nameSignHeight = 65;
     self.offSetLeft = 10;
     self.offSetBottom = 10;
+    self.offSetBottomPerson = 40;
     self.buttons = [];
     self.box = null;
 
@@ -131,7 +132,7 @@ function DialogBox(config) {
         self.personSprite.scale.set(0.6);
         self.personSprite.anchor.set(0, 1);
         self.personSprite.position.x = self.offSetLeft;
-        self.personSprite.position.y = self.height - 2 * self.offSetBottom;
+        self.personSprite.position.y = self.height - self.offSetBottomPerson;
         self.personFaceSprite = new PIXI.Sprite(getEmotionTextures(self.emotion)[self.person]);
         self.personFaceSprite.anchor.set(0, 1);
         self.personSprite.addChild(self.personFaceSprite);
