@@ -19,6 +19,7 @@ function DialogBox(config) {
     self.offSetLeft = 10;
     self.offSetBottom = 10;
     self.offSetBottomPerson = 40;
+    self.additionalOffSetLeftText = 30;
     self.buttons = [];
     self.box = null;
 
@@ -176,7 +177,7 @@ function DialogBox(config) {
                 breakWords: true,
                 wordWrapWidth: self.width - self.personSprite.width - 50
             }));
-        self.textObject.position.x = 1.05 * self.personSprite.width;
+        self.textObject.position.x = self.additionalOffSetLeftText + self.personSprite.width;
         self.textObject.position.y = 50;
         self.box.addChild(self.textObject);
     }

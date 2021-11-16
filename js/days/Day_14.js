@@ -13,7 +13,7 @@ DAYS.push({
                 reaction: {
                     text: "Ja, schon eine Weile lang.\n" +
                         "Ziemlich schlimm im Rücken.\n" +
-                        "Ich habe es mit Wärme versucht, aber es geht nicht weg.\n" +
+                        "Habs mit Wärme versucht, aber es geht nicht weg.\n" +
                         "Ich denke es war der ständige Stress die letzten Wochen.\n" +
                         "Ich hatte einen ziemlich großen Fall zu bearbeiten.",
                     answers: [{
@@ -24,7 +24,7 @@ DAYS.push({
                                 "Irgendetwas zur Entspannung wäre gut...",
                             answers: [{
                                 text: "Ich schaue mal!",
-                                type: "close"
+                                type: "accept"
                             }]
                         }
                     }]
@@ -67,7 +67,7 @@ DAYS.push({
                                                     text: "...",
                                                     type: "continue",
                                                     reaction: {
-                                                        text: "Okay, real talk.\nEin Gramm für 9 Euro.\nWie viel willst du?",
+                                                        text: "Okay, real talk.\nPro Gramm 9 Euro.\nWie viel willst du?",
                                                         answers: [{
                                                             text: "2 Gramm bitte.",
                                                             type: "closeHint"
@@ -130,7 +130,7 @@ DAYS.push({
             }
         }, {
             text: "Ein neues Outfit!",
-            type: "rightAnswer",
+            type: "continue",
             reaction: {
                 text: "Was?\n" +
                     "Also das ist nett gemeint, aber ich glaube nicht, dass mir das helfen wird.",
@@ -152,7 +152,8 @@ DAYS.push({
             emotion: "neutral",
             text: "Mein Kind, behandle dein Wissen mit Bedacht!\n" +
                 "Ne, aber ernsthaft.\n" +
-                "Wenn du was brauchst, sag einfach Bescheid, aber steck's nicht den Bullen.",
+                "Wenn du was brauchst, sag einfach Bescheid.\n" +
+                "Aber steck's nicht den Bullen.",
             answers: [{
                 text: "Ich weiß von nichts.",
                 type: "close"
