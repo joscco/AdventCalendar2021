@@ -85,6 +85,7 @@ DAYS.push({
                             "...\n" +
                             "...\n" +
                             "Mmmmhhh...",
+                        emotion: "sad",
                         answers: [{
                             text: "Tut mir leid. Das hätte ich nicht sagen dürfen.",
                             type: "close"

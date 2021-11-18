@@ -134,8 +134,7 @@ function Game() {
     }
 
     self.setupWelcomeScreen = function () {
-        //CURRENT_DAY_NUMBER = new Date().getDate();
-        CURRENT_DAY_NUMBER = 24;
+        CURRENT_DAY_NUMBER = Math.min(new Date().getDate(), 24);
         self.daySelectBar = new DaySelectBar({
             dom: $("#day-select-bar"),
             daysSoFar: CURRENT_DAY_NUMBER

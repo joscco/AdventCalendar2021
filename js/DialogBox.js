@@ -18,7 +18,7 @@ function DialogBox(config) {
     self.nameSignHeight = 65;
     self.offSetLeft = 10;
     self.offSetBottom = 10;
-    self.offSetBottomPerson = 40;
+    self.offSetBottomPerson = 50;
     self.additionalOffSetLeftText = 30;
     self.buttons = [];
     self.box = null;
