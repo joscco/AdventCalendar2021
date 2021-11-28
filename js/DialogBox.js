@@ -1,3 +1,6 @@
+const MAX_EMOTION_PARTICLES = 7;
+const MIN_EMOTION_PARTICLES = 3;
+
 function DialogBox(config) {
     const self = this;
     self.hidden = true;
@@ -26,10 +29,10 @@ function DialogBox(config) {
     const sadTextures = Loader.resources["sad_people_sheet"].textures;
     const happyTextures = Loader.resources["happy_people_sheet"].textures;
     const neutralTextures = Loader.resources["neutral_people_sheet"].textures;
-    const annotationTextures = Loader.resources["annotations_sheet"].textures;
 
     self.setup = function () {
         self.box = new PIXI.Container();
+        self.box.sortableChildren = true;
         self.box.position.x = self.x;
         self.box.position.y = self.y;
         // Dialog window on top of everything else
@@ -39,8 +42,14 @@ function DialogBox(config) {
         self.drawPerson();
         self.drawPersonNameSign();
         self.drawText();
-        updateEmotionParticles();
         self.setupButtons();
+        self.setupEmotionParticles();
+    }
+
+    self.update = function() {
+        self.emotionParticles.forEach(particle => {
+            particle.update();
+        })
     }
 
     self.setButtons = function (buttons) {
@@ -59,13 +68,12 @@ function DialogBox(config) {
         updatePersonSprite();
         updatePersonNameSign();
         updatePersonFaceSprite();
-        updateEmotionParticles();
     }
 
     self.setEmotion = function (emotion) {
         self.emotion = emotion;
         updatePersonFaceSprite();
-        updateEmotionParticles();
+        self.setupEmotionParticles();
     }
 
     const updatePersonSprite = function () {
@@ -80,33 +88,27 @@ function DialogBox(config) {
         self.personFaceSprite.texture = getEmotionTextures(self.emotion)[self.person];
     }
 
-    const updateEmotionParticles = function () {
+    self.setupEmotionParticles = function () {
         removeEmotionParticles();
-        if (self.emotion === "sad") {
-            let sadSprite = new PIXI.Sprite(annotationTextures["cloud_2"]);
-            sadSprite.anchor.set(0, 1);
-            sadSprite.scale.set(0.5);
-            sadSprite.position.x = 0;
-            sadSprite.position.y = self.personSprite.height - self.offSetBottom;
-            sadSprite.zIndex = 20;
-            self.emotionParticles.push(sadSprite);
-        } else if (self.emotion === "happy") {
-
-        } else {
-
+        let numberEmotionSprites = MIN_EMOTION_PARTICLES
+            + Math.floor(1 + Math.random() * (MAX_EMOTION_PARTICLES - MIN_EMOTION_PARTICLES));
+        for (let i = 0; i < numberEmotionSprites; i++) {
+            let emotionSprite = new EmotionParticle({emotion: self.emotion});
+            self.emotionParticles.push(emotionSprite);
         }
         addEmotionParticles();
     }
 
     const removeEmotionParticles = function () {
         self.emotionParticles.forEach(particle => {
-            self.personSprite.removeChild(particle);
-        })
+            particle._remove();
+        });
+        self.emotionParticles = [];
     }
 
     const addEmotionParticles = function () {
         self.emotionParticles.forEach(particle => {
-            self.personSprite.addChild(particle);
+            particle._addTo(self.box);
         })
     }
 
@@ -126,6 +128,7 @@ function DialogBox(config) {
         self.rect.beginFill(0xFFFFFF);
         self.rect.drawRoundedRect(0, 0, self.width, self.height, 10);
         self.rect.endFill();
+        self.rect.zIndex = -100;
         self.box.addChild(self.rect)
     }
 
@@ -135,9 +138,11 @@ function DialogBox(config) {
         self.personSprite.anchor.set(0, 1);
         self.personSprite.position.x = self.offSetLeft;
         self.personSprite.position.y = self.height - self.offSetBottomPerson;
+        self.personSprite.zIndex = 100;
         self.personFaceSprite = new PIXI.Sprite(getEmotionTextures(self.emotion)[self.person]);
         self.personFaceSprite.anchor.set(0, 1);
         self.personSprite.addChild(self.personFaceSprite);
+        console.log(self.personSprite.width)
         self.box.addChild(self.personSprite);
     }
 
@@ -146,6 +151,7 @@ function DialogBox(config) {
         self.personNameSign.beginFill(0x1D1D34);
         self.personNameSign.rect = self.personNameSign.drawRoundedRect(0, 0, self.nameSignWidth, self.nameSignHeight, 10);
         self.personNameSign.endFill();
+        self.personNameSign.zIndex = 200;
         self.personNameSign.position.x = self.offSetLeft;
         self.personNameSign.position.y = self.height - self.nameSignHeight - self.offSetBottom;
 

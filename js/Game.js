@@ -8,7 +8,7 @@ const TEST_MODE = false;
 const FAST_MODE = false;
 const DAYS = [];
 
-const HAND_OFFSET = 200;
+const WRATH_OFFSET = 300;
 
 let CURRENT_DAY_NUMBER;
 let GAME;
@@ -88,8 +88,8 @@ function Game() {
         let font = new FontFaceObserver("Futura", {});
         font.load().then(() => {
             self.setupStage();
-            self.setupSound();
             if (TEST_MODE || new Date().getMonth() === DECEMBER_NUMBER) {
+                self.setupSound();
                 self.gameState = GAME_STATES.WelcomeScreen;
                 self.loadingDiv.style.opacity = "1";
                 new TWEEN.Tween(self.loadingDiv.style)
@@ -213,8 +213,7 @@ function Game() {
     self.initMainGame = function (currentDayNumber) {
         CURRENT_DAY_NUMBER = currentDayNumber;
         self.daySelectBar.setCurrentDayButtonActive(CURRENT_DAY_NUMBER);
-        let arm = new PIXI.Sprite(Loader.resources["hand"].texture);
-        arm.scale.set(0.7);
+        let wrath = new PIXI.Sprite(Loader.resources["wrath"].texture);
         let graphics = new PIXI.Graphics();
         graphics.position.y = GAME_HEIGHT;
         graphics.zIndex = 1200;
@@ -223,10 +222,10 @@ function Game() {
         graphics.endFill();
         stage.addChild(graphics);
 
-        arm.anchor.set(0.5, 1);
-        arm.position.y = graphics.height + arm.scale.y * HAND_OFFSET;
-        arm.position.x = GAME_WIDTH / 2;
-        graphics.addChild(arm);
+        wrath.anchor.set(0.5, 1);
+        wrath.position.y = graphics.height + wrath.scale.y * WRATH_OFFSET;
+        wrath.position.x = GAME_WIDTH / 2;
+        graphics.addChild(wrath);
 
         let textObj = new PIXI.Text("Tag " + CURRENT_DAY_NUMBER, self.bigTextStyle);
         textObj.anchor.set(0.5);
@@ -263,7 +262,7 @@ function Game() {
 
     self.setupMainGame = function () {
         if (!self.moon) {
-            self.moon = new Moon({x: GAME_WIDTH - 100, y: 100, scale: 0.3});
+            self.moon = new Moon({x: GAME_WIDTH - 100, y: 100, scale: 0.25});
             self.moon.setup();
         }
 
@@ -579,6 +578,9 @@ function Game() {
                 // Animating moon and helpSign
                 self.moon.update();
                 self.village.update();
+                if (!self.dialogBox.hidden) {
+                    self.dialogBox.update();
+                }
                 if (self.currentDay) {
                     self.updateDay();
                     self.helpSign.update();
