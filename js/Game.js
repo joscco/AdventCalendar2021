@@ -16,6 +16,7 @@ let GAME;
 let canvas;
 let renderer;
 let stage;
+let soundManager;
 
 const GAME_STATES = {
     WelcomeScreen: "WelcomeScreen",
@@ -87,6 +88,7 @@ function Game() {
         let font = new FontFaceObserver("Futura", {});
         font.load().then(() => {
             self.setupStage();
+            self.setupSound();
             if (TEST_MODE || new Date().getMonth() === DECEMBER_NUMBER) {
                 self.gameState = GAME_STATES.WelcomeScreen;
                 self.loadingDiv.style.opacity = "1";
@@ -131,6 +133,11 @@ function Game() {
         stage = new PIXI.Container();
         // We want to work with different z-indices!
         stage.sortableChildren = true;
+    }
+
+    self.setupSound = function () {
+        soundManager = new SoundManager();
+        soundManager.drawSoundButton();
     }
 
     self.setupWelcomeScreen = function () {

@@ -13,6 +13,7 @@ const resources = [{name: "houses_sheet", path: "./assets/images/houses_spritesh
     {name: "sad_people_sheet", path: "./assets/images/people_sad.json", type: "spritesheet"},
     {name: "annotations_sheet", path: "./assets/images/annotation_sprites.json", type: "spritesheet"},
     {name: "moon_sheet", path: "./assets/images/moon.json", type: "spritesheet"},
+    {name: "voice_sheet", path: "./assets/images/voice_sprites.json", type: "spritesheet"},
     {name: "hand", path: "./assets/images/hand.png", type: "png"},
     {name: "snow", path: "./assets/images/snow.png", type: "png"},
     {name: "button", path: "./assets/sounds/button-click.mp3", type: "sound"},

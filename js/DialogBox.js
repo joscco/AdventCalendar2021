@@ -10,7 +10,6 @@ function DialogBox(config) {
     self.emotionParticles = [];
     self.text = config.text;
     self.textObject = null;
-    self.typeSound = Loader.sounds["type"].volume(0.1);
     self.typeSpeed = FAST_MODE ? 1 : 40;
     self.breakLineTimeOut = FAST_MODE ? 1 : 500;
 
@@ -84,10 +83,12 @@ function DialogBox(config) {
     const updateEmotionParticles = function () {
         removeEmotionParticles();
         if (self.emotion === "sad") {
-            let sadSprite = new PIXI.Sprite(annotationTextures["cloud2"]);
-            sadSprite.position.x = randomBetween(0, 300);
-            sadSprite.position.y = randomBetween(0, 200);
+            let sadSprite = new PIXI.Sprite(annotationTextures["cloud_2"]);
+            sadSprite.anchor.set(0, 1);
             sadSprite.scale.set(0.5);
+            sadSprite.position.x = 0;
+            sadSprite.position.y = self.personSprite.height - self.offSetBottom;
+            sadSprite.zIndex = 20;
             self.emotionParticles.push(sadSprite);
         } else if (self.emotion === "happy") {
 
@@ -105,7 +106,7 @@ function DialogBox(config) {
 
     const addEmotionParticles = function () {
         self.emotionParticles.forEach(particle => {
-            self.box.addChild(particle);
+            self.personSprite.addChild(particle);
         })
     }
 
@@ -241,7 +242,7 @@ function DialogBox(config) {
                 currentText = wholeText.substring(0, i + 1);
                 let tmpText = currentText;
                 setTimeout(() => {
-                    self.typeSound.play();
+                    soundManager.playTypeSound();
                     self.setText(tmpText);
                 }, self.typeSpeed * (i - numberOfSpaces) + numberOfLineBreaks * self.breakLineTimeOut);
             }

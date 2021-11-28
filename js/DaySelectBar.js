@@ -49,7 +49,7 @@ function DaySelectButton(dayNumber, selectBar) {
     self.dom.innerHTML = dayNumber;
 
     self.dom.onclick = function () {
-        Loader.sounds["button"].volume(0.1).play();
+        soundManager.playButtonSound();
         GAME.initMainGame(self.dayNumber);
     }
 

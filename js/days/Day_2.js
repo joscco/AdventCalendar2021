@@ -131,26 +131,16 @@ DAYS.push({
                             "Ich darf mich von nun an selbst um meinen Bart kümmern!\n" +
                             "Ich fange gleich damit an!",
                         answers: [{
-                            text: "... Weinst du?",
-                            type: "continue",
+                            text: "Gute Idee!",
+                            type: "rightAnswer",
                             reaction: {
-                                text: "Ja ...\n" +
-                                    "Vor Freude! Mein Leiden hat endlich ein Ende!\n" +
-                                    "Ich darf mich von nun an selbst um meinen Bart kümmern!\n" +
-                                    "Ich fange gleich damit an!",
+                                text: "Ahhhhh...\n" + "Ich danke dir!",
                                 answers: [{
-                                    text: "Gute Idee!",
-                                    type: "rightAnswer",
-                                    reaction: {
-                                        text: "Ahhhhh...\n" + "Ich danke dir!",
-                                        answers: [{
-                                            text: "Gern geschehen!",
-                                            type: "close"
-                                        }]
-                                    }
-
+                                    text: "Gern geschehen!",
+                                    type: "close"
                                 }]
                             }
+
                         }]
                     }
                 }]
@@ -180,7 +170,7 @@ DAYS.push({
         others: [{
             person: "bjorn",
             emotion: "neutral",
-            text: "Ob mein Schreiben echt war? Nein, ganz sicher nicht.\n"+
+            text: "Ob mein Schreiben echt war? Nein, ganz sicher nicht.\n" +
                 "Aber Jo's Barbiercodex war auch an den Haaren herbei gezogen.",
             answers: [{
                 text: "Hehehe",
