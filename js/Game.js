@@ -4,8 +4,8 @@ const GAME_BACKGROUND_COLOR = 0x0a0d11;
 
 // January is 0 and so on
 const DECEMBER_NUMBER = 11;
-const TEST_MODE = true;
-const FAST_MODE = true;
+const TEST_MODE = false;
+const FAST_MODE = false;
 const DAYS = [];
 
 const WRATH_OFFSET = 300;
