@@ -5,6 +5,7 @@ function SoundManager() {
     const WIN_SOUND_ID = "win";
     const TYPE_SOUND_ID = "type";
     const BUTTON_SOUND_ID = "button";
+    const MAIN_SONG_ID = "main";
 
     const voiceTextures = Loader.resources["voice_sheet"].textures;
 
@@ -39,6 +40,11 @@ function SoundManager() {
         self.soundSprite.buttonMode = true;
         self.soundSprite.click = function () {
             self.setSoundAllowed(!allowSounds)
+            if (allowSounds) {
+                self.playMainMusic();
+            } else {
+                self.stopMainMusic();
+            }
             self.refreshButtonTexture();
         }
         stage.addChild(self.soundSprite);
@@ -49,6 +55,14 @@ function SoundManager() {
         if (sound && allowSounds) {
             Loader.sounds[soundID].volume(0.1).play();
         }
+    }
+
+    self.playMainMusic = function () {
+        Loader.sounds[MAIN_SONG_ID].volume(0.05).play();
+    }
+
+    self.stopMainMusic = function () {
+        Loader.sounds[MAIN_SONG_ID].stop();
     }
 
     self.setSoundAllowed = function (boolValue) {

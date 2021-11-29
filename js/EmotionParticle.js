@@ -28,11 +28,11 @@ function EmotionParticle(config) {
     self.setupTweens = function () {
         self.spriteUpTween = new TWEEN.Tween(self.sprite.position)
             .to({y: self.y - 30}, 1400)
-            .easing(TWEEN.Easing.Quadratic.Out);
+            .easing(TWEEN.Easing.Quadratic.InOut);
 
         self.spriteDownTween = new TWEEN.Tween(self.sprite.position)
             .to({y: self.y}, 1400)
-            .easing(TWEEN.Easing.Quadratic.In)
+            .easing(TWEEN.Easing.Quadratic.InOut)
             .onComplete(() => {
                 self.isAnimating = false;
             });

@@ -1,11 +1,11 @@
 const GAME_WIDTH = 960;
 const GAME_HEIGHT = 540;
-const GAME_BACKGROUND_COLOR = 0x1d1d34;
+const GAME_BACKGROUND_COLOR = 0x0a0d11;
 
 // January is 0 and so on
 const DECEMBER_NUMBER = 11;
-const TEST_MODE = false;
-const FAST_MODE = false;
+const TEST_MODE = true;
+const FAST_MODE = true;
 const DAYS = [];
 
 const WRATH_OFFSET = 300;
@@ -138,6 +138,7 @@ function Game() {
     self.setupSound = function () {
         soundManager = new SoundManager();
         soundManager.drawSoundButton();
+        soundManager.playMainMusic();
     }
 
     self.setupWelcomeScreen = function () {
@@ -157,6 +158,8 @@ function Game() {
             anchorX: 0.5,
             anchorY: 0.5,
             text: "Start Day " + CURRENT_DAY_NUMBER,
+            textColor: 0x000000,
+            areaColor: 0xffffff,
             action: function () {
                 self.initMainGame(CURRENT_DAY_NUMBER);
             }

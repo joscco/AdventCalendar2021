@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: #1D1D34;
+  background-color: #0a0d11;
   font-family: "Futura", sans-serif;
   font-size: 20px;
   min-width: 1000px;
@@ -53,12 +53,6 @@ canvas {
 .button-out {
   opacity: 0;
 }
-
-.button-active {
-  background-color: #FFF;
-  color: #000;
-}
-
 
 .loading-screen {
   color: #FFFFFF;

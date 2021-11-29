@@ -15,6 +15,9 @@ A little advent calender deployed via Github Pages on https://joscco.github.io/A
 ### Sounds:
 [Buttons_Switches_Various_On-Off](https://freesound.org/people/LamaMakesMusic/sounds/403556/) \
 [Crowd Cheer II](https://freesound.org/people/FoolBoyMedia/sounds/397435/) \
-[Typing](https://freesound.org/people/everythingsounds/sounds/591228/) 
+[Typing](https://freesound.org/people/everythingsounds/sounds/591228/)
+
+### Music:
+Christmas Chill Lofi Launge by [Lesfm](https://pixabay.com/users/lesfm-22579021/?tab=audio&utm_source=link-attribution&utm_medium=referral&utm_campaign=audio&utm_content=9466)
 
 

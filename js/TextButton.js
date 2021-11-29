@@ -8,6 +8,11 @@ function TextButton(config) {
     self.y = config.y;
     self.anchorX = config.anchorX || 0;
     self.anchorY = config.anchorY || 0;
+    self.textColor = config.textColor !== undefined ?
+        config.textColor : 0xffffff;
+
+    self.areaColor = config.areaColor !== undefined ?
+        config.areaColor : 0x000000;
     self.action = config.action;
 
     // Reference for checking which hint should be closed;
@@ -17,7 +22,7 @@ function TextButton(config) {
         return new PIXI.TextStyle({
             fontFamily: 'Futura',
             fontSize: 18,
-            fill: "#FFF",
+            fill: self.textColor,
             padding: 10,
             wordWrap: true,
             wordWrapWidth: width - 20
@@ -51,7 +56,7 @@ function TextButton(config) {
         self.container = new PIXI.Graphics();
         self.container.position.x = self.x - self.anchorX * self.width;
         self.container.position.y = self.y - self.anchorY * self.height;
-        self.container.beginFill(0x000000);
+        self.container.beginFill(self.areaColor);
         self.rectangle = self.container.drawRoundedRect(0, 0, self.width, self.height, 20);
         self.container.endFill();
         self.setInteractive(true);

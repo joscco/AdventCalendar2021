@@ -18,8 +18,8 @@ function DialogBox(config) {
 
     self.nameSignWidth = 260;
     self.nameSignHeight = 65;
-    self.offSetLeft = 10;
-    self.offSetBottom = 10;
+    self.offSetLeft = 15;
+    self.offSetBottom = 15;
     self.offSetBottomPerson = 50;
     self.additionalOffSetLeftText = 30;
     self.buttons = [];
@@ -148,7 +148,7 @@ function DialogBox(config) {
 
     self.drawPersonNameSign = function () {
         self.personNameSign = new PIXI.Graphics();
-        self.personNameSign.beginFill(0x1D1D34);
+        self.personNameSign.beginFill(0xffc782);
         self.personNameSign.rect = self.personNameSign.drawRoundedRect(0, 0, self.nameSignWidth, self.nameSignHeight, 10);
         self.personNameSign.endFill();
         self.personNameSign.zIndex = 200;
@@ -160,7 +160,7 @@ function DialogBox(config) {
             new PIXI.TextStyle({
                 fontFamily: 'Futura',
                 fontSize: 30,
-                fill: "#FFFFFF",
+                fill: "#000000",
                 padding: 10,
                 fontWeight: "bold"
             }));

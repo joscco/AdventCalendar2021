@@ -16,6 +16,7 @@ const resources = [{name: "houses_sheet", path: "./assets/images/houses_spritesh
     {name: "voice_sheet", path: "./assets/images/voice_sprites.json", type: "spritesheet"},
     {name: "wrath", path: "./assets/images/wrath.png", type: "png"},
     {name: "snow", path: "./assets/images/snow.png", type: "png"},
+    {name: "main", path: "./assets/sounds/christmas-chill.mp3", type: "sound"},
     {name: "button", path: "./assets/sounds/button-click.mp3", type: "sound"},
     {name: "type", path: "./assets/sounds/type.mp3", type: "sound"},
     {name: "win", path: "./assets/sounds/win.mp3", type: "sound"}]

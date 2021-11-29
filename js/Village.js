@@ -139,15 +139,16 @@ function Village(config) {
     }
 
     self.generateGroundSnow = function () {
-        for (let i = 0; i < 20 + CURRENT_DAY_NUMBER * 250; i++) {
+        for (let i = 0; i < CURRENT_DAY_NUMBER * 40; i++) {
             let circ = new PIXI.Sprite(Loader.resources["snow"].texture);
             let downOffset = 130;
-            circ.scale.set(randomBetween(-1, 1));
+            circ.scale.x = 0.8;
+            circ.scale.y = randomBetween(0.5,0.8);
             circ.anchor.set(0.5);
             let yValue = randomBetween(230, 520);
             circ.position.x = randomBetween(downOffset - 0.2 * yValue, GAME_WIDTH - downOffset + 0.2 * yValue);
             circ.position.y = yValue;
-            circ.zIndex = yValue + 10;
+            circ.zIndex = yValue + 15;
             circ.alpha = randomBetween(0.8, 1);
             self.groundSnow.push(circ);
             self.container.addChild(circ);
