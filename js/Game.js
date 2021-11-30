@@ -216,49 +216,52 @@ function Game() {
     self.initMainGame = function (currentDayNumber) {
         CURRENT_DAY_NUMBER = currentDayNumber;
         self.daySelectBar.setCurrentDayButtonActive(CURRENT_DAY_NUMBER);
+        self.buildWrathContainer();
+        self.startInTween();
+    }
+
+    self.buildWrathContainer = function () {
         let wrath = new PIXI.Sprite(Loader.resources["wrath"].texture);
-        let graphics = new PIXI.Graphics();
-        graphics.position.y = GAME_HEIGHT;
-        graphics.zIndex = 1200;
-        graphics.beginFill(0xffffff);
-        graphics.drawRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-        graphics.endFill();
-        stage.addChild(graphics);
+        self.changeDayScreen = new PIXI.Graphics();
+        self.changeDayScreen.position.y = GAME_HEIGHT;
+        self.changeDayScreen.zIndex = 1200;
+        self.changeDayScreen.beginFill(0xffffff);
+        self.changeDayScreen.drawRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
+        self.changeDayScreen.endFill();
+        stage.addChild(self.changeDayScreen);
 
         wrath.anchor.set(0.5, 1);
-        wrath.position.y = graphics.height + wrath.scale.y * WRATH_OFFSET;
+        wrath.position.y = self.changeDayScreen.height + wrath.scale.y * WRATH_OFFSET;
         wrath.position.x = GAME_WIDTH / 2;
-        graphics.addChild(wrath);
+        self.changeDayScreen.addChild(wrath);
 
         let textObj = new PIXI.Text("Tag " + CURRENT_DAY_NUMBER, self.bigTextStyle);
         textObj.anchor.set(0.5);
         textObj.position.x = GAME_WIDTH / 2;
         textObj.position.y = 120;
         textObj.zIndex = 2000;
-
-        graphics.addChild(textObj);
-        self.startInTween(graphics);
+        self.changeDayScreen.addChild(textObj);
     }
 
-    self.startInTween = function (graphics) {
-        new TWEEN.Tween(graphics.position)
+    self.startInTween = function () {
+        new TWEEN.Tween(self.changeDayScreen.position)
             .to({y: 0}, 1000)
             .easing(TWEEN.Easing.Quadratic.Out)
             .onComplete(() => {
                 self.startButton._removeFrom(stage);
                 self.gameState = GAME_STATES.Main;
                 self.setupMainGame();
-                self.startOutTween(graphics);
+                self.startOutTween();
             }).start();
     }
 
-    self.startOutTween = function (graphics) {
-        new TWEEN.Tween(graphics.position)
+    self.startOutTween = function () {
+        new TWEEN.Tween(self.changeDayScreen.position)
             .delay(200)
             .to({y: GAME_HEIGHT}, 1000)
             .easing(TWEEN.Easing.Quadratic.In)
             .onComplete(() => {
-                stage.removeChild(graphics);
+                stage.removeChild(self.changeDayScreen);
             }).start();
     }
 

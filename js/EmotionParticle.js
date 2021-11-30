@@ -53,7 +53,7 @@ function EmotionParticle(config) {
             self.setupTweens();
             self.isAnimating = true;
             setTimeout(() => {
-                self.spriteUpTween.start();
+                self.fadeInTween.start();
             }, self.animationOffset);
             return;
         }
@@ -68,21 +68,46 @@ function EmotionParticle(config) {
         }
 
         self.parent = parent;
-        self.x = 145 + Math.sign(Math.random() - 0.5) * (50 + Math.random()*60);
+        self.x = 145 + Math.sign(Math.random() - 0.5) * (50 + Math.random() * 60);
         self.y = self.offSetBottomPerson + self.parent.height / 2 - 75 - Math.random() * 50;
         self.sprite.position.x = self.x;
-        self.sprite.position.y = self.y;
+        self.sprite.position.y = self.y + 100;
         self.sprite.pivot.set(0.5);
-        if(self.emotion === "sad") {
+        if (self.emotion === "sad") {
             self.sprite.rotation = Math.random() * 3.14;
         }
         self.sprite.zIndex = 0;
+        self.sprite.alpha = 0;
         parent.addChild(self.sprite);
+
+        self.fadeInTween = new TWEEN.Tween(self.sprite)
+            .to({
+                position: {
+                    y: self.y
+                },
+                alpha: 1
+            }, 1000)
+            .onComplete(() => {
+                self.isAnimating = false;
+            });
     }
 
     self._remove = function () {
         if (self.parent) {
-            self.parent.removeChild(self.sprite);
+            self.isAnimating = true;
+            self.spriteUpTween.stop();
+            self.spriteDownTween.stop();
+            new TWEEN.Tween(self.sprite)
+                .to({
+                    position: {
+                        y: self.y - 100
+                    },
+                    alpha: 0
+                }, 400)
+                .onComplete(() => {
+                    self.parent.removeChild(self.sprite);
+                })
+                .start();
         }
     }
 }

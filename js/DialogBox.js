@@ -142,7 +142,6 @@ function DialogBox(config) {
         self.personFaceSprite = new PIXI.Sprite(getEmotionTextures(self.emotion)[self.person]);
         self.personFaceSprite.anchor.set(0, 1);
         self.personSprite.addChild(self.personFaceSprite);
-        console.log(self.personSprite.width)
         self.box.addChild(self.personSprite);
     }
 
