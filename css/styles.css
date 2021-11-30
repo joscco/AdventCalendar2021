@@ -67,4 +67,9 @@ canvas {
   color: #000;
 }
 
+.button-active {
+  background-color: #FFF;
+  color: #000;
+}
+
 /*# sourceMappingURL=styles.css.map */
