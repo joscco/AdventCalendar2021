@@ -417,7 +417,7 @@ function Game() {
 
         // more variables
         self.questAccepted = false;
-        self.hintsShown = false;
+        self.isHintsShown = false;
         self.hintHeard = []
         for (let i = 0; i < self.currentDay.hints.length; i++) {
             self.hintHeard.push(false);

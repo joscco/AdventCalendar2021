@@ -71,7 +71,7 @@ function EmotionParticle(config) {
         self.x = 145 + Math.sign(Math.random() - 0.5) * (50 + Math.random() * 60);
         self.y = self.offSetBottomPerson + self.parent.height / 2 - 75 - Math.random() * 50;
         self.sprite.position.x = self.x;
-        self.sprite.position.y = self.y + 100;
+        self.sprite.position.y = self.y - 30;
         self.sprite.pivot.set(0.5);
         if (self.emotion === "sad") {
             self.sprite.rotation = Math.random() * 3.14;
@@ -87,6 +87,7 @@ function EmotionParticle(config) {
                 },
                 alpha: 1
             }, 1000)
+            .easing(TWEEN.Easing.Quadratic.InOut)
             .onComplete(() => {
                 self.isAnimating = false;
             });
