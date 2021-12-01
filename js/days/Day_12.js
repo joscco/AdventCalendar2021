@@ -18,7 +18,7 @@ DAYS.push({
                         reaction: {
                             text: "Na gut...\n" +
                                 "Also ich gucke mir immer wieder diese Videos an, übers Fallschirmspringen.\n" +
-                                "Und es sieht so toll aus, dieser freie Himmel, die Aussicht.\n" +
+                                "Und es sieht so toll aus, dieser blaue Himmel, die Aussicht.\n" +
                                 "Alles so frei!\n" +
                                 "Aber ich habe einfach zu viel Angst...",
                             answers: [{
@@ -48,7 +48,7 @@ DAYS.push({
         text: "Nanu, du schon wieder?\n" +
             "Und, was kann ich heute für dich tun?",
         answers: [{
-            text: "Ein Freund würde gern Fallschirmspringen, traut sich aber nicht.",
+            text: "Ein Freund würde gern Fallschirmspringen versuchen, traut sich aber nicht.",
             type: "continue",
             reaction: {
                 text: "... Okay. Mh...\n" +
@@ -100,10 +100,10 @@ DAYS.push({
             reaction: {
                 text: "Hm wie meinst du?",
                 answers: [{
-                    text: "Hier ein Schnitzset! Lass Holzmännchen für dich springen",
+                    text: "Hier ein Schnitzset! Lass Holzmännchen für dich springen!",
                     type: "rightAnswer",
                     reaction: {
-                        text: "Wow, was für eine coole Idee!\nMeine kleine Fallschirmspringer-Armee!\nAlle so weit oben, alle so frei!\nDanke!",
+                        text: "Wow, was für eine coole Idee!\nMeine eigene, kleine Fallschirmspringer-Armee!\nAlle so weit oben, alle so frei!\nDanke!",
                         answers: [{
                             text: "Gerne doch!",
                             type: "close"

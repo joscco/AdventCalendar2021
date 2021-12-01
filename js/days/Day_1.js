@@ -55,7 +55,7 @@ DAYS.push({
         emotion: "neutral",
         text: "Jo, Sven bin ich. Was geht?",
         answers: [{
-            text: "Ich suche etwas, dass einem Freund Respekt einbringt.",
+            text: "Ich suche etwas, das einem Freund Respekt einbringt.",
             type: "continue",
             reaction: {
                 text: "Respekt? Naja...\n" +

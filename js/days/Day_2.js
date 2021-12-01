@@ -31,7 +31,7 @@ DAYS.push({
                         }
                     }, {
                         text: "Ich verschwinde.",
-                        type: "continue",
+                        type: "close",
                     }]
                 }
             }]
@@ -71,7 +71,6 @@ DAYS.push({
                             + "...\n"
                             + "...\n"
                             + "Na gut.",
-                        emotion: "sad",
                         answers: [{
                             text: "Bin gleich wieder damit zurück!",
                             type: "closeHint"
@@ -84,7 +83,8 @@ DAYS.push({
     }, {
         person: "bjorn",
         emotion: "neutral",
-        text: "Guten Tag, Björn Süßnack ist mein Name. Wie kann ich behilflich sein?",
+        text: "Guten Tag, Björn Süßnack ist mein Name.\n" +
+            "Wie kann ich behilflich sein?",
         answers: [{
             text: "Hey! Mein Freund Jo hat ein Problem.",
             type: "continue",
@@ -93,14 +93,15 @@ DAYS.push({
                     "Der Barbier?\n" +
                     "Oh, was hat er denn?",
                 answers: [{
-                    text: "Ein Paradoxon-Problem",
+                    text: "Ein paradoxales Problem.",
                     type: "continue",
                     reaction: {
                         text: "Ahh... lass mich raten - das alte Barbier-Paradoxon.\n" +
-                            "Warte kurz, ich schreibe kurz etwas auf und gebe es dir mir\n" +
-                            "... kritzel ...\n" +
-                            "... kritzel ...\n" +
-                            "Hier. Das sollte ihm helfen.",
+                            "Warte kurz, ich schreibe etwas auf und gebe es dir mit...\n" +
+                            "... *kritzel* ...\n" +
+                            "... *kritzel* ...\n" +
+                            "Hier.\n" +
+                            "Das sollte ihm helfen.",
                         answers: [{
                             text: "Vielen Dank!",
                             type: "closeHint"
@@ -117,9 +118,10 @@ DAYS.push({
             type: "continue",
             reaction: {
                 text: "Mh? ...\n" +
-                    '"Im Fall Barber/Meinoff wurde 1994 entschieden, dass der Ehrencodex der Barbiere zum folgenden "' +
-                    "...\n" +
-                    "Unterschrieben von Björn Süßnack.\n" +
+                    '"Im Fall Barber/Meinoff wurde 1994 entschieden, dass der Ehrencodex der Barbiere..."\n' +
+                    '"... aufgehoben mit sofortiger Wirkung..."\n' +
+                    '"... jegliche Streitfälle können ad acta gelegt werden..."\n' +
+                    "... Unterschrieben von Björn Süßnack.\n" +
                     "Oh gott...\n" +
                     "...schnief ...",
                 answers: [{
@@ -127,7 +129,8 @@ DAYS.push({
                     type: "continue",
                     reaction: {
                         text: "Ja ...\n" +
-                            "Vor Freude! Mein Leiden hat endlich ein Ende!\n" +
+                            "Vor Freude!!\n" +
+                            "Mein Leiden hat endlich ein Ende!\n" +
                             "Ich darf mich von nun an selbst um meinen Bart kümmern!\n" +
                             "Ich fange gleich damit an!",
                         answers: [{
@@ -153,7 +156,7 @@ DAYS.push({
                     "Du verstehst das Problem nicht richtig.\n" +
                     "Wenn du mich rasierst, rasiere ich mich nicht selber.\n" +
                     "Und damit müsste ich mich als Babier ebenfalls selbst rasieren...\n" +
-                    "... es ist ein Teufelskrass",
+                    "... es ist ein Teufelskreis!",
                 answers: [{
                     text: "Oh...",
                     type: "close"
@@ -170,8 +173,9 @@ DAYS.push({
         others: [{
             person: "bjorn",
             emotion: "neutral",
-            text: "Ob mein Schreiben echt war? Nein, ganz sicher nicht.\n" +
-                "Aber Jo's Barbiercodex war auch an den Haaren herbei gezogen.",
+            text: "Ob mein Schreiben echt war?\n" +
+                "Nein, ganz sicher nicht.\n" +
+                "Aber Jos Barbiercodex war auch an den Haaren herbei gezogen...",
             answers: [{
                 text: "Hehehe",
                 type: "close"

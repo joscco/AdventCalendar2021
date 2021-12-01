@@ -11,7 +11,7 @@ DAYS.push({
                 reaction: {
                     text: "Oh.\n" +
                         "Ich hatte dich gar nicht gesehen.\n" +
-                        "Ich habe ein wenig in Erinnerungen geschwelgt.\n" +
+                        "Ich habe ein wenig in Erinnerungen geschwelgt...\n" +
                         "Erinnerungen an meinen letzten Trip nach Japan...",
                     answers: [{
                         text: "Und die Zeit vermisst du?",

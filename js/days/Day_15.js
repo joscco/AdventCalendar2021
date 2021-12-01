@@ -74,7 +74,7 @@ DAYS.push({
             reaction: {
                 text: "Oh wow!\n" +
                     "Die sind tatsächlich sehr cool.\n" +
-                    "Gibt dem ganzen so einen Sherlock Holmes Touch!\n" +
+                    "Gibt dem ganzen so einen Sherlock-Holmes-Touch!\n" +
                     "Danke für deine Hilfe!",
                 answers: [{
                     text: "Aber klar doch!",
@@ -105,8 +105,8 @@ DAYS.push({
             person: "maria",
             emotion: "neutral",
             text: "Hey du!\n" +
-                "Weißt du was?\nIch habe einen Tischer engagiert, mir eine hippie Minibar zu bauen.\n" +
-                "Er hat schon gesagt, sie wird einen coolen Sherlock-Holmes-Lock haben!\n" +
+                "Weißt du was?\nIch habe einen Tischler engagiert, mir eine hippe Minibar zu bauen.\n" +
+                "Er hat schon gesagt, sie wird einen coolen Sherlock-Holmes-Look haben!\n" +
                 "Wenn sie fertig ist, wird sie sicher toll!",
             answers: [{
                 text: "Ach für dich war die! Klingt gut!",

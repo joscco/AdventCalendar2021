@@ -94,7 +94,7 @@ DAYS.push({
             type: "continue",
             reaction: {
                 text: "Also das Designen von Kleidung und zusammenstellen von Outfits finde ich sehr entspannend!\n" +
-                    "Vielleicht kann er etwas neues zum Anziehen brauchen.\n" +
+                    "Vielleicht kann er etwas Neues zum Anziehen brauchen.\n" +
                     "Ein neues Outfit kann sehr beflügeln!",
                 answers: [{
                     text: "Ich schlage es ihm vor!",

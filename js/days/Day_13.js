@@ -68,14 +68,14 @@ DAYS.push({
         person: "will",
         emotion: "neutral",
         text: "Na hey!\n" +
-            "Brauchst du wieder einen Sänger",
+            "Brauchst du wieder einen Sänger?",
         answers: [{
             text: "Nene, heute eher eine Beschäftigung für eine Freundin zum Weihnachtsfest.",
             type: "continue",
             reaction: {
                 text: "Ah!\n" +
                     "Nun, ich werde Weihnachten ein paar klassische Konzerte besuchen!\n" +
-                    "Sie kann mich begleiten wenn sie möchte.",
+                    "Sie kann mich begleiten, wenn sie möchte.",
                 answers: [{
                     text: "Super, das sage ich ihr!",
                     type: "closeHint"
@@ -95,7 +95,7 @@ DAYS.push({
                 text: "Will der Opernsänger?\n" +
                     "Danke, das ist wirklich lieb von ihm.\n" +
                     "Aber Konzerte sind nicht ganz das, was ich Weihnachten tun möchte.\n" +
-                    "Ich würde lieber schöne Gespräche mit anderen führen und etwas leckeres essen...",
+                    "Ich würde lieber schöne Gespräche mit anderen führen und etwas Leckeres essen...",
                 answers: [{
                     text: "Schade, aber gut.",
                     type: "close"
@@ -138,7 +138,7 @@ DAYS.push({
         }, {
             person: "will",
             emotion: "sad",
-            text: "Tssst. Niemand weiß heutzutage noch klassiche Musik und Konzerte zu schätzen...",
+            text: "Tssst...\nNiemand weiß heutzutage noch klassische Musik und Konzerte zu schätzen...",
             answers: [{
                 text: "Eine Schande...",
                 type: "close"

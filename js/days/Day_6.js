@@ -118,9 +118,10 @@ DAYS.push({
                 text: "Super!",
                 type: "continue",
                 reaction: {
-                    text: "Hehe...\nWenig gibt es, das Einhorn-Aufnäher nicht retten können.",
+                    text: "Hehe...\n" +
+                        "Wenig gibt es, das Einhorn-Aufnäher nicht retten können.",
                     answers: [{
-                        text: "Absolut!",
+                        text: "Absolut, nichts!",
                         type: "close",
                     }]
                 }

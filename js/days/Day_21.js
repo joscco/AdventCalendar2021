@@ -16,7 +16,7 @@ DAYS.push({
                         "So müde...\n" +
                         "Urgh...",
                     answers: [{
-                        text: "Oh mann. Kann man dir helfen?",
+                        text: "Oh man. Kann man dir helfen?",
                         type: "continue",
                         reaction: {
                             text: "Ich... ich...\n" +
@@ -36,7 +36,7 @@ DAYS.push({
         emotion: "neutral",
         text: "Na hallo!\n" +
             "Du bist ein bisschen zu früh dran, das Essen ist erst in drei Tagen.\n" +
-            "Oder bist du wegen etwas anderem hier?",
+            "Oder bist du wegen etwas Anderem hier?",
         answers: [{
             text: "Eine Freundin hat gerade sehr viel Stress mit Haushalt und Kindern.",
             type: "continue",

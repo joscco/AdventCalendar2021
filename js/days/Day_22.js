@@ -8,7 +8,7 @@ DAYS.push({
             "Mein Messer ist kaputt.",
         answers: [
             {
-                text: "Oh nein, dann kannst du ja gar nichts machen. Was kann ich tun?",
+                text: "Oh nein, du kannst gar nichts machen? Was kann ich tun?",
                 type: "continue",
                 reaction: {
                     text: "Heute wohl nicht mehr viel.\n" +

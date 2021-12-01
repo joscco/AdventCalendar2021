@@ -13,7 +13,7 @@ DAYS.push({
                 reaction: {
                     text: "Oh weh...\n" +
                         "Das sollten meine Kunden nicht merken...\n" +
-                        "Ich sitze nur gerade einem Inspirationstief.\n" +
+                        "Ich sitze nur gerade in einem Inspirationstief.\n" +
                         "Ich bräuchte eine neue Idee, die mich begeistert.",
                     answers: [{
                         text: "Ich schaue, ob ich etwas finde!",
@@ -62,7 +62,7 @@ DAYS.push({
     }],
     solutionDialog: {
         text: "Und?\n" +
-            "konntest du neue Ideen aufschnappen?",
+            "Konntest du neue Ideen aufschnappen?",
         answers: [{
             text: "Ein Spaziergang hilft!",
             type: "continue",
@@ -90,7 +90,7 @@ DAYS.push({
                         text: "Ich liebe es!\n" +
                             "So viele Ideen!\n" +
                             "Eine Frühlingskollektion!\n" +
-                            "Damit werde ich viel neues schaffen können!\n" +
+                            "Damit werde ich viel Neues schaffen können!\n" +
                             "Ich danke dir!",
                         answers: [{
                             text: "Joa bitte, wieso nicht...",

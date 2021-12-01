@@ -12,13 +12,13 @@ DAYS.push({
                     text: "Oh, ich...\n" +
                         "Tut mir leid.\n" +
                         "Mir fehlt nur gerade die Motivation hier.\n" +
-                        "Das Trainerdasein ist ein bisschen eintönig momentan...",
+                        "Das Dasein als Trainer ist ein bisschen eintönig momentan...",
                     answers: [{
                         text: "Wie blöd... Was würde dir helfen?",
                         type: "continue",
                         reaction: {
                             text: "Naja... \n" +
-                                "Etwas neues, was ich ins Training mit den Kunden integrieren könnte, wäre toll.",
+                                "Etwas Neues, was ich ins Training mit den Kunden integrieren könnte, wäre toll.",
                             answers: [{
                                 text: "Ich finde sicher was!",
                                 type: "accept"
@@ -50,7 +50,7 @@ DAYS.push({
                             "Wenn mir langweilig ist, spiele ich mit meinen Spielzeugen.\n" +
                             "Du kannst meine Trillerpfeife haben, wenn ich dafür Kaugummi-Geld kriege.",
                         answers: [{
-                            text: "Eine fairer Deal.",
+                            text: "Ein fairer Deal.",
                             type: "closeHint"
                         }, {
                             text: "No Deal.",
@@ -103,7 +103,7 @@ DAYS.push({
             type: "continue",
             reaction: {
                 text: "Mh. Also das wäre an sich eine gute Idee.\n" +
-                    "Ich glaube aber nicht, dass wir es versicherungstechnisch durch kriegen, Leute im Studio mit einer Axt hantieren zu lassen.\n" +
+                    "Ich glaube aber nicht, dass wir es versicherungstechnisch durchkriegen, Leute im Studio mit einer Axt hantieren zu lassen.\n" +
                     "Aber danke für deine Mühe...",
                 answers: [{
                     text: "Stimmt wahrscheinlich...",

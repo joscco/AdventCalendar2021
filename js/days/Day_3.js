@@ -13,7 +13,7 @@ DAYS.push({
                 reaction: {
                     text: "Oh ja, die Heizung hier im Tierheim ist ausgefallen.\n" +
                         "(zitter)...\n" +
-                        "Wir sitzen hier seit ein paar Stunden nun schon im Kalten.\n" +
+                        "Wir sitzen seit ein paar Stunden nun schon im Kalten.\n" +
                         "Wir haben zwar noch einen alten Ofen hier, aber keinerlei Feuerholz...",
                     answers: [{
                         text: "Lass mich schauen, was ich tun kann!",
@@ -49,7 +49,9 @@ DAYS.push({
     }, {
         person: "mario",
         emotion: "neutral",
-        text: "Hallöle! Mario bin ich. Was darf es sein?",
+        text: "Hallöle!\n" +
+            "Mario bin ich.\n" +
+            "Was darf es sein?",
         answers: [{
             text: "Hast du etwas zum Wärmen?",
             type: "continue",
@@ -77,7 +79,7 @@ DAYS.push({
             reaction: {
                 text: "Du bist ja fantastisch!\n" +
                     "Damit kann ich den alten Ofen heizen!\n" +
-                    "Ich und die Tiere sind dir zu großem Dank verpflichtet!",
+                    "Die Tiere und ich sind dir zu großem Dank verpflichtet!",
                 answers: [{
                     text: "Kein Problem!",
                     type: "close"

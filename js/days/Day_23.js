@@ -3,7 +3,7 @@ DAYS.push({
     quest: {
         person: "sam",
         emotion: "sad",
-        text: "Oh Hallo!\n" +
+        text: "Oh hallo...\n" +
             "Was gibt's, braucht nochmal jemand ne Website?",
         answers: [
             {
@@ -37,16 +37,16 @@ DAYS.push({
             text: "Jo",
             type: "close"
         }, {
-            text: "Eigentlich nicht. Aber vielleicht könntest du einem Freund helfen.",
+            text: "Vielleicht könntest du einem Freund helfen.",
             type: "continue",
             reaction: {
                 text: "So?\n" +
-                    "Was hat er denn für ein Problem.",
+                    "Was hat er denn für ein Problem?",
                 answers: [{
                     text: "Er beschwert sich über etwas zu viel Weihnachtsspeck.",
                     type: "continue",
                     reaction: {
-                        text: "Na da kann ich sicher helfen!\n" +
+                        text: "Na, da kann ich sicher helfen!\n" +
                             "Er kann gerne auch einmal zum Probetraining kommen, wenn er sich nicht direkt im Studio anmelden will.\n" +
                             "Schick ihn mal für ein Training vorbei!",
                         answers: [{
@@ -64,10 +64,10 @@ DAYS.push({
             "Na wie geht es dir?\n" +
             "Was gibt es neues?",
         answers: [{
-            text: "Ein Kumpel von mir versucht, ein paar Kilos los zu werden.",
+            text: "Ein Kumpel von mir versucht, ein paar Kilos loszuwerden.",
             type: "continue",
             reaction: {
-                text: "Oh!\nGut dass du mich fragst!\n" +
+                text: "Oh!\nGut, dass du mich fragst!\n" +
                     "Warte kurz hier, ich hole etwas.\n" +
                     "...\n" +
                     "...\n" +
@@ -105,27 +105,18 @@ DAYS.push({
                     text: "Ja genau, ich kenne dort wen. ",
                     type: "continue",
                     reaction: {
-                        text: "Hmm...\n" +
-                            "Mich mehr zu bewegen wäre sicher auch anderweitig nicht schlecht.\n" +
-                            "Im Studio hier?",
+                        text: "Na gut, wieso nicht.",
                         answers: [{
-                            text: "Ja genau, ich kenne dort wen. ",
-                            type: "continue",
+                            text: "Dann los!",
+                            type: "rightAnswer",
                             reaction: {
-                                text: "Na gut, wieso nicht.",
+                                text: "Wow, das hat wirklich Spaß gemacht!\n" +
+                                    "Ich glaube, ich werde mich im Studio anmelden.\n" +
+                                    "Danke dir für den Vorschlag!\n" +
+                                    "So werde ich die Kilos sicher schnell los.",
                                 answers: [{
-                                    text: "Dann los!",
-                                    type: "rightAnswer",
-                                    reaction: {
-                                        text: "Wow, das hat wirklich Spaß gemacht!\n" +
-                                            "Ich glaube, ich werde mich im Studio anmelden.\n" +
-                                            "Danke dir für den Vorschlag.\n" +
-                                            "So werde ich die Kilos sicher schnell los.",
-                                        answers: [{
-                                            text: "Sehr gut!",
-                                            type: "close"
-                                        }]
-                                    }
+                                    text: "Sehr gut!",
+                                    type: "close"
                                 }]
                             }
                         }]
@@ -133,6 +124,7 @@ DAYS.push({
                 }]
             }
         }]
+
     },
     onFinishedDialogues: {
         text: "Eine gute Idee mit dem Studio!",

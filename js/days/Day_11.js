@@ -10,7 +10,7 @@ DAYS.push({
                 type: "continue",
                 reaction: {
                     text: "Natürlich doch, 9 Euro kostet das Stück momentan.\n" +
-                        "Soll ich ihn einpacken?.",
+                        "Soll ich ihn einpacken?",
                     answers: [{
                         text: "Danke, das geht so. Alles in Ordnung bei Ihnen?",
                         type: "continue",
@@ -42,14 +42,14 @@ DAYS.push({
             type: "continue",
             reaction: {
                 text: "Oh, die von Arndt meinst du?\n" +
-                    "Also ich habe nur mal kurz mit ihm gesprochen, aber ein netter Kerl.",
+                    "Also ich habe nur mal kurz mit ihm gesprochen, er scheint aber ein netter Kerl zu sein.",
                 answers: [{
-                    text: "Er findet es blöd, dass seine Baumschule nur in der Stadt bekannt ist.",
+                    text: "Er findet blöd, dass seine Baumschule nur in der Stadt bekannt ist.",
                     type: "continue",
                     reaction: {
                         text: "Aha!\n" +
                             "Naja da hast du Glück, ich bin Webentwickler!\n" +
-                            "Ich könnte Arndt eine Website bauen und ein bisschen Werbung machen, sodass er Leute außerhalb unserer Stadt auf ihn aufmerksam werden!\n" +
+                            "Ich könnte Arndt eine Website bauen und ein bisschen Werbung machen, sodass auch Leute außerhalb unserer Stadt auf ihn aufmerksam werden!\n" +
                             "Wenn er nichts aufwendiges will, mach ich es auch für lau.",
                         answers: [{
                             text: "Das klingt fantastisch!",
@@ -65,18 +65,18 @@ DAYS.push({
         text: "Na du!\n" +
             "Wie geht's dir so?",
         answers: [{
-            text: "Mir gut danke, aber dem Laden eines Freundes geht es nicht so gut.",
+            text: "Mir geht's gut danke. Aber im Laden eines Freunds läuft es weniger.",
             type: "continue",
             reaction: {
                 text: "Oh nein, das ist ja blöd.\n" +
-                    "Um welchen Laden geht es denn?.",
+                    "Um welchen Laden geht es denn?",
                 answers: [{
                     text: "Die Baumschule am Ende der Stadt.",
                     type: "continue",
                     reaction: {
                         text: "Oh.\n" +
-                            "Dort hab ich auch schonmal ein paar Rosen gekauft\n" +
-                            "Mh, vielleicht könnte man durch schöne Baumschnitte den Laden in Schwung.\n" +
+                            "Dort hab ich auch schonmal ein paar Rosen gekauft.\n" +
+                            "Mh, vielleicht könnte man durch schöne Baumschnitte den Laden in Schwung bringen.\n" +
                             "So ein Haarschnitt hat noch niemandem geschadet, auch Bäumen sicher nicht!",
                         answers: [{
                             text: "Das werde ich mal vorschlagen!",
@@ -103,7 +103,7 @@ DAYS.push({
                     reaction: {
                         text: "Sam?\n" +
                             "Der Entwickler?\n" +
-                            "Der war neulich schonmal hier.\n" +
+                            "Der war neulich schonmal hier!\n" +
                             "Ein wirklich netter Kerl, das wäre großartig, danke!",
                         answers: [{
                             text: "Gern!",
@@ -114,7 +114,7 @@ DAYS.push({
             }
         }, {
             text: "Baumschnitte!",
-            type: "rightAnswer",
+            type: "continue",
             reaction: {
                 text: "Ich soll meine Bäume schneiden?\n" +
                     "Ich fürchte, das ist die Mühe nicht wert, zumindest noch nicht.\n" +

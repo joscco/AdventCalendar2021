@@ -106,7 +106,7 @@ DAYS.push({
     },
     onFinishedDialogues: {
         text: "Das war eine tolle Idee mit den Keksen!\n" +
-            "Ich bin gespannt wer heute Abend alles kommt!",
+            "Ich bin gespannt, wer heute Abend alles kommt!",
         answers: [{
             text: "Habe gern geholfen!",
             type: "close"

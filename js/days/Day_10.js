@@ -50,7 +50,7 @@ DAYS.push({
                     type: "continue",
                     reaction: {
                         text: "Na also, wenn sie Zeit hat und bereit ist, die nötige Arbeit zu investieren, freuen sich alle unsere Vierbeiner über ein neues Zuhause.\n" +
-                            "Sie kann gerne vorbeikommen um unseren Kleinen einen Besuch abzustatten.",
+                            "Sie kann gerne vorbeikommen, um unseren Kleinen einen Besuch abzustatten.",
                         answers: [{
                             text: "Eine gute Idee!",
                             type: "closeHint"
@@ -125,7 +125,7 @@ DAYS.push({
         others: [{
             person: "joseph",
             emotion: "neutral",
-            text: "Toll, dass Mikesch ein neues zuhause gefunden hat!\n" +
+            text: "Toll, dass Mikesch ein neues Zuhause gefunden hat!\n" +
                 "Er ist schon einige Jahre bei uns gewesen.",
             answers: [{
                 text: "Jetzt haben beide eine Familie gefunden!",

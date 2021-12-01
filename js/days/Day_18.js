@@ -12,7 +12,7 @@ DAYS.push({
                 text: "Mhh... mein Schlitten...\n" +
                     "Die anderen Kinder haben alle coole neue Schlitten.\n" +
                     "Ich habe nur den alten von meinem Opa.\n" +
-                    "Pascal hat schon gesagt, der sei voll langweilig.",
+                    "Pascal hat schon gesagt, der sei voll langweilig...",
                 answers: [{
                     text: "Das ist aber nicht nett von Pascal.",
                     type: "continue",
@@ -37,7 +37,7 @@ DAYS.push({
             reaction: {
                 text: "Mh, schwierig...\n" +
                     "Also für den Schlitten habe ich nicht direkt etwas.\n" +
-                    "Aber wie wäre es mit dieser Fliegebrille?\n" +
+                    "Aber wie wäre es mit dieser Fliegerbrille?\n" +
                     "Die habe ich mir mal gekauft und kann sie sowieso nicht nutzen.",
                 answers: [{
                     text: "Perfekt!",
@@ -50,7 +50,7 @@ DAYS.push({
         emotion: "neutral",
         text: "Hey du!\nWas kann ich für dich tun?",
         answers: [{
-            text: "Ein Freund suche eine Möglichkeit, um seinen Schlitten aufzumotzen. Ideen?",
+            text: "Ein Freund sucht eine Möglichkeit, um seinen Schlitten aufzumotzen. Ideen?",
             type: "continue",
             reaction: {
                 text: "Joa, ich weiß nicht...\n" +

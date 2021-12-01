@@ -18,7 +18,7 @@ DAYS.push({
                         type: "accept"
                     }, {
                         text: "Bäh, Italien...",
-                        type: "accept"
+                        type: "close"
                     }]
                 }
             }]
@@ -57,7 +57,7 @@ DAYS.push({
                     "Eine zauberhafte Stadt.\n" +
                     "Warte, ich habe irgendwo noch ein wenig Limoncello.",
                 answers: [{
-                    text: "(schluck)",
+                    text: "(würg)",
                     type: "close",
                     reaction: {
                         text: "Ich hasse Limoncello.",
@@ -93,9 +93,11 @@ DAYS.push({
                         text: "Waaaaas? Einen Opernsänger!\n" +
                             "Ich liebe die Oper!\n" +
                             "Ich bin oft mit meiner Nonna in die Oper gegangen!\n" +
-                            "Gerne kann er hier in meiner Pizzeria singen! Wie damals mit meiner Nonna! Ich zahle auch!",
+                            "Gerne kann er hier in meiner Pizzeria singen!\n" +
+                            "Wie damals mit meiner Nonna!\n" +
+                            "Ich zahle auch!",
                         answers: [{
-                            text: "Klingt großartig! Ich sage ihm bescheid!",
+                            text: "Klingt großartig! Ich sage ihm Bescheid!",
                             type: "close"
                         }]
                     }
@@ -113,9 +115,9 @@ DAYS.push({
             person: "will",
             emotion: "neutral",
             text: "Ich probe bereits für heute Abend!\n" +
-                "Toll, mal wieder etwas italienisches zu singen!",
+                "Toll, mal wieder etwas Italienisches zu singen!",
             answers: [{
-                text: "Es wird sicher großartig",
+                text: "Es wird sicher großartig!",
                 type: "close"
             }]
         }]

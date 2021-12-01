@@ -13,7 +13,7 @@ DAYS.push({
                     text: "Verzeihung...\n" +
                         "Ich bin es nur leid, immer die gleichen Plätzchen zuzubereiten.\n" +
                         "Seit 10 Jahren schon das gleiche.\n" +
-                        "Ich möchte etwas neues anbieten, etwas exotischeres!",
+                        "Ich möchte etwas Neues anbieten, etwas Exotischeres!",
                     answers: [{
                         text: "Mh, aber es gibt doch so viele Plätzchenrezepte?",
                         type: "continue",
@@ -101,7 +101,7 @@ DAYS.push({
             text: "Baklava!",
             type: "rightAnswer",
             reaction: {
-                text: "Ohhh! Etwas orientalisches!\n" +
+                text: "Ohhh! Etwas Orientalisches!\n" +
                     "Wunderbar! Süß, kletschig, ein interessantes Kaugefühl!\n" +
                     "Und Absatz finden sie sicherlich ohne Probleme!\n" +
                     "Die nehme ich, eine tolle Idee, danke!\n",

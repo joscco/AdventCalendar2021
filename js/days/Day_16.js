@@ -24,7 +24,7 @@ DAYS.push({
                                 reaction: {
                                     text: "Naja, ich bin zwar vielleicht ein charmanter Gastgeber...\n" +
                                         "Aber kochen kann ich nicht...\n" +
-                                        "Und Köche kenne leider auch keine hier.",
+                                        "Und Köche kenne ich leider auch keine hier.",
                                     answers: [{
                                         text: "Vielleicht kann ich helfen!",
                                         type: "accept"
@@ -39,16 +39,16 @@ DAYS.push({
     hints: [{
         person: "maria",
         emotion: "neutral",
-        text: "Hey!\nDu schon wieder!\nWas kann ich für dich tun.",
+        text: "Hey!\nDu schon wieder!\nWas kann ich für dich tun?",
         answers: [{
             text: "Ein Freund braucht eine Köchin!",
             type: "continue",
             reaction: {
                 text: "Na dann Glückwunsch!\n" +
                     "Hier steht eine ausgebildete Köchin vor dir!\n" +
-                    "Von wie vielen Gästen sprechen wir denn hier?",
+                    "Von wie vielen Gästen sprechen wir denn?",
                 answers: [{
-                    text: "Das weiß nicht genau... die ganze Umgebung, also so 100?",
+                    text: "Das weiß ich nicht genau... das ganze Dorf, also so 100?",
                     type: "continue",
                     reaction: {
                         text: "Wow!\n" +

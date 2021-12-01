@@ -32,7 +32,7 @@ DAYS.push({
                 text: "Oh einen Bilderwunsch?\n" +
                     "Sowas in der Art?",
                 answers: [{
-                    text: "Eher etwas großes.",
+                    text: "Eher etwas Großes.",
                     type: "continue",
                     reaction: {
                         text: "Ah oh!\n" +
@@ -58,7 +58,7 @@ DAYS.push({
                 text: "Die ist ja auch cool!\n" +
                     "Bist du wieder auf Hilfesuche für einen Freund?\n" +
                     "Du kennst irgendwie das ganze Dorf.\n" +
-                    "Ganz schon strange für jemanden, der gerade erst hergezogen ist...",
+                    "Ganz schön strange für jemanden, der gerade erst hergezogen ist...",
                 answers: [{
                     text: "Ehm... ja... Ein Freund sucht ein Kunstprojekt.",
                     type: "continue",

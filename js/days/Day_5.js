@@ -4,7 +4,7 @@ DAYS.push({
         person: "fred",
         emotion: "sad",
         text: "Guten Tag, Fred Zasterhauser ist mein Name.\n" +
-            "Freut mich, dass Sie Ihr weg zu uns bei der PIGI-BANK geführt hat.\n" +
+            "Freut mich, dass Sie Ihr weg zu uns bei der PIGI-Bank geführt hat.\n" +
             "Wie kann ich Ihnen helfen?",
         answers: [
             {
@@ -26,8 +26,9 @@ DAYS.push({
     hints: [{
         person: "ben",
         emotion: "neutral",
-        text: "Vorsicht! Hier stehen überall meine Farben herum!\n" +
-            "Nicht, dass du reintrittst.\n" +
+        text: "Vorsicht!\n" +
+            "Hier stehen überall meine Farben herum!\n" +
+            "Nicht, dass du reintrittst...\n" +
             "Hallo übrigens, Ben ist mein Name.\n" +
             "Wie kann ich dir helfen?",
         answers: [{

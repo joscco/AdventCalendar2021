@@ -14,7 +14,7 @@ DAYS.push({
                     "Ich habe die Kellner bestellt... \n" +
                     "Fertig eingekauft... \n" +
                     "Und das Essen ist schon in der Vorbereitung.\n" +
-                    "Und ausgerechnet jetzt sind mir die Kellnerkostüme in den Dreck gefallen.\n" +
+                    "Und ausgerechnet JETZT sind mir die Kellnerkostüme in den Dreck gefallen...\n" +
                     "Ich finde doch jetzt keine Reinigung mehr...",
                 answers: [{
                     text: "Warte hier! Ich helfe!",
@@ -32,7 +32,7 @@ DAYS.push({
         emotion: "neutral",
         text: "Hey du!\n" +
             "Und, freust du dich schon auf das Essen bei Armin?\n" +
-            "Maria wird bestimmt etwas fantastisches vorbereitet haben.",
+            "Maria wird bestimmt etwas Fantastisches vorbereitet haben.",
         answers: [{
             text: "Wegen Maria... Könntest du 20 Kellnerkostüme waschen?",
             type: "continue",
@@ -105,7 +105,7 @@ DAYS.push({
         }]
     }, onFinishedDialogues: {
         text: "Vielen Dank, dass du Maike noch mit ins Boot geholt hast.\n" +
-            "Ohne Sie hätte ich das Essen nicht rechtzeitig geschafft!\n" +
+            "Ohne sie hätte ich das Essen nicht rechtzeitig geschafft!\n" +
             "Und ohne dich hätte es das Essen natürlich gar nicht gegeben!",
         answers: [{
             text: "Schön, dass wir so viele zusammenbringen konnten!",
@@ -124,7 +124,7 @@ DAYS.push({
         }, {
             person: "armin",
             emotion: "happy",
-            text: "Vielen Dank für deine Organisation von Allem!",
+            text: "Vielen Dank für deine Organisation!",
             answers: [{
                 text: "Gern geschehen!",
                 type: "close"
