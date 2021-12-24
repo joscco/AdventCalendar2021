@@ -23,6 +23,14 @@ const GAME_STATES = {
     Main: "Main"
 }
 
+function getCurrentDay() {
+    let today = new Date();
+    if (today.getFullYear() > 2021) {
+        return 24;
+    }
+    return Math.min(today.getDate(), 24)
+}
+
 function Game() {
 
     const self = this;
@@ -142,7 +150,7 @@ function Game() {
     }
 
     self.setupWelcomeScreen = function () {
-        CURRENT_DAY_NUMBER = Math.min(new Date().getDate(), 24);
+        CURRENT_DAY_NUMBER = getCurrentDay();
         self.daySelectBar = new DaySelectBar({
             dom: $("#day-select-bar"),
             daysSoFar: CURRENT_DAY_NUMBER
@@ -295,7 +303,7 @@ function Game() {
             self.dialogueSigns.forEach(sign => sign._remove());
         }
 
-        if(self.dialogBox) {
+        if (self.dialogBox) {
             self.dialogBox._remove();
         }
 
@@ -454,7 +462,7 @@ function Game() {
             self.setOnFinishedMode();
         }
 
-        if(self.questSolved && self.dialogBox.hidden && !self.dayResolvedBoxShown) {
+        if (self.questSolved && self.dialogBox.hidden && !self.dayResolvedBoxShown) {
             self.dayResolvedBox = new DayResolvedBox({text: "Du hast Tag " + CURRENT_DAY_NUMBER + " gemeistert!"});
             let finishedButton = new TextButton({
                 text: "Yeah!",
