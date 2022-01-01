@@ -96,7 +96,7 @@ function Game() {
         let font = new FontFaceObserver("Futura", {});
         font.load().then(() => {
             self.setupStage();
-            if (TEST_MODE || new Date().getMonth() === DECEMBER_NUMBER) {
+            if (TEST_MODE || new Date().getFullYear() > 2021 ||new Date().getMonth() === DECEMBER_NUMBER) {
                 self.setupSound();
                 self.gameState = GAME_STATES.WelcomeScreen;
                 self.loadingDiv.style.opacity = "1";
