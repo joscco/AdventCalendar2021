@@ -1,4 +1,4 @@
-# Adventskalender 2021
+# Advent Calendar 2021
 
 A little advent calender deployed via Github Pages on https://joscco.github.io/Adventskalender2021/.
 
